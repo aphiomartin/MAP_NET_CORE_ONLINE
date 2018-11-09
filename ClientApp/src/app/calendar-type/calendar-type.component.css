@@ -1,0 +1,16 @@
+div {
+  display: flex;
+}
+.mat-calendar-input-element {
+   font-family: Arial, Helvetica, sans-serif;
+    background: 0 0;
+    color: currentColor;
+    border: none;
+    outline: 0;
+    padding: 0 !important;
+    margin: 0 !important;
+    width: 100%;
+    max-width: 100%;
+    vertical-align: bottom;
+    text-align: inherit;
+}

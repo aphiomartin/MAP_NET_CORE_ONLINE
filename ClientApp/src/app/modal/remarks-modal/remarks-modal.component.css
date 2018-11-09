@@ -1,0 +1,8 @@
+.remarks-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.remarks-container > * {
+    width: 100%;
+}

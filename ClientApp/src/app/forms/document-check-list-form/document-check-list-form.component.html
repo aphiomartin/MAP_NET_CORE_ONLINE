@@ -1,0 +1,53 @@
+<div class="flex-branch-list-header">
+    <span class="mat-headline">Document Checklist</span>
+</div>
+
+<div style="padding: 0px 10px">
+    <form (ngSubmit)="OnSubmit()" [formGroup]="documentForm" class="docs-form-container">
+        <mat-form-field>
+            <mat-select placeholder="Document Name" formControlName="documentName">
+                <mat-option *ngFor="let docs of documentList" [value]="docs.Id">
+                    {{ docs.Description }}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="Remarks" formControlName="remarks">
+        </mat-form-field>
+        <div style="display: flex">
+            <div class="flex-1">
+                <div style="display: flex">
+                    <mat-checkbox class="flex-1 mat-form-field-infix"> Submitted</mat-checkbox>
+                    <mat-form-field class="flex-1">
+                        <input matInput [matDatepicker]="picker" placeholder="Target Date of Submission" formControlName="targetDateOfSubmission">
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="flex-2">
+                <!-- <input id="fileToUpload" type="file" formControlName="fileUpload"> -->
+                <div class="mat-form-field-wrapper">
+                    <div class="mat-form-field-infix">
+                        <input id="fileToUpload" type="file" formControlName="fileUpload">
+                    </div>
+                </div>
+            </div>
+            <div class="flex-2">
+            </div>
+        </div>
+
+
+
+        <!-- <button md-mini-fab type="button" color="accent" onclick="document.getElementById('fileToUpload').click()">
+        <label for="fileToUpload">
+            <mat-icon>attach_file</mat-icon>
+        </label>
+    </button>
+    <input id="fileToUpload" type="file" style="display:none;" formControlName="fileUpload"> -->
+        <div fxLayout="row wrap" fxLayoutAlign="end center" fxLayoutGap="3px">
+            <button type="submit" color="primary" mat-raised-button>Save </button>
+            <button type="button" color="accent" (click)="Cancel()" mat-raised-button>Cancel</button>
+        </div>
+    </form>
+</div>

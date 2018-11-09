@@ -1,0 +1,9 @@
+<app-bdo-form-header [text]="title" [sub_text]="subTitle" [mode]="mode" [submit]="Submit"></app-bdo-form-header>
+<app-request-header></app-request-header>
+<mat-tab-group>
+    <mat-tab label="Customer Profile"><app-customer-profile [displayMode]="true"></app-customer-profile></mat-tab>
+    <mat-tab label="Branch"><app-branch-info></app-branch-info></mat-tab>
+    <mat-tab label="MAEF"><app-maef-form [displayMode]="true"></app-maef-form></mat-tab>    
+</mat-tab-group>
+
+

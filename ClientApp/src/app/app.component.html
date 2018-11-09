@@ -1,0 +1,86 @@
+<!--The content below is only a placeholder and can be replaced.-->
+
+<!-- <mat-sidenav-container class="sidenav-container">
+  <mat-sidenav [mode]="side">
+  	
+  </mat-sidenav>
+  <mat-sidenav-content>
+
+ <mat-toolbar color="primary" class="mat-elevation-z5">
+  	  	 
+  	<span flex>Merchant Acquiring System</span>
+
+			<button mat-icon-button  [matMenuTriggerFor]="menu"><mat-icon>description</mat-icon></button>
+				<mat-menu #menu="matMenu">
+				  <a routerLink="/na" mat-menu-item>New Affiliation</a>
+				  <button mat-menu-item>Branch Affiiation</button>
+          
+          				<a routerLink="/pos" mat-menu-item>POS Request</a>
+				  <button mat-menu-item>Additional Facility</button>
+				  <button mat-menu-item>File Maintenance</button>
+				</mat-menu>
+				<button mat-icon-button><mat-icon>settings</mat-icon></button>
+				<button mat-icon-button><mat-icon>assignment</mat-icon></button>
+		<span fxFlex></span>
+  
+			<button type="submit"  mat-icon-button ><mat-icon>search</mat-icon> </button> 
+  	 	
+
+  
+
+  </mat-toolbar>
+ 
+
+ <router-outlet></router-outlet>  
+
+  </mat-sidenav-content>
+</mat-sidenav-container>
+ -->
+<app-main-nav>
+    <!-- <button mat-raised-button color="accent"  (click)="drawer.toggle()">Click Me</button> -->
+    <!-- <div class="main-nav-container">
+	 
+</div> -->
+    <!-- <div class="main-container"> -->
+        <router-outlet></router-outlet>
+    <!-- </div> -->
+
+
+
+
+
+</app-main-nav>
+<!-- 
+Epic
+-User Story1
+-User Story2
+
+New Affliation
+-User Story1
+-User Story2
+
+Branch Affiliation
+-User Story1
+-User Story2
+
+
+POS Request
+-User Story1
+-User Story2
+
+
+Additional Facility  	
+-User Story1
+-User Story2
+
+File Maintenance
+-User Story1
+-User Story2
+
+Parameter Maintenance
+
+Document Maintenance
+
+Default Document management
+
+SFCC Setup -->

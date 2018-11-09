@@ -1,0 +1,25 @@
+.mat-headline {
+    font-size: 18px;
+}
+
+.mat-card {
+    box-shadow: none !important;
+}
+
+.mat-card-bg {
+    background-color: #f2dede !important;
+    border-color: #ebccd1 !important;
+}
+
+.mat-card-title {
+    color: rgb(169, 68, 66) !important;
+    font-size: smaller !important;
+}
+
+.mat-card-subtitle {
+    color: rgb(169, 68, 66) !important;
+}
+
+.xbtn {
+    float: right;
+}

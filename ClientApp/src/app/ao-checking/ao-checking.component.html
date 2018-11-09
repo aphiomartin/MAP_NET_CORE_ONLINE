@@ -1,0 +1,20 @@
+<app-bdo-form-header [text]="title" [sub_text]="subTitle" [mode]="mode" class="bdoHeaderMargin"></app-bdo-form-header>
+<app-alert-message></app-alert-message>
+<app-request-header></app-request-header>
+<app-customer-profile [displayMode]="true"></app-customer-profile>
+
+    <router-outlet name="branch"></router-outlet>
+<br>
+<span class="mat-headline">
+    Submitted Documents</span>
+<!-- <mat-tab-group>
+    <mat-tab label="Merchant Information Sheet">
+        <app-branch></app-branch>
+    </mat-tab>
+    <mat-tab label="Ocuar Inspection Form">
+        <app-ocular-inspection-form></app-ocular-inspection-form>
+    </mat-tab>
+    <mat-tab label="POS Request"> 
+        <app-pos-request></app-pos-request>
+    </mat-tab>
+  </mat-tab-group> -->

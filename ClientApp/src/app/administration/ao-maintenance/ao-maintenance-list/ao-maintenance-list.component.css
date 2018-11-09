@@ -1,0 +1,52 @@
+table {
+    width: 100%;
+    background-color: #fafafa;
+    /* height: 650px; */
+    /*overflow: auto;*/
+}
+
+.mat-title {
+    color: #0d47a1;
+    font-size: 32px;
+    margin: 16px;
+}
+
+.link-button:hover {
+    color: #0d47a1;
+    cursor: pointer;
+}
+
+
+.flex-list-header {
+    display: flex;
+    flex-direction: row;
+    /* border:4px blue solid; */
+    justify-content: space-between;
+}
+
+.flex-list-footer {
+    display: flex;
+    flex-direction: row;
+    /* border:4px blue solid; */
+    justify-content: space-between;
+}
+
+.assign-icon-color {
+    background-color: #ff9800 
+}
+
+.delete-icon {
+    background-color: red
+}
+
+.mat-subheading-1 {
+    font-size: 20px;
+}
+
+.mat-subheading-1 {
+    color: #0d47a1;
+}
+
+.mat-headline {
+    font-size: 18px;
+}

@@ -1,0 +1,31 @@
+<!-- <mat-card class="mat-card-screen">
+ <mat-card-content>
+ 
+  
+</mat-card-content>
+</mat-card> -->
+
+<!-- <app-bdo-form-header [text]="title" [sub_text]="subTitle" [mode]="mode"></app-bdo-form-header> -->
+<span class="mat-headline">
+    POS Request
+  </span>
+<form [formGroup]="form" (ngSubmit)="submit()">
+    <formly-form [model]="model" [fields]="fields" [options]="options" [form]="form">
+        <div fxLayout="row wrap" fxLayoutAlign="end center" fxLayoutGap="3px">
+            <button type="submit" color="primary" mat-raised-button>Save </button>
+            <button type="submit" color="accent" mat-raised-button>Cancel</button>
+        </div>
+    </formly-form>
+</form>
+<br>
+
+<!-- <hr>
+<mat-tab-group>
+    <mat-tab label="MID Request">
+        <app-mid-request></app-mid-request>
+    </mat-tab>
+    <mat-tab label="TID Request">
+        <span class="mat-headline" style="margin-bottom:20px;">TID Request </span>
+    </mat-tab>
+
+</mat-tab-group> -->

@@ -1,0 +1,29 @@
+<div class="flex-customerprofile-list-header">
+  <span class="mat-headline">Select Customer </span>
+</div>
+<div fxLayout="row">
+  <table mat-table [dataSource]="dataSource">
+    <ng-container matColumnDef="BusinessName">
+      <th mat-header-cell *matHeaderCellDef> Business / Legal Name </th>
+      <td mat-cell *matCellDef="let element"> {{element.BusinessName}} </td>
+    </ng-container>
+    <!-- <ng-container matColumnDef="Ownership">
+      <th mat-header-cell *matHeaderCellDef> Ownership </th>
+      <td mat-cell *matCellDef="let element"> {{element.Ownership}} </td>
+    </ng-container>
+    <ng-container matColumnDef="SecDtiRegistrationDate">
+      <th mat-header-cell *matHeaderCellDef> SEC / DTI Registration Date </th>
+      <td mat-cell *matCellDef="let element"> {{element.SecDtiRegistrationDate}} </td>
+    </ng-container> -->
+    <ng-container matColumnDef="Operation">
+      <th mat-header-cell *matHeaderCellDef> </th>
+      <td mat-cell *matCellDef="let element">
+        <a [routerLink]="[{ outlets: {customerProfile: ['custProfile',1] } }]" matTooltip="Details" color="primary" mat-mini-fab>
+          <mat-icon>toc</mat-icon>
+        </a>
+      </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</div>

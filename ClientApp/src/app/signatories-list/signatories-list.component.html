@@ -1,0 +1,40 @@
+<div class="flex-branch-list-header">
+    <span class="mat-headline">Signatories List</span>
+    <a mat-mini-fab *ngIf="!displayMode" (click)="addSignatory()">
+        <mat-icon>playlist_add</mat-icon>
+    </a>
+</div>
+
+<div fxLayout="row">
+    <table mat-table [dataSource]="dataSource">
+        <ng-container matColumnDef="Name">
+            <th mat-header-cell *matHeaderCellDef style="width: 15%"> Name </th>
+            <td mat-cell *matCellDef="let element"> {{element.Name}} </td>
+        </ng-container>
+        <ng-container matColumnDef="SigningAuthority">
+            <th mat-header-cell *matHeaderCellDef style="width: 25%"> Signing Authority </th>
+            <td mat-cell *matCellDef="let element"> {{element.SigningAuthority}} </td>
+        </ng-container>
+        <ng-container matColumnDef="Position">
+            <th mat-header-cell *matHeaderCellDef style="width: 25%"> Position </th>
+            <td mat-cell *matCellDef="let element"> {{element.Position}} </td>
+        </ng-container>
+        <ng-container matColumnDef="ApplicableTo">
+            <th mat-header-cell *matHeaderCellDef style="width: 25%"> Applicable To </th>
+            <td mat-cell *matCellDef="let element"> {{element.ApplicableTo}} </td>
+        </ng-container>
+        <ng-container matColumnDef="Action">
+            <th mat-header-cell *matHeaderCellDef style="width: 10%"></th>
+            <td mat-cell *matCellDef="let element">
+                <a (click)="getItem(element.Id)" *ngIf="!displayMode" mat-mini-fab color="primary">
+                    <mat-icon style="color:white;">edit</mat-icon>
+                </a>
+                <a (click)="deleteItem(element.Id)" *ngIf="!displayMode" mat-mini-fab color="primary">
+                    <mat-icon style="color:white;">delete_outline</mat-icon>
+                </a>
+            </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+</div>

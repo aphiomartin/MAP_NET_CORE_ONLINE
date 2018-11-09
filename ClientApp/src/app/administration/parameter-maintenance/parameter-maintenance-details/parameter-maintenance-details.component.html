@@ -1,0 +1,39 @@
+<div class="mat-headline display-flex">
+  <mat-icon>toc</mat-icon> Parameter Details
+  <mat-icon class="close-button flex-1" (click)="closeDialog()">close</mat-icon>
+</div>
+<div>
+</div>
+<div class="display-flex">
+  <mat-form-field class="flex-1">
+    <input matInput placeholder="Description" disabled="true" />
+  </mat-form-field>
+  <mat-form-field class="flex-1">
+    <input matInput placeholder="Code" disabled="true" />
+  </mat-form-field>
+</div>
+<div class="display-flex">
+  <mat-form-field class="flex-1">
+    <input matInput placeholder="Add Parameter Detail" style="font-size: 18px" />
+    <mat-icon matSuffix (click)="addDetail()" class="add-button">add_box</mat-icon>
+  </mat-form-field>
+</div>
+<mat-card class="display-flex">
+  <mat-card-content>
+    <mat-list>
+      <mat-list-item *ngIf="!isEditItem">
+        <mat-icon matPreffix class="bullet-style item-edit" (click)="editItem()">label_important</mat-icon>
+        <span class="item-edit" (click)="editItem()">Item 1</span>
+        <mat-divider></mat-divider>
+      </mat-list-item>
+      <mat-list-item *ngIf="isEditItem">
+        <mat-form-field class="flex-1 mat-form-field-infix">
+          <input matInput placeholder="Edit Item" style="font-size: 18px;" />
+          <mat-icon matSuffix (click)="saveDetail()" class="save-button">check_circle</mat-icon>
+          <mat-icon matSuffix (click)="cancelSave()" class="cancel-button">cancel</mat-icon>
+        </mat-form-field>
+        <mat-divider></mat-divider>
+      </mat-list-item>
+    </mat-list>
+  </mat-card-content>
+</mat-card>

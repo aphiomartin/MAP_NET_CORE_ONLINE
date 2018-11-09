@@ -1,0 +1,14 @@
+
+.close-button:hover {
+    color: red;
+    cursor: pointer;
+}
+
+.close-button {
+    color: gray;
+    text-align: right
+}
+
+.mat-checkbox-layout {
+    white-space: normal !important;
+}

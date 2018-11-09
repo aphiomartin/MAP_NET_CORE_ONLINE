@@ -1,0 +1,14 @@
+<div class="mid-container">
+  <div class="mat-headline bdo-blue-1">Create MID</div>
+  <mat-dialog-content>
+    <form [formGroup]="form">
+      <mat-form-field style="width:100%">
+        <input matInput formControlName="mid" placeholder="MID" />
+      </mat-form-field>
+    </form>
+  </mat-dialog-content>
+  <div style="text-align: right;">
+    <button style="margin-top:3px" mat-stroked-button color="primary" (click)="Submit()">Submit</button>
+    <button style="margin-top:3px" mat-stroked-button color="accent" (click)="Submit()">Cancel</button>
+  </div>
+</div>

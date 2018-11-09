@@ -1,0 +1,19 @@
+<div>
+    <div style="padding-bottom: 10px">
+      <mat-card-title>
+        <mat-icon>playlist_add</mat-icon>
+        <b class="mat-headline"> Add Account Officer </b>
+      </mat-card-title>
+    </div>
+    <div class="mat-card-content" style="padding-top: 5px">
+      <form [formGroup]="form" (ngSubmit)="submit()">
+        <formly-form [model]="model" [fields]="fields" [options]="options" [form]="form">
+          
+        </formly-form>
+      </form>
+    </div>
+    <div *ngIf="!displayMode" fxLayout="row wrap" fxLayoutAlign="end center" fxLayoutGap="3px">
+      <button type="submit" color="primary" mat-raised-button>Save </button>
+      <button type="button" (click)="cancel();" color="accent" mat-raised-button>Cancel</button>
+    </div>
+  </div>

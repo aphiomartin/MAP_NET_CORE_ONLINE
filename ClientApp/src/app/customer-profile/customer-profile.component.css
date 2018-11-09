@@ -1,0 +1,17 @@
+.cp-container-h {
+    display: flex;
+    flex-direction: row;
+}
+.cp-container-v {
+    display: flex;
+    flex-direction: column;
+}
+
+.m-lr-20px {
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.m-btm-20px {
+    margin-bottom: 20px;
+}

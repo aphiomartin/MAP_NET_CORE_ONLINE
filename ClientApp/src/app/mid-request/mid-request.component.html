@@ -1,0 +1,63 @@
+
+<div fxLayout="column"  fxLayoutGap="3px" fxLayoutAlign="start end" style="margin-top:7px;">
+  <mat-toolbar style="background-color: inherit">
+     <span class="mat-headline">MID Request List</span>
+    <span fxFlex></span>
+      <button mat-mini-fab color="primary" matTooltip="Create New Entry" [routerLink]="[{ outlets: {midRequest: ['mid',1]} }]">
+    <mat-icon style="color:white">add</mat-icon>
+    
+  </button>  
+  </mat-toolbar>
+  
+  
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+  <!--- Note that these columns can be defined in any order.
+
+  <!-- Position Column -->
+  <ng-container matColumnDef="currency">
+    <th mat-header-cell *matHeaderCellDef> Currency  </th>
+    <td mat-cell *matCellDef="let element"> {{element.currency}} </td>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="monitorCode">
+    <th mat-header-cell *matHeaderCellDef> Monitor Code </th>
+    <td mat-cell *matCellDef="let element"> {{element.monitorCode}} </td>
+  </ng-container>
+
+  <!-- Weight Column -->
+  <ng-container matColumnDef="merchantGroupCode">
+    <th mat-header-cell *matHeaderCellDef> Merchant Group Code </th>
+    <td mat-cell *matCellDef="let element"> {{element.merchantGroupCode}} </td>
+  </ng-container>
+
+  <!-- Symbol Column -->
+  <ng-container matColumnDef="sfcc">
+    <th mat-header-cell *matHeaderCellDef> Service Fee Rate </th>
+    <td mat-cell *matCellDef="let element"> {{element.sfcc}} </td>
+  </ng-container>
+       <!-- The actual rendered columns are set as a property on the row definition" -->
+ <ng-container matColumnDef="controls">
+    <th mat-header-cell *matHeaderCellDef>
+     <!--  <button mat-mini-fab> 
+        <mat-icon>menu</mat-icon>
+      </button> -->
+    </th>
+    <td mat-cell *matCellDef="let row">
+      <button mat-icon-button> 
+        <mat-icon color="primary">edit</mat-icon>
+      </button>
+       <button mat-icon-button> 
+        <mat-icon color="warn">delete_forever</mat-icon>
+      </button>
+    </td>
+  </ng-container>
+
+ 
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+</div>
+
+  

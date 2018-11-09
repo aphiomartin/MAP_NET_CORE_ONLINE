@@ -1,0 +1,41 @@
+.add-button:hover {
+    color: #ff9800;
+    cursor: pointer;
+    font-size: 28px;
+}
+
+.save-button:hover {
+    color: #ff9800;
+    cursor: pointer;
+}
+
+.cancel-button:hover {
+    color: red;
+    cursor: pointer;
+}
+
+.close-button {
+    color: gray;
+    text-align: right
+}
+
+.close-button:hover {
+    cursor: pointer;
+    color: red;
+}
+
+.item-edit:hover {
+    color:  #0d47a1;
+    cursor: pointer;
+}
+
+.bullet-style {
+    color: #ff9800;
+    padding-right: 5px;
+}
+
+.mat-card-content {
+    height: 325px;
+    width: 100%;
+    overflow: auto;
+}

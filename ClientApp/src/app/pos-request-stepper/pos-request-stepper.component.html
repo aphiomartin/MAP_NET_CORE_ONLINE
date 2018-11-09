@@ -1,0 +1,54 @@
+<app-bdo-form-header [text]="title" [sub_text]="subTitle" [mode]="mode"></app-bdo-form-header>
+<span class="mat-headline">Please follow the steps:</span>
+<mat-vertical-stepper [linear]="isLinear" #stepper>
+    <mat-step>
+        <ng-template matStepLabel>
+            <span class="mat-subheading-1">
+                Select Branch
+            </span>
+        </ng-template>
+        <span class="mat-headline">
+            POS Request Details
+        </span>
+        <router-outlet name="branchPOSRequest"></router-outlet>
+        <button style="margin-top:3px" mat-button color="primary" (click)="completed(stepper);">Next
+            <mat-icon color="primary">navigate_next</mat-icon>
+        </button>
+    </mat-step>
+    <mat-step>
+        <ng-template matStepLabel>
+            <span class="mat-subheading-1">
+                Add MID Request
+            </span>
+        </ng-template>
+        <router-outlet name="midRequest"></router-outlet>
+        <!-- <app-mid-request></app-mid-request> -->
+        <br />
+        <button style="margin-top:3px" mat-button color="primary" (click)="completed(stepper);">Next
+            <mat-icon color="primary">navigate_next</mat-icon>
+        </button>
+    </mat-step>
+    <mat-step>
+        <ng-template matStepLabel>
+            <span class="mat-subheading-1">
+                Attach Required Documents
+            </span>
+        </ng-template>
+        <router-outlet name="documentChecklist"></router-outlet>
+        <!-- <app-mid-request></app-mid-request> -->
+        <br />
+        <button style="margin-top:3px" mat-button color="primary" (click)="completed(stepper);">Next
+            <mat-icon color="primary">navigate_next</mat-icon>
+        </button>
+    </mat-step>
+    <mat-step state="done">
+        <ng-template matStepLabel>
+            <span class="mat-subheading-1">Done!</span>
+        </ng-template>
+        <span class="mat-subheading-1">You are now done. Would you like to submit the Request?</span>
+        <div xLayout="row wrap" fxLayoutAlign="start center" fxLayoutGap="3px">
+            <button mat-stroked-button matStepperPrevious color="primary" (click)="Submit()">Yes</button>
+            <button mat-stroked-button (click)="stepper.reset()" color="accent">No</button>
+        </div>
+    </mat-step>
+</mat-vertical-stepper>

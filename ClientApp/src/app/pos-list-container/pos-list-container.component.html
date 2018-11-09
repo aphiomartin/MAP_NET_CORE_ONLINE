@@ -1,0 +1,10 @@
+<div class="flex-branch-list-header">
+    <span class="mat-headline">Branch Information</span>
+  </div>  
+<form [formGroup]="form" (ngSubmit)="submit()" class="mid-form-container">
+  <formly-form [model]="model" [fields]="fields" [options]="options" [form]="form">
+  </formly-form>
+</form>
+<div style="margin-top: 20px">
+    <router-outlet name="listContainer"></router-outlet>
+</div>

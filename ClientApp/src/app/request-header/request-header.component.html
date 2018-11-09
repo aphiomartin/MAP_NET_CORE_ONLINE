@@ -1,0 +1,91 @@
+<div fxLayout="column" style="margin: 0px 10px;">
+    <div fxLayout="row" style="width: 100%;">
+        <div fxFlex class="mat-subheading-1" style="color:#0d47a1">
+            Reference No: 000000110232018
+        </div>
+        <div fxFlex></div>
+        <div fxFlex></div>
+        <div fxFlex></div>
+        <div fxFlex>
+            <span class="mat-subheading-1" style="color:#0d47a1"> Requested Date: {{ dateToday | date: 'ddMMMyy' }}</span>
+            <button mat-button (click)="openHistory()" color="primary" class="no-padding history-btn" matTooltip="Show History">
+                <i class="material-icons">history</i>
+            </button>
+        </div>
+    </div>
+    <div fxLayout="row">
+        <div fxFlex class="mat-subheading-1" style="color:#0d47a1">
+            AO Code: Juan dela Cruz
+        </div>
+        <div fxFlex></div>
+        <div fxFlex></div>
+        <div fxFlex></div>
+        <div fxFlex class="mat-subheading-1" style="color:#0d47a1">
+            Business/Legal Name: Aldo
+        </div>
+    </div>
+    <div fxLayout="row">
+        <div fxFlex class="mat-subheading-1" style="color:#0d47a1">
+            Ownership: Single Proprietorship
+        </div>
+        <div fxFlex></div>
+        <div fxFlex></div>
+        <div fxFlex></div>
+        <div fxFlex></div>
+        <div fxFlex></div>
+    </div>
+</div>
+<!-- <div class="header-container" style="margin-top: 5px;">
+    <div class="mat-subheading-2" style="color: #0d47a1">
+        Reference No: 000001
+    </div>
+    <div>
+        <span class="mat-subheading-1" style="color:#2196F3"> Requested Date: {{ dateToday | date: 'MM/dd/yyyy' }}</span>
+        <button mat-button (click)="openHistory()" color="primary" class="no-padding history-btn" matTooltip="Show History"><i
+                class="material-icons">history</i></button>
+    </div>
+</div>
+<div class="header-container">
+    <div class="mat-subheading-1" style="color:#2196F3">
+        Requested By: Arnold Costamero
+    </div>
+    <div class="mat-subheading-1" style="color:#2196F3">
+        Business/Legal Name: Aldo
+    </div>
+</div>
+<div class="header-container">
+    <div class="mat-subheading-1" style="color:#2196F3">
+        Ownership: Single Proprietorship
+    </div>
+</div> -->
+<!-- 
+<mat-grid-list cols="6" rowHeight="40px">
+    <mat-grid-tile class="justify-left">
+        <div class="mat-subheading-1" style="color: #0d47a1">
+            Tracking No: 000001
+        </div>
+    </mat-grid-tile>
+    <mat-grid-tile></mat-grid-tile>
+    <mat-grid-tile></mat-grid-tile>
+    <mat-grid-tile></mat-grid-tile>
+    <mat-grid-tile></mat-grid-tile>
+    <mat-grid-tile>
+        <div>
+            <span class="mat-subheading-1" style="color:#2196F3"> Requested Date: {{ dateToday | date: 'MM/dd/yyyy' }}</span>
+            <button mat-button (click)="openHistory()" color="primary" class="no-padding history-btn" matTooltip="Show History"><i
+                    class="material-icons">history</i></button>
+        </div>
+    </mat-grid-tile>
+</mat-grid-list>
+<mat-grid-list cols="6" rowHeight="30px">
+    <mat-grid-tile class="justify-left">
+        <div class="mat-subheading-1" style="color:#2196F3">
+            Requested By: Arnold Costamero
+        </div>
+    </mat-grid-tile>
+    <mat-grid-tile></mat-grid-tile>
+    <mat-grid-tile></mat-grid-tile>
+    <mat-grid-tile></mat-grid-tile>
+    <mat-grid-tile></mat-grid-tile>
+    <mat-grid-tile></mat-grid-tile>
+</mat-grid-list> -->
