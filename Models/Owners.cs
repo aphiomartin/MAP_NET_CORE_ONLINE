@@ -1,5 +1,3 @@
-using System;
-
 namespace MAP_Web.Models
 {
     public class Owners

@@ -1,6 +1,6 @@
 namespace MAP_Web.Models
 {
-    public class MID
+    public class DefaultMIDs
     {
         public int Id { get; set; }
         public int cardPlans { get; set; }
@@ -23,6 +23,5 @@ namespace MAP_Web.Models
         public bool forMoto { get; set; }
         public string dccMarkupRate { get; set; }
         public string dccMerchantRebate { get; set; }
-
     }
 }
