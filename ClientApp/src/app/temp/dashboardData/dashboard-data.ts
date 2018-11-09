@@ -7,14 +7,14 @@ export class DashboardData {
           RequestDate: '23Oct18', RequestType: 'New Affiliation', 
           BusinessName: 'Bench', DBAName: 'DBA Name Test',
           RequestedBy: 'Juan dela Cruz',
-          Status: 'FOR AO CHECKER REVIEW', TAT: '20 hour(s)'
+          Status: 'DRAFT', TAT: '20 hour(s)'
         },
         {
           Id: 2, ReferenceNo: '000000110232018',
           RequestDate: '23Oct18', RequestType: 'New Affiliation', 
           BusinessName: 'Bench', DBAName: 'DBA Name Test',
           RequestedBy: 'Juan dela Cruz',
-          Status: 'FOR AO CHECKER REVIEW', TAT: '10 hour(s)'
+          Status: 'DRAFT', TAT: '10 hour(s)'
         }
       ];
 

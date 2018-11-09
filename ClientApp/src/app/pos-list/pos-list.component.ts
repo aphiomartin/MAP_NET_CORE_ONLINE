@@ -25,7 +25,9 @@ export class PosListComponent implements OnInit {
     this.dataSource = this._service.get();
 
     this._route.data.subscribe(data => {
+      console.log(this.showAdd);
       if (this.showAdd == undefined) {
+        console.log(data['showAdd']);
         if (data['showAdd']) {
           this.showAdd = true;
         } else {
@@ -37,8 +39,11 @@ export class PosListComponent implements OnInit {
 
   addPos() {
     this._dialog.open(PosFormModalComponent, {
-      width: '95%',
-      height: '90%'
+      width: '98%',
+      height: '90%',
+      data: {
+        showAction: true
+      }
     });
   }
 }

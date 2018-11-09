@@ -213,7 +213,7 @@ export class MidFormModalService {
         fieldGroup: [
           {
             className: 'flex-1',
-            key: 'merchantMpPromotionGroup',
+            key: 'amexMna',
             type: 'checkbox',
             defaultValue: 1,
             templateOptions: {
@@ -222,15 +222,15 @@ export class MidFormModalService {
           },
           {
             className: 'flex-1',
-            key: 'defaultMpPromotion',
-            type: 'checkbox',
+            key: 'intesCode',
+            type: 'input',
             templateOptions: {
-              label: 'Diners ISE',
+              label: 'INTES Code',
             }
           },
           {
             className: 'flex-1',
-            key: 'defaultMpPromotion',
+            key: 'payDelayDays',
             type: 'input',
             defaultValue: 1,
             templateOptions: {
@@ -246,7 +246,7 @@ export class MidFormModalService {
         fieldGroup: [
           {
             className: 'flex-1',
-            key: 'merchantMpPromotionGroup',
+            key: 'merchantPromotionsGroup',
             type: 'select',
             defaultValue: 1,
             templateOptions: {

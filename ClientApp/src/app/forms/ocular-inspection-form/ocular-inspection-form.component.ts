@@ -2,7 +2,7 @@ import { Component, OnInit, ViewEncapsulation, Input } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 
 import { OcularInspectionFormService } from './ocular-inspection-form.service';
-import { AppBaseComponent } from '../../../app/app-base/app-base.component';
+import { AppBaseComponent } from '../../app-base/app-base.component';
 @Component({
   selector: 'app-ocular-inspection-form',
   templateUrl: './ocular-inspection-form.component.html',

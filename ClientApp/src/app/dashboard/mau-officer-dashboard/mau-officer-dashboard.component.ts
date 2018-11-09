@@ -1,45 +1,38 @@
 import { Component, OnInit } from '@angular/core';
 import { MauOfficerDashboardService } from './mau-officer-dashboard.service';
 //import { IRequestDisplay } from '../../temp/interface/irequest-display';
-import { MatDialogRef, MatDialog, MatSnackBar } from '../../../../node_modules/@angular/material';
+import { MatDialogRef, MatDialog, MatSnackBar } from '@angular/material';
 import { AoListModalComponent } from '../../modal/ao-list-modal/ao-list-modal.component';
-import { ActivatedRoute, Router } from '../../../../node_modules/@angular/router';
-import { SearchModalComponent } from 'src/app/modal/search-modal/search-modal.component';
+import { ActivatedRoute, Router } from '@angular/router';
 
 const ElementData: IRequestDisplay[] =  [
   {
-    Id: 1,
-    ReferenceNo: '000000110232018',
-    RequestedDate: '10/23/2018',
-    RequestType: 'New Affiliation',
-    BusinessName: 'Bench',
-    DBAName: 'DBA Name Test',
-    RequestedBy: 'Juan Dela Cruz',
-    RequestStatus: 'FOR EVALUATION',
-    TAT: '10 Hour(s)'
+    Id: 1, TrackingNo: '0000001',
+    RequestType: 'New Affiliation', BusinessName: 'Bench',
+    RequestDate: '09/21/2018', BranchName: 'SM Megamall',
+    Location: 'Mandaluyong', RequestStatus: 'FOR EVALUATION',
+    AccountOfficer: 'Juanico Cabanit', TAT: '10 Hour(s)'
+    
   },
   {
-    Id: 2,
-    ReferenceNo: '000000210302018',
-    RequestedDate: '10/30/2018',
-    RequestType: 'New Affiliation',
-    BusinessName: 'Bench',
-    DBAName: 'DBA Name Test',
-    RequestedBy: 'Juan Dela Cruz',
-    RequestStatus: 'FOR RE-EVALUATION',
-    TAT: '20 Hour(s)'
+    Id: 2, TrackingNo: '0000002',
+    RequestType: 'New Affiliation', BusinessName: 'Bench',
+    RequestDate: '09/22/2018', BranchName: 'SM Calamba',
+    Location: 'Calamba', RequestStatus: 'FOR RE-EVALUATION',
+    AccountOfficer: 'Raquel Bernado', TAT: '20 Hour(s)'
   }
 ];
 
 export interface IRequestDisplay {
   Id: number;
-  ReferenceNo: string;
-  RequestedDate: string;
+  TrackingNo: string;
   RequestType: string;
   BusinessName: string;
-  DBAName: string;
-  RequestedBy: string;
+  RequestDate: string;
+  BranchName: string;
+  Location: string;
   RequestStatus: string;
+  AccountOfficer: string;
   TAT: string;
 }
 
@@ -67,8 +60,8 @@ export class MauOfficerDashboardComponent implements OnInit {
     private _router: Router) { }
 
   ngOnInit() {
-    this.displayedColumns = ['ReferenceNo', 'RequestedDate', 'RequestType',
-                             'BusinessName','DBAName', 'RequestedBy', 
+    this.displayedColumns = ['TrackingNo', 'RequestType', 'BusinessName',
+                             'RequestDate','BranchName', 'Location', 
                              'RequestStatus','TAT', 'Operation']
     this.dataSource = ElementData;
 
@@ -81,10 +74,9 @@ export class MauOfficerDashboardComponent implements OnInit {
     this._router.navigateByUrl('na/mauOfficer/' + id);
   }
 
-  openDialog(Id, ReferenceNo): void {
+  openDialog(id, trackingNo): void {
     const dialogRef = this._dialog.open(AoListModalComponent, {
-      width: '40%',
-      data: { Id: Id, ReferenceNo: ReferenceNo }
+      data: { id: id, trackingNo: trackingNo }
     });
 
     dialogRef.afterClosed().subscribe(data => {
@@ -94,13 +86,6 @@ export class MauOfficerDashboardComponent implements OnInit {
             duration: 2000
           });
       }
-    });
-  }
-
-  openSearchDialog() {
-    const dialogRef = this._dialog.open(SearchModalComponent, {
-      autoFocus: false,
-      width: '40%'
     });
   }
 

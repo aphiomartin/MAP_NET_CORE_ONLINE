@@ -1,0 +1,15 @@
+<mat-tab-group>
+    <mat-tab label="Branch Details">
+        <div style="overflow: hidden">
+            <app-branch-form></app-branch-form>
+        </div>
+    </mat-tab>
+    <mat-tab label="POS">
+        <div style="overflow: hidden">
+            <app-pos-list [showAdd]="false"></app-pos-list>
+        </div>
+    </mat-tab>
+    <mat-tab label="MID">
+        <app-mid [update]="false" [action]="false"></app-mid>
+    </mat-tab>
+</mat-tab-group>

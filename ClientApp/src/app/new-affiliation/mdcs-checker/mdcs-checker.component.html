@@ -1,12 +1,14 @@
 <app-bdo-form-header [text]="title" [sub_text]="subTitle" [mode]="mode" [submit]="Submit"></app-bdo-form-header>
 <app-request-header></app-request-header>
 <div style="margin: 0px 10px">
-<app-customer-profile [displayMode]="true"></app-customer-profile>
+    <app-customer-profile [displayMode]="false" [userGroup]="userGroup"></app-customer-profile>
 </div>
-<h2 class="mat-headline">Branch List</h2>
+<div style="margin: 0px 10px">
+    <router-outlet name="mdcsDetails"></router-outlet>
+</div>
 <!-- <mat-tab-group>
     <mat-tab label="Branch"> -->
-        <mat-accordion>
+        <!-- <mat-accordion>
             <mat-expansion-panel>
                 <mat-expansion-panel-header>
                     <mat-panel-title>
@@ -28,6 +30,6 @@
                     </mat-tab>
                 </mat-tab-group>
             </mat-expansion-panel>
-        </mat-accordion>
+        </mat-accordion> -->
     <!-- </mat-tab>
 </mat-tab-group> -->

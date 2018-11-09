@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator, MatTableDataSource, MatSort } from '@angular/material';
-import { MatDialog, MatSnackBar } from '../../../../../../node_modules/@angular/material';
+import { MatDialog, MatSnackBar } from '@angular/material';
 import { IdocumentListConfigurationData } from "../../../../temp/interface/idocument-list-configuration-data";
 import { DocumentChecklistConfigurationListService } from './document-checklist-configuration-list.service';
 import { DocumentChecklistConfigurationFormComponent } from '../document-checklist-configuration-form/document-checklist-configuration-form.component';

@@ -3,7 +3,7 @@ import { FormGroup } from '@angular/forms';
 import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { DocumentChecklistMaintenanceFormService } from './document-checklist-maintenance-form.service';
-import { AppBaseComponent } from '../../../../../app/app-base/app-base.component';
+import { AppBaseComponent } from '../../../../app-base/app-base.component';
 
 @Component({
   selector: 'app-document-checklist-maintenance-form',

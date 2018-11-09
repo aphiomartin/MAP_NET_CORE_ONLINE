@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator, MatTableDataSource, MatSort } from '@angular/material';
-import { MatDialog, MatSnackBar } from '../../../../../../node_modules/@angular/material';
+import { MatDialog, MatSnackBar } from '@angular/material';
 
 import { IdocumentListData } from "../../../../temp/interface/idocument-list-data";
 import { DocumentChecklistMaintenanceService } from './document-checklist-maintenance.service';

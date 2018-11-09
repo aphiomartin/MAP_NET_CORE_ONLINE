@@ -1,6 +1,6 @@
 import { Component, OnInit ,ViewChild } from '@angular/core';
 import { MatPaginator, MatTableDataSource, MatSort } from '@angular/material';
-import { MatDialog, MatSnackBar } from '../../../../../node_modules/@angular/material';
+import { MatDialog, MatSnackBar } from '@angular/material';
 import { BuMaintenanceFormComponent } from '../bu-maintenance-form/bu-maintenance-form.component';
 import { DeleteModalComponent } from '../../../modal/delete-modal/delete-modal.component';
 

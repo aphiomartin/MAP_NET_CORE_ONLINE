@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PosTerminalFormModalService } from './pos-terminal-form-modal.service';
-import { FormlyFieldConfig } from '../../../../node_modules/@ngx-formly/core';
-import { MatDialogRef } from '../../../../node_modules/@angular/material';
+import { FormlyFieldConfig } from '@ngx-formly/core';
+import { MatDialogRef } from '@angular/material';
 
 @Component({
   selector: 'app-pos-terminal-form-modal',

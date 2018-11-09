@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DocumentCheckListFormRequestLevelService } from './document-check-list-form-request-level.service';
-import { FormGroup, FormControl } from '../../../../node_modules/@angular/forms';
-import { ActivatedRoute, Router } from '../../../../node_modules/@angular/router';
+import { FormGroup, FormControl } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-document-check-list-form-request-level',

@@ -1,0 +1,27 @@
+<div class="flex-branch-list-header">
+    <span class="mat-headline">Branch List</span>
+</div>
+
+<div fxLayout="row">
+    <table mat-table [dataSource]="dataSource">
+        <ng-container matColumnDef="DBAName">
+            <th mat-header-cell *matHeaderCellDef> DBA Name </th>
+            <td mat-cell *matCellDef="let element"> {{element.DBAName}} </td>
+        </ng-container>
+        <ng-container matColumnDef="DBAAddress">
+            <th mat-header-cell *matHeaderCellDef> DBA Address </th>
+            <td mat-cell *matCellDef="let element"> {{element.DBAAddress}} </td>
+        </ng-container>
+        <ng-container matColumnDef="Action">
+            <th mat-header-cell *matHeaderCellDef>
+            </th>
+            <td mat-cell *matCellDef="let element">
+                <a [routerLink]="[{outlets: {mdcsDetails:'1'}}]" mat-icon-button>
+                    <mat-icon color="primary">attachment</mat-icon>
+                </a>
+            </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+</div>
