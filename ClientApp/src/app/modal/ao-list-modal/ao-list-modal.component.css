@@ -1,13 +1,8 @@
-.close-button:hover {
-    color: red;
-    cursor: pointer;
-}
 
-.close-button {
-    color: gray;
-    text-align: right
+.aoList-container {
+    width: '100%';
+    height: '100%';
 }
-
 
 .text-align-right {
     text-align: right;

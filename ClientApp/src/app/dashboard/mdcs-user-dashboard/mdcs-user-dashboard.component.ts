@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MdcsUserDashboardService } from './mdcs-user-dashboard.service';
 import { IRequestDisplay } from '../../temp/interface/irequest-display';
-import { Router } from '../../../../node_modules/@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-mdcs-user-dashboard',

@@ -11,11 +11,13 @@ export class MdcsEncoderComponent implements OnInit {
   title: string;
   subTitle: string;
   mode: string;
+  userGroup: string;
   constructor() { }
 
   ngOnInit() {
     this.title = 'New Affiliation';
     this.subTitle = 'FOR ENCODING';
     this.mode = 'forMdcsChecking';
+    this.userGroup = 'mdcs';
   }
 }

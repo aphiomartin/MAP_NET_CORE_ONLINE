@@ -3,7 +3,7 @@ import { FormGroup } from '@angular/forms';
 import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { AppBaseComponent } from '../../app-base/app-base.component';
-import { MamVerificationScreenFormService } from '../mam-verification-screen-form/mam-verification-screen-form.service';
+import { MamVerificationScreenFormService } from './mam-verification-screen-form.service';
 
 @Component({
   selector: 'app-mam-verification-screen-form',

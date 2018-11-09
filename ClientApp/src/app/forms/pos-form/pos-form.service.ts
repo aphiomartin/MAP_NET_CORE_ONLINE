@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
 import { Observable, of } from 'rxjs';
-import { when } from '../../../../node_modules/@types/q';
+import { when } from 'q';
 
 @Injectable()
 
