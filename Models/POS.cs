@@ -1,15 +1,9 @@
 using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
 
 namespace MAP_Web.Models
 {
     public class POS
     {
-        public POS()
-        {
-            this.TerminalDetails = new Collection<TerminalDetails>();
-        }
         public int Id { get; set; }
         public int natureOfRequest { get; set; }
         public int reprogrammingType { get; set; }
@@ -37,9 +31,9 @@ namespace MAP_Web.Models
         public string contactNumber { get; set; }
         public string numberOfPrintedSlips { get; set; }
         public string reasonForThreeSlipsPrinting { get; set; }
-        public DateTime requiredDateAndTimeOfDispatch { get; set; }
+        public Nullable<DateTime> requiredDateAndTimeOfDispatch { get; set; }
         public bool isInstallationTerm { get; set; }
-        public DateTime requiredPullOutDateForTempPOSTerminals { get; set; }
+        public Nullable<DateTime> requiredPullOutDateForTempPOSTerminals { get; set; }
         public string reasonForPermanentGPRSInstallation { get; set; }
         public string otherRequiredProfilingFacility { get; set; }
         public bool isTipAdjust { get; set; }
@@ -92,6 +86,5 @@ namespace MAP_Web.Models
         public string dateAndTimeTidIssued { get; set; }
         public bool isWaved { get; set; }
         public bool isShared { get; set; }
-        public ICollection<TerminalDetails> TerminalDetails { get; set; }
     }
 }

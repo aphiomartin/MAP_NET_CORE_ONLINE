@@ -1,37 +1,39 @@
-<div class="aoList-container">
-  <div style="padding-bottom: 10px">
+<!-- <div style="padding-bottom: 10px">
     <mat-card-title>
-      <a mat-mini-fab color="primary">
-        <mat-icon style="color:white;" title="Assign To">face</mat-icon>
-      </a>
-      <b class="mat-headline"> Assign / Re-Assign Request </b>
+      <mat-icon style="color:#0d47a1;" title="Assign To">face</mat-icon>
+      <b class="mat-headline">  </b>
     </mat-card-title>
+  </div> -->
+<div class="mat-headline" style="margin: 0px;" fxLayout="row" fxLayoutAlign="space-between">
+  <mat-label fxLayoutAlign="start center">
+    <mat-icon>face</mat-icon>  &nbsp;Assign / Re-Assign Requests
+  </mat-label>
+  <mat-icon class="close-button flex-1" (click)="closeDialog()">close</mat-icon>
+</div>
+<div class="mat-sub-heading-2" style="padding-bottom: 20px;font-size: 18px; color: orange;">
+  Reference # : {{passedData.ReferenceNo}}
+</div>
+<div class="mat-card-content">
+  <div class="mat-expansion-panel-header">
+    <p>Currently Assigned To :
+      <b> {{selectedValue}} </b>
+    </p>
   </div>
-  <div class="mat-sub-heading-2" style="padding-bottom: 20px;font-size: 18px; color: orange;">
-    Tracking # : {{passedData.trackingNo}}
+  <div class="mat-expansion-panel-header" color="primary" style="padding-bottom: 10px;">
+    <p style="padding-right: 10px">Assign / Re-Assign Request To :
+      <mat-form-field>
+        <mat-select placeholder="Select AO From List..." [formControl]="aoSelectFrmControl" #aoSelectList name="aoSelectList">
+          <mat-option *ngFor="let item of dataSource" [value]="item">
+            {{item.firstName + ' ' + item.middleName + ' ' + item.lastName}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </p>
   </div>
-  <div class="mat-card-content">
-    <div class="mat-expansion-panel-header">
-      <p>Currently Assigned To :
-        <b> {{selectedValue}} </b>
-      </p>
-    </div>
-    <div class="mat-expansion-panel-header" color="primary" style="padding-bottom: 10px;">
-      <p style="padding-right: 10px">Assign / Re-Assign Request To :
-        <mat-form-field>
-          <mat-select placeholder="Select AO From List..." [formControl]="aoSelectFrmControl" #aoSelectList name="aoSelectList">
-            <mat-option *ngFor="let item of dataSource" [value]="item.Name">
-              {{item.Name}}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
-      </p>
-    </div>
-  </div>
+</div>
 
-  <div style="text-align: right">
-    <button style="margin-top:3px" mat-flat-button color="primary" (click)="Submit()">Submit</button>
-    &nbsp;
-    <button style="margin-top:3px" mat-flat-button color="accent" (click)="Cancel()">Cancel</button>
-  </div>
+<div style="text-align: right">
+  <button style="margin-top:3px" mat-flat-button color="primary" (click)="Submit()">Save</button>
+  &nbsp;
+  <button style="margin-top:3px" mat-flat-button color="accent" (click)="Cancel()">Cancel</button>
 </div>

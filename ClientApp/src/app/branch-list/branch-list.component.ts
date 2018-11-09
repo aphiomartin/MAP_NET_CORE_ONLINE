@@ -10,9 +10,8 @@ export interface BranchDisplayInfo {
 
 }
 const ELEMENT_DATA: BranchDisplayInfo[] = [
-  { Id: 1, DBAName: 'AldoMegamall', DBAAddress: 'Mandaluyong' }
-  // ,
-  // { Id: 2, DBAName: 'Bench', DBAAddress: 'Mandaluyong' }
+  { Id: 1, DBAName: 'AldoMegamall', DBAAddress: 'Mandaluyong' },
+  { Id: 2, DBAName: 'Bench', DBAAddress: 'Mandaluyong' }
 ];
 
 @Component({
@@ -46,7 +45,7 @@ export class BranchListComponent implements OnInit {
   private getItem(Id) {
 
     // this.router.navigateByUrl(this.detailsRoute+"/"+Id);
-    this.router.navigate([{ outlets: { branch: ['branch', 'update', Id] } }]);
+    this.router.navigate([{ outlets: { branch: ["branch", 'update', Id] } }]);
     // 'branch/update/'
   }
 

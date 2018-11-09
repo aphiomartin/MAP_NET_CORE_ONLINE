@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
-import { MatDialogRef } from '@angular/material';
+import { FormControl } from '../../../../node_modules/@angular/forms';
+import { MatDialogRef } from '../../../../node_modules/@angular/material';
 
 interface ISearchField {
   mqr: string[],

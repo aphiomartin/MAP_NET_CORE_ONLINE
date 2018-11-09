@@ -26,6 +26,7 @@ namespace MAP_Web.DataAccess
          public virtual DbSet<Models.MaintenanceMaster> MaintenanceMaster { get; set; }
         public virtual DbSet<Models.MaintenanceDetails> MaintenanceDetails { get; set; }
         public virtual DbSet<Models.AuditLog> AuditLog { get; set; }
+        public virtual DbSet<Models.AOMaintenance> AOMaintenance {get; set;}
         
     }
 }

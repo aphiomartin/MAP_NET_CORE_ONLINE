@@ -112,20 +112,6 @@ export class PosTerminalFormModalService {
             }
           }
         ]
-      },
-      {
-        fieldGroupClassName: 'display-flex',
-        fieldGroup: [
-          {
-            className: 'flex-1',
-            type: 'input',
-            key: 'creditStraightTid',
-            templateOptions: {
-              label: 'Credit Straight TID'
-            }
-          },
-          {className: 'flex-2'}
-        ]
       }
     ];
   }

@@ -1,17 +1,26 @@
 import { Injectable } from '@angular/core';
-import { AoListData } from "../../temp/aoListData/ao-list-data";
+//import { AoListData } from "../../temp/aoListData/ao-list-data";
+import { HttpClientModule,HttpClient } from '@angular/common/http';
+import { Inject } from '@angular/core';
+import { Observable } from 'rxjs';
+
 
 @Injectable()
 export class AoListModalService {
-  private _aoList: AoListData
+  private _baseUrl: string;
 
-  constructor() { 
-    this._aoList = new AoListData();
+
+  constructor(private http: HttpClient) {
+    // this._baseUrl = baseUrl
   }
 
 
-  getAoList() {
-    return this._aoList.ElementData;
+  getAoList(): Observable<any> {
+    return this.http.get('https://localhost:5001/api/AOMaintenance');
+  }
+
+  updateAssignRequest(data) {
+    
   }
 
 }

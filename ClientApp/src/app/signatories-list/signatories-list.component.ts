@@ -13,7 +13,6 @@ export class SignatoriesListComponent implements OnInit {
   displayedColumns: string[];
   dataSource: Object[];
   @Input() displayMode: boolean;
-  @Input() userGroup: string;
 
   constructor(private _service: SignatoriesListService, private _dialog: MatDialog) { }
 
@@ -24,10 +23,7 @@ export class SignatoriesListComponent implements OnInit {
 
   addSignatory() {
     this._dialog.open(SignatoriesFormModalComponent, {
-      width: '60%',
-      data: {
-        userGroup: this.userGroup
-      }
+      width: '60%'
     });
   }
 }

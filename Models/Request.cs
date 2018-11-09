@@ -18,17 +18,18 @@ namespace MAP_Web.Models
         public int RequestType { get; set; }
         public string RequestDescription { get; set; }
        
-        public Guid WorkflowInstanceId { get; set; }
+        public Nullable<Guid> WorkflowInstanceId { get; set; }
         public Int32 Status { get; set; }
         public string BookMark { get; set; }
         public string TrackingNo { get; set; }
         public bool Insuff { get; set; }
         public Int32 MQRStatus { get; set; }
+        public string Owner {get; set;}
         public ICollection<RequiredApproval> RequiredApprovals { get; set; }
         public ICollection<RequestApproval> Approvals { get; set; }
         public ICollection<MQRRequiredApproval> MQRRequiredApprovals { get; set; }
         public ICollection<MQRRequestApproval> MQRRequestApprovals { get; set; }
-
+        public ICollection<Branch> Branch { get; set; }
 
         public virtual NewAffiliation NewAffiliation { get;set;}
         public virtual FileMaintenance FileMaintenance { get; set; }
@@ -37,6 +38,8 @@ namespace MAP_Web.Models
         public virtual BranchAffiliation BranchAffiliation { get; set; }
         public virtual MAEF MAEF { get; set; }
         public virtual History History { get; set; }
+
+        
 
         
 

@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { MatSnackBar } from '@angular/material';
+import { ActivatedRoute, Router } from '../../../../node_modules/@angular/router';
+import { MatSnackBar } from '../../../../node_modules/@angular/material';
 
 
 @Component({

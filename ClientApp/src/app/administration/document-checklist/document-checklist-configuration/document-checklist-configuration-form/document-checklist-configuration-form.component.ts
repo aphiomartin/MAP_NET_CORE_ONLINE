@@ -1,10 +1,10 @@
 import { Component, OnInit, ViewChild, Input } from '@angular/core';
 import { MatPaginator, MatTableDataSource, MatSort, MatDialog, MatDialogRef } from '@angular/material';
 import { IdocumentListData } from "../../../../temp/interface/idocument-list-data";
-import { DocumentChecklistConfigurationFormService } from './document-checklist-configuration-form.service';
-import { FormlyFieldConfig, FormlyFormOptions } from '@ngx-formly/core';
-import { FormGroup } from '@angular/forms';
-import { SelectionModel } from '@angular/cdk/collections';
+import { DocumentChecklistConfigurationFormService } from '../document-checklist-configuration-form/document-checklist-configuration-form.service';
+import { FormlyFieldConfig, FormlyFormOptions } from '../../../../../../node_modules/@ngx-formly/core';
+import { FormGroup } from '../../../../../../node_modules/@angular/forms';
+import { SelectionModel } from '../../../../../../node_modules/@angular/cdk/collections';
 
 @Component({
   selector: 'app-document-checklist-configuration-form',

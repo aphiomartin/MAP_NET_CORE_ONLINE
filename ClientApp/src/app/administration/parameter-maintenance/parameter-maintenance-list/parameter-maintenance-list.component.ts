@@ -4,7 +4,7 @@ import { IparametermaintenanceData } from '../../../temp/interface/iparametermai
 import { MatPaginator, MatTableDataSource, MatSort, MatDialog, MatDialogRef, MatSnackBar } from '@angular/material';
 import { ParameterMaintenanceFormComponent } from '../parameter-maintenance-form/parameter-maintenance-form.component';
 import { ParameterMaintenanceDetailsComponent } from '../parameter-maintenance-details/parameter-maintenance-details.component';
-import { forEach } from '@angular/router/src/utils/collection';
+import { forEach } from '../../../../../node_modules/@angular/router/src/utils/collection';
 
 @Component({
   selector: 'app-parameter-maintenance-list',

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AoEncoderDashboardService } from './ao-encoder-dashboard.service';
 import { IRequestDisplay } from '../../temp/interface/irequest-display';
-import { Router } from '@angular/router';
+import { Router } from 'node_modules/@angular/router';
 
 @Component({
   selector: 'app-ao-encoder-dashboard',

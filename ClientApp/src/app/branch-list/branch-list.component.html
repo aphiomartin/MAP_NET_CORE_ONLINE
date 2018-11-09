@@ -37,14 +37,14 @@
                         matTooltip="Update Branch">
                         <mat-icon style="color:white;">edit</mat-icon>
 
-                    </a>
+                    </a> &nbsp;
                     <button *ngIf="outlet=='branchPOS' || outlet=='branchOIF'" mat-icon-button [matMenuTriggerFor]="requestMenu">
                         <mat-icon color="primary">attachment</mat-icon>
                     </button>
 
-                    <mat-menu class="request-menu-container" #requestMenu="matMenu" style="padding:0;" *ngIf="outlet=='branchPOS' || outlet=='branchOIF'">
+                    <mat-menu class="request-menu-container" #requestMenu="matMenu" style="padding:0;">
 
-                        <div fxLayout="column" fxLayoutAlign="start">
+                        <div *ngIf="outlet=='branchPOS' || outlet=='branchOIF'" fxLayout="column" fxLayoutAlign="start">
 
                             <button *ngIf="outlet=='branchPOS'" mat-menu-item color="primary" matTooltip="POS Request">
                                 <mat-icon class="request-mat-icon">insert_drive_file</mat-icon>POS Request</button>

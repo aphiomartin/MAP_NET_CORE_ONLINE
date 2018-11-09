@@ -1,19 +1,8 @@
 <app-bdo-form-header [text]="title" [sub_text]="subTitle" [mode]="mode" [submit]="Submit"></app-bdo-form-header>
 <app-request-header></app-request-header>
-
-<!--
-<app-approve-with-except-reason-details-list></app-approve-with-except-reason-details-list>
--->
-
-<!--
-<app-approve-with-req-reason-list></app-approve-with-req-reason-list> -->
-
-
-
 <mat-tab-group>
-  <mat-tab label="Verification Screen"><app-verification-screen></app-verification-screen></mat-tab>
-  <mat-tab label="MAEF"><app-maef-form [displayMode]="false"></app-maef-form></mat-tab> 
-  <mat-tab label="Documents"><app-document-checklist-maintenance-list></app-document-checklist-maintenance-list></mat-tab> 
-</mat-tab-group>
-
+    <mat-tab label="Customer Profile"> <app-customer-profile [displayMode]="true"></app-customer-profile> </mat-tab>
+    <mat-tab label="Branch"><app-branch-info></app-branch-info></mat-tab>
+    <mat-tab label="MAEF"><app-maef-form [displayMode]="false"></app-maef-form></mat-tab>
+ </mat-tab-group>
 

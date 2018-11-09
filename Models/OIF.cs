@@ -45,10 +45,10 @@ namespace MAP_Web.Models
         public string priceRangeOfProductsServices { get; set; }
         public string expectedNoOfParticipants { get; set; }
         public string averageRegistration { get; set; }
-        public DateTime inclusiveDateOfEvent { get; set; }
+        public Nullable<DateTime> inclusiveDateOfEvent { get; set; }
         public string nameOfLastEvent { get; set; }
         public string venueOfTheLastEvent { get; set; }
-        public DateTime dateOfTheLastEvent { get; set; }
+        public Nullable<DateTime> dateOfTheLastEvent { get; set; }
         public string totalSalesVolume { get; set; }
         public string nameOfTheLastAcquirer { get; set; }
         public bool overAllRating { get; set; }
@@ -58,9 +58,9 @@ namespace MAP_Web.Models
         public string informantsName { get; set; }
         public string informantsPosition { get; set; }
         public string inspectedBy { get; set; }
-        public DateTime dateInspected { get; set; }
+        public Nullable<DateTime> dateInspected { get; set; }
         public string reviewedBy { get; set; }
-        public DateTime dateReviewed { get; set; }
+        public Nullable<DateTime> dateReviewed { get; set; }
         public bool isWaved { get; set; }
     }
 }

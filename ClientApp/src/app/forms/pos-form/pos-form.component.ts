@@ -3,7 +3,7 @@ import { FormGroup } from '@angular/forms';
 import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { inherits } from 'util';
-import { AppBaseComponent } from '../../app-base/app-base.component';
+import { AppBaseComponent } from '../../../app/app-base/app-base.component';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { PosFormService } from './pos-form.service';
 import { FormlyFieldConfigService } from '../../services/formly-field-config.service';
