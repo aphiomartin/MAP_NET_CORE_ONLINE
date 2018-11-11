@@ -14,12 +14,12 @@ namespace MAP_Web.Controllers
             this.unitOfWork = unitOfWork;
         }
 
-        [HttpGet]
+        [HttpGet("{id}")]
         public async Task<IActionResult> GetCustomerProfile(int id)
         {
-            // var customerRepo = unitOfWork.GetRepository<CustomerProfile>();
+            var customerRepo = unitOfWork.GetRepository<CustomerProfile>();
 
-            var customer = ""; //await repository.GetVehicle(id);
+            var customer = await customerRepo.FindAsync(id);
 
             if (customer == null)
                 return NotFound();
@@ -30,32 +30,38 @@ namespace MAP_Web.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateCustomerProfile([FromBody] CustomerProfile customer)
         {
-            // var customerRepo = unitOfWork.GetRepository<CustomerProfile>();
+            var customerRepo = unitOfWork.GetRepository<CustomerProfile>();
 
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            // await customerRepo.InsertAsync(customer);
-            // await unitOfWork.SaveChangesAsync();
+            await customerRepo.InsertAsync(customer);
+            await unitOfWork.SaveChangesAsync();
 
             return Ok(customer);
         }
 
-        [HttpPost]
+        [HttpPut("{id}")]
         public async Task<IActionResult> UpdateCustomerProfile([FromBody] CustomerProfile customer, int id)
         {
-            // var customerRepo = unitOfWork.GetRepository<CustomerProfile>();
+            var customerRepo = unitOfWork.GetRepository<CustomerProfile>();
 
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            var cust = ""; //await repository.GetVehicle(id);
+            var cust = await customerRepo.FindAsync(id);
 
             if (cust == null)
                 return NotFound();
 
-            // customerRepo.Update(customer);
-            // await unitOfWork.SaveChangesAsync();
+            cust.customerNumber = customer.customerNumber;
+            cust.dtiRegDate = customer.dtiRegDate;
+            cust.legalName = customer.legalName;
+            cust.ownership = customer.ownership;
+            cust.registeredBusinessNumber = customer.registeredBusinessNumber;
+
+            customerRepo.Update(cust);
+            await unitOfWork.SaveChangesAsync();
 
             return Ok(cust);
         }

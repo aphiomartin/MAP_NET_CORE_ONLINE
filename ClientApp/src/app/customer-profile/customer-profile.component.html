@@ -2,7 +2,8 @@
     <form [formGroup]="form" style="margin-top: 10px;" *ngIf="!readOnly">
         <formly-form [model]="model" [fields]="fields" [options]="options" [form]="form">
             <div *ngIf="!displayMode" fxLayout="row wrap" fxLayoutAlign="end center" fxLayoutGap="3px">
-                <button type="button" color="primary" (click)="submit()" mat-raised-button>Save</button>
+                <button *ngIf="!isSaved" type="button" color="primary" (click)="create()" mat-raised-button>Save</button>
+                <button *ngIf="isSaved" type="button" color="primary" (click)="update()" mat-raised-button>Update</button>
                 <button type="submit" color="accent" mat-raised-button>Cancel</button>
             </div>
         </formly-form>

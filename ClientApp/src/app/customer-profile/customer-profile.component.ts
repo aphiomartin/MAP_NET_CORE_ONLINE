@@ -15,9 +15,10 @@ import { FormlyFieldConfigService } from '../services/formly-field-config.servic
 export class CustomerProfileComponent extends AppBaseComponent implements OnInit {
   //Properties
   @Input() displayMode: boolean = false;
-  
+
   model: CutomerProfile;
   title = 'New Affiliation';
+  isSaved: boolean;
 
   options: FormlyFormOptions = {
     formState: {
@@ -39,31 +40,29 @@ export class CustomerProfileComponent extends AppBaseComponent implements OnInit
   }
 
   ngOnInit() {
-    this.initialize();
-    this.model.businessName = 'Bench';
-    //this.model.dtiRegDate = new Date();
-    // this.model.ownership = 1;
+    // this.initialize();
     // apply expressionProperty for disabled based on formState to all fields
-    if (this.displayMode == true) {
+    if (this.displayMode === true) {
       this._formlyFieldConfigService.disabled(this.fields);
     } else {
       this._formlyFieldConfigService.enabled(this.fields);
     }
   }
 
-  
-  submit() {
-    alert(JSON.stringify(this.model));
-    console.log(JSON.stringify(this.model));
-    this._formlyFieldConfigService.disabled(this.fields);
-    this.options.formState = 'disabled: true';
-    this.displayMode = true;
+  create() {
+    this._customerProfileService.create(this.model).subscribe(data => {
+      console.log('SUCCESS');
+      console.log(data);
+      this.model = data;
+      this.isSaved = true;
+    });
   }
 
-  edit() {
-    this._formlyFieldConfigService.enabled(this.fields)
-    this.options.formState = 'disabled: false';
-    this.displayMode = false;
+  update() {
+    this._customerProfileService.update(this.model['id'], this.model).subscribe(data => {
+      console.log('UPDATE');
+      console.log(data);
+    });
   }
 
 }

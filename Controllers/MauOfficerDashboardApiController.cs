@@ -30,22 +30,22 @@ namespace MAP_Web
             
                 foreach (var item in requests.Items)
                 {
-                    var createdDate = item.Request.CreatedDate.ToString();
-                    var parsedDate = DateTime.Parse(createdDate);
-                    var daySpan = (DateTime.Now - parsedDate).TotalHours;
+                    // var createdDate = item.Request.CreatedDate.ToString();
+                    // var parsedDate = DateTime.Parse(createdDate);
+                    // var daySpan = (DateTime.Now - parsedDate).TotalHours;
 
-                    finalResult.Add(new Models.ViewModels.MauOfficerDashboardViewModel
-                    {
-                        RequestId = item.Id,
-                        ReferenceNo = item.Request.TrackingNo,
-                        RequestedDate = item.Request.CreatedDate ?? System.DateTime.Now,
-                        RequestType = item.Request.RequestDescription,
-                        BusinessName = item.legalName,
-                        DBAName =  item.DBAName,
-                        RequestedBy = item.Request.CreatedBy,
-                        Status = "For Evaluation", //For Testing Purposes Only
-                        TAT = (int)(daySpan + 0.5d)
-                    });
+                    // finalResult.Add(new Models.ViewModels.MauOfficerDashboardViewModel
+                    // {
+                    //     RequestId = item.Id,
+                    //     ReferenceNo = item.Request.TrackingNo,
+                    //     RequestedDate = item.Request.CreatedDate ?? System.DateTime.Now,
+                    //     RequestType = item.Request.RequestDescription,
+                    //     BusinessName = item.legalName,
+                    //     DBAName =  item.DBAName,
+                    //     RequestedBy = item.Request.CreatedBy,
+                    //     Status = "For Evaluation", //For Testing Purposes Only
+                    //     TAT = (int)(daySpan + 0.5d)
+                    // });
                 }
 
                 return finalResult;

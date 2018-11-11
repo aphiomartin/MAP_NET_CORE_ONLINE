@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
 import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
 import { Observable, of } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 
+const apiUrl = 'api/customerProfile';
 @Injectable()
 export class CustomerProfileService {
   fields: FormlyFieldConfig[] = [
@@ -25,7 +27,6 @@ export class CustomerProfileService {
             // label: 'Owner ship',
             placeholder: 'Ownership',
             options: [
-              
               { name: 'Single Proprietorship', id: 1 },
               { name: 'Partnership', id: 2 },
               { name: 'Corporation', id: 3 },
@@ -36,7 +37,8 @@ export class CustomerProfileService {
               { name: 'Branch or Representative Office of Foreign Corporation Company', id: 8 },
               { name: 'Foreign Individual Single Proprietorship', id: 9 },
               { name: 'Others', id: 10 }
-            ],valueProp: 'id',
+            ],
+            valueProp: 'id',
             labelProp: 'name'
           }
         },
@@ -75,10 +77,18 @@ export class CustomerProfileService {
     }
   ];
 
-  constructor() { }
+  constructor(private _http: HttpClient) { }
 
   getCustomerProfileFields(): FormlyFieldConfig[] {
     return this.fields;
+  }
+
+  create(customerProfile): Observable<any> {
+    return this._http.post(apiUrl, customerProfile);
+  }
+
+  update(id, customerProfile): Observable<any> {
+    return this._http.put(apiUrl + '/' + id, customerProfile);
   }
 }
 
