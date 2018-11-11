@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using AutoMapper;
 
 namespace MAP_Web
 {
@@ -61,6 +62,7 @@ namespace MAP_Web
             services.AddDbContext<DataAccess.MAP_Context>(options=> options.UseSqlServer(Configuration.GetConnectionString("MAP_DB")))
             .AddHttpClient()
             .AddUnitOfWork<DataAccess.MAP_Context>();
+            services.AddAutoMapper();
             services.AddScoped<Services.IEmployeeService,Services.EmployeeService>();
             services.AddScoped<Services.IAOMaintenanceService,Services.AOMaintenanceService>();
             services.AddScoped<Services.IMauOfficerDashboardService, Services.MauOfficerDashboardService>();
