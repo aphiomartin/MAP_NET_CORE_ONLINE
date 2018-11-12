@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
 import { Observable, of } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { ApiConstants } from '../api-constants';
 
-const apiUrl = 'api/customerProfile';
 @Injectable()
 export class CustomerProfileService {
   fields: FormlyFieldConfig[] = [
@@ -84,11 +84,15 @@ export class CustomerProfileService {
   }
 
   create(customerProfile): Observable<any> {
-    return this._http.post(apiUrl, customerProfile);
+    return this._http.post(ApiConstants.customerProfileApi, customerProfile);
   }
 
   update(id, customerProfile): Observable<any> {
-    return this._http.put(apiUrl + '/' + id, customerProfile);
+    return this._http.put(ApiConstants.customerProfileApi + '/' + id, customerProfile);
+  }
+
+  delete(id): Observable<any> {
+    return this._http.delete(ApiConstants.customerProfileApi + '/' + id);
   }
 }
 

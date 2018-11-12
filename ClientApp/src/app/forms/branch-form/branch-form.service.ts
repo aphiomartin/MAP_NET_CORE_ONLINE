@@ -1,5 +1,8 @@
 import { Injectable } from '@angular/core';
 import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
+import { Observable } from 'rxjs';
+import { ApiConstants } from 'src/app/api-constants';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -6233,8 +6236,21 @@ export class BranchFormService {
   ];
   //#endregion
 
-  constructor() { }
+  constructor(private _http: HttpClient) { }
+
   getBranchFields(): FormlyFieldConfig[] {
     return this.mdcsChecker;
+  }
+
+  create(branch): Observable<any> {
+    return this._http.post(ApiConstants.branchApi, branch);
+  }
+
+  update(id, branch): Observable<any> {
+    return this._http.put(ApiConstants.branchApi + '/' + id, branch);
+  }
+
+  delete(id): Observable<any> {
+    return this._http.delete(ApiConstants.branchApi + '/' + id);
   }
 }

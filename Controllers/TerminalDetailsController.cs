@@ -1,61 +1,75 @@
 using System.Threading.Tasks;
+using MAP_NET_CORE_ONLINE.Services;
 using MAP_Web.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace MAP_Web.Controllers
 {
     [Route("/api/terminalDetails")]
     public class TerminalDetailsController : Controller
     {
-        
-        public TerminalDetailsController()
-        {
+        private readonly ITerminalDetailsService terminalDetailsService;
 
+        public TerminalDetailsController(ITerminalDetailsService terminalDetailsService)
+        {
+            this.terminalDetailsService = terminalDetailsService;
         }
 
-        [HttpGet]
+        [HttpGet("{id}")]
         public async Task<IActionResult> GetTerminalDetails(int id)
         {
-            var vehicle = ""; //await repository.GetVehicle(id);
+            var terminal = await terminalDetailsService.FindAsync(id);
 
-            if (vehicle == null)
+            if (terminal == null)
                 return NotFound();
-                
-            return Ok(id);
+
+            return Ok(terminal);
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateTerminalDetails([FromBody] TerminalDetails oif)
+        public async Task<IActionResult> CreateTerminalDetails([FromBody] TerminalDetails terminal)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
-                
-            return Ok();
+
+            await terminalDetailsService.InsertAsync(terminal);
+            await terminalDetailsService.SaveChangesAsync();
+
+            return Ok(terminal);
         }
 
-        [HttpPost]
+        [HttpPut("{id}")]
         public async Task<IActionResult> UpdateTerminalDetails([FromBody] TerminalDetails terminal, int id)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
-                
-            var vehicle = ""; //await repository.GetVehicle(id);
 
-            if (vehicle == null)
+            var currentTerminal = await terminalDetailsService.FindAsync(id);
+
+            if (currentTerminal == null)
                 return NotFound();
-                
-            return Ok(terminal);
+
+            // todo: MAP FIELDS FROM API RESOURCE TO DOMAIN RESOURCE
+
+            terminalDetailsService.Update(currentTerminal);
+            await terminalDetailsService.SaveChangesAsync();
+
+            return Ok(currentTerminal);
         }
 
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteTerminalDetails(int id)
         {
-            var vehicle = ""; //await repository.GetVehicle(id);
+            var currentTerminal = await terminalDetailsService.FindAsync(id);
 
-            if (vehicle == null)
+            if (currentTerminal == null)
                 return NotFound();
-                
-            return Ok(id);
+
+            terminalDetailsService.Delete(currentTerminal);
+            await terminalDetailsService.SaveChangesAsync();
+
+            return Ok();
         }
     }
 }

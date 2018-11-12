@@ -19,6 +19,7 @@ export class CustomerProfileComponent extends AppBaseComponent implements OnInit
   model: CutomerProfile;
   title = 'New Affiliation';
   isSaved: boolean;
+  customerProfileId = 0;
 
   options: FormlyFormOptions = {
     formState: {
@@ -52,8 +53,8 @@ export class CustomerProfileComponent extends AppBaseComponent implements OnInit
   create() {
     this._customerProfileService.create(this.model).subscribe(data => {
       console.log('SUCCESS');
-      console.log(data);
       this.model = data;
+      this.customerProfileId = this.model['id'];
       this.isSaved = true;
     });
   }
@@ -61,7 +62,6 @@ export class CustomerProfileComponent extends AppBaseComponent implements OnInit
   update() {
     this._customerProfileService.update(this.model['id'], this.model).subscribe(data => {
       console.log('UPDATE');
-      console.log(data);
     });
   }
 

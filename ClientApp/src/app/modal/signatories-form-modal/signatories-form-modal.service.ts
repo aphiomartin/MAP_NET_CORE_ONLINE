@@ -1,10 +1,13 @@
 import { Injectable } from '@angular/core';
 import { FormlyFieldConfig } from '@ngx-formly/core';
+import { Observable } from 'rxjs';
+import { ApiConstants } from 'src/app/api-constants';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable()
 export class SignatoriesFormModalService {
 
-  constructor() { }
+  constructor(private _http: HttpClient) { }
 
   getFormlyFields(): FormlyFieldConfig[] {
     return [
@@ -59,5 +62,17 @@ export class SignatoriesFormModalService {
         ]
       }
     ];
+  }
+
+  create(signatories): Observable<any> {
+    return this._http.post(ApiConstants.signatoriesApi, signatories);
+  }
+
+  update(id, signatories): Observable<any> {
+    return this._http.put(ApiConstants.signatoriesApi + '/' + id, signatories);
+  }
+
+  delete(id): Observable<any> {
+    return this._http.delete(ApiConstants.signatoriesApi + '/' + id);
   }
 }

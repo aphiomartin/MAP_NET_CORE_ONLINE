@@ -1,23 +1,24 @@
 using System.Threading.Tasks;
+using MAP_NET_CORE_ONLINE.Services;
 using MAP_Web.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace MAP_Web.Controllers
 {
     [Route("/api/owners")]
     public class OwnersController : Controller
     {
-        public OwnersController()
+        private readonly IOwnersService ownersService;
+        public OwnersController(IOwnersService ownersService)
         {
-
+            this.ownersService = ownersService;
         }
 
-        [HttpGet]
+        [HttpGet("{id}")]
         public async Task<IActionResult> GetOwner(int id)
         {
-            // var ownerRepo = unitOfWork.GetRepository<Owner>();
-
-            var owner = ""; //await ownerRepo.GetVehicle(id);
+            var owner = await ownersService.FindAsync(id);
 
             if (owner == null)
                 return NotFound();
@@ -28,48 +29,44 @@ namespace MAP_Web.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateOwner([FromBody] Owners owner)
         {
-            // var ownerRepo = unitOfWork.GetRepository<Owner>();
-
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            // await ownerRepo.InsertAsync(owner);
-            // await unitOfWork.SaveChangesAsync();
-                
+            await ownersService.InsertAsync(owner);
+            await ownersService.SaveChangesAsync();
+
             return Ok();
         }
 
-        [HttpPost]
+        [HttpPut("{id}")]
         public async Task<IActionResult> UpdateOwner([FromBody] Owners owners, int id)
         {
-            // var ownerRepo = unitOfWork.GetRepository<Owner>();
-
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            var currentOwner = ""; //await ownerRepo.GetVehicle(id);
+            var currentOwner = await ownersService.FindAsync(id);
 
             if (currentOwner == null)
                 return NotFound();
-            
-            // ownerRepo.Update(currentMid);
-            // await unitOfWork.SaveChangesAsync();
+
+            // todo: MAP FIELDS FROM API RESOURCE TO DOMAIN RESOURCE
+
+            ownersService.Update(currentOwner);
+            await ownersService.SaveChangesAsync();
 
             return Ok(owners);
         }
 
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteOwner(int id)
         {
-            // var ownerRepo = unitOfWork.GetRepository<MID>();
-            
-            var currentOwner = ""; //await ownerRepo.GetVehicle(id);
+            var currentOwner = await ownersService.FindAsync(id);
 
             if (currentOwner == null)
                 return NotFound();
 
-            // ownerRepo.Delete(currentOwner);
-            // await unitOfWork.SaveChangesAsync();
+            ownersService.Delete(currentOwner);
+            await ownersService.SaveChangesAsync();
 
             return Ok();
         }

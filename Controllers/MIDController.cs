@@ -1,24 +1,25 @@
 using System.Threading.Tasks;
+using MAP_NET_CORE_ONLINE.Services;
 using MAP_Web.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace MAP_Web.Controllers
 {
     [Route("/api/mid")]
     public class MIDController : Controller
     {
+        private readonly IMIDService midService;
 
-        public MIDController()
+        public MIDController(IMIDService midService)
         {
-
+            this.midService = midService;
         }
 
-        [HttpGet]
+        [HttpGet("{id}")]
         public async Task<IActionResult> GetMID(int id)
         {
-            // var midRepo = unitOfWork.GetRepository<MID>();
-
-            var mid = ""; //await midRepo.GetVehicle(id);
+            var mid = await midService.FindAsync(id);
 
             if (mid == null)
                 return NotFound();
@@ -29,48 +30,44 @@ namespace MAP_Web.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateMID([FromBody] MID mid)
         {
-            // var midRepo = unitOfWork.GetRepository<MID>();
-
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            // await midRepo.InsertAsync(mid);
-            // await unitOfWork.SaveChangesAsync();
-
-            return Ok();
-        }
-
-        [HttpPost]
-        public async Task<IActionResult> UpdateMID([FromBody] MID mid, int id)
-        {
-            // var midRepo = unitOfWork.GetRepository<MID>();
-
-            if (!ModelState.IsValid)
-                return BadRequest(ModelState);
-
-            var currentMid = ""; //await midRepo.GetVehicle(id);
-
-            if (currentMid == null)
-                return NotFound();
-            
-            // midRepo.Update(currentMid);
-            // await unitOfWork.SaveChangesAsync();
+            await midService.InsertAsync(mid);
+            await midService.SaveChangesAsync();
 
             return Ok(mid);
         }
 
-        [HttpDelete]
-        public async Task<IActionResult> DeleteMID(int id)
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateMID([FromBody] MID mid, int id)
         {
-            // var midRepo = unitOfWork.GetRepository<MID>();
-            
-            var currentMid = ""; //await midRepo.GetVehicle(id);
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            var currentMid = await midService.FindAsync(id);
 
             if (currentMid == null)
                 return NotFound();
 
-            // midRepo.Delete(currentMid);
-            // await unitOfWork.SaveChangesAsync();
+            // todo: MAP FIELDS FROM API RESOURCE TO DOMAIN RESOURCE
+
+            midService.Update(currentMid);
+            await midService.SaveChangesAsync();
+
+            return Ok(mid);
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteMID(int id)
+        {
+            var currentMid = await midService.FindAsync(id);
+
+            if (currentMid == null)
+                return NotFound();
+
+            midService.Delete(currentMid);
+            await midService.SaveChangesAsync();
 
             return Ok();
         }

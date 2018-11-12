@@ -1,75 +1,72 @@
 using Microsoft.AspNetCore.Mvc;
 using MAP_Web.Models;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+using MAP_NET_CORE_ONLINE.Services;
 
 namespace MAP_Web.Controllers
 {
     [Route("/api/pos")]
     public class POSController : Controller
     {
-        public POSController()
+        private readonly IPOSService posService;
+        public POSController(IPOSService posService)
         {
-
+            this.posService = posService;
         }
 
-        [HttpGet]
+        [HttpGet("{id}")]
         public async Task<IActionResult> GetPOS(int id)
         {
-            // var posRepo = unitOfWork.GetRepository<POS>();
-
-            var pos = ""; //await posRepo.GetVehicle(id);
+            var pos = await posService.FindAsync(id);
 
             if (pos == null)
                 return NotFound();
 
-            return Ok(id);
-        }
-
-        [HttpPost]
-        public async Task<IActionResult> CreatePOS([FromBody] POS pos) 
-        {
-            // var posRepo = unitOfWork.GetRepository<POS>();
-
-            if (!ModelState.IsValid)
-                return BadRequest(ModelState);
-
-            // await posRepo.InsertAsync(pos);
-            // await unitOfWork.SaveChangesAsync();
-                
-            return Ok();
-        }
-
-        [HttpPost]
-        public async Task<IActionResult> UpdatePOS([FromBody] POS pos, int id)
-        {
-            // var posRepo = unitOfWork.GetRepository<POS>();
-
-            if (!ModelState.IsValid)
-                return BadRequest(ModelState);
-
-            var currentPos = ""; //await posRepo.GetVehicle(id);
-
-            if (currentPos == null)
-                return NotFound();
-            
-            // posRepo.Update(currentPos);
-            // await unitOfWork.SaveChangesAsync();
-                
             return Ok(pos);
         }
 
-        [HttpDelete]
-        public async Task<IActionResult> DeletePOS(int id)
+        [HttpPost]
+        public async Task<IActionResult> CreatePOS([FromBody] POS pos)
         {
-            // var posRepo = unitOfWork.GetRepository<POS>();
-            
-            var currentPos = ""; //await posRepo.GetVehicle(id);
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            await posService.InsertAsync(pos);
+            await posService.SaveChangesAsync();
+
+            return Ok(pos);
+        }
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdatePOS([FromBody] POS pos, int id)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            var currentPos = await posService.FindAsync(id);
 
             if (currentPos == null)
                 return NotFound();
 
-            // posRepo.Delete(currentPos);
-            // await unitOfWork.SaveChangesAsync();
+            // todo: MAP FIELDS FROM API RESOURCE TO DOMAIN RESOURCE
+
+            posService.Update(currentPos);
+            await posService.SaveChangesAsync();
+
+            return Ok(pos);
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeletePOS(int id)
+        {
+            var currentPos = await posService.FindAsync(id);
+
+            if (currentPos == null)
+                return NotFound();
+
+            posService.Delete(currentPos);
+            await posService.SaveChangesAsync();
 
             return Ok();
         }
