@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewEncapsulation, Input } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
-import { CustomerProfileService } from './customer-profile.service'
+import { CustomerProfileService } from './customer-profile.service';
 import { AppBaseComponent } from '../app-base/app-base.component';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormlyFieldConfigService } from '../services/formly-field-config.service';
@@ -13,20 +13,18 @@ import { FormlyFieldConfigService } from '../services/formly-field-config.servic
   providers: [CustomerProfileService, FormlyFieldConfigService]
 })
 export class CustomerProfileComponent extends AppBaseComponent implements OnInit {
-  //Properties
-  @Input() displayMode: boolean = false;
+  @Input() displayMode = false;
+  @Input() userGroup: string;
 
+  customerProfileId = 0;
   model: CutomerProfile;
   title = 'New Affiliation';
-  isSaved: boolean;
-  customerProfileId = 0;
 
   options: FormlyFormOptions = {
     formState: {
       disabled: true
     }
   };
-  //Properties
 
   constructor(public route: ActivatedRoute,
     public router: Router,
@@ -35,13 +33,11 @@ export class CustomerProfileComponent extends AppBaseComponent implements OnInit
   ) {
 
     super(route, router);
-
-    this.fields = this._customerProfileService.getCustomerProfileFields();
-    this.form.disable();
   }
 
   ngOnInit() {
-    // this.initialize();
+    this.initialize();
+    this.fields = this._customerProfileService.getCustomerProfileFields(this.userGroup);
     // apply expressionProperty for disabled based on formState to all fields
     if (this.displayMode === true) {
       this._formlyFieldConfigService.disabled(this.fields);
@@ -55,7 +51,6 @@ export class CustomerProfileComponent extends AppBaseComponent implements OnInit
       console.log('SUCCESS');
       this.model = data;
       this.customerProfileId = this.model['id'];
-      this.isSaved = true;
     });
   }
 

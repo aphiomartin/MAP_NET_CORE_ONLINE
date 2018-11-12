@@ -6,14 +6,14 @@ import { ApiConstants } from '../api-constants';
 
 @Injectable()
 export class CustomerProfileService {
-  fields: FormlyFieldConfig[] = [
+  aoFields: FormlyFieldConfig[] = [
     {
       fieldGroupClassName: 'display-flex',
       fieldGroup: [
         {
           className: 'flex-1',
           type: 'input',
-          key: 'legalName',
+          key: 'businessName',
           templateOptions: {
             label: 'Business/Legal Name',
             placeholder: 'Business Name'
@@ -24,22 +24,19 @@ export class CustomerProfileService {
           type: 'select',
           key: 'ownership',
           templateOptions: {
-            // label: 'Owner ship',
-            placeholder: 'Ownership',
+            label: 'Ownership',
             options: [
-              { name: 'Single Proprietorship', id: 1 },
-              { name: 'Partnership', id: 2 },
-              { name: 'Corporation', id: 3 },
-              { name: 'Registered Association, Cooperative & Organization', id: 4 },
-              { name: 'GOCC', id: 5 },
-              { name: 'Resident Foreign Corporation', id: 6 },
-              { name: 'Resident Foreign Partnership', id: 7 },
-              { name: 'Branch or Representative Office of Foreign Corporation Company', id: 8 },
-              { name: 'Foreign Individual Single Proprietorship', id: 9 },
-              { name: 'Others', id: 10 }
-            ],
-            valueProp: 'id',
-            labelProp: 'name'
+              { label: 'Single Proprietorship', value: 1 },
+              { label: 'Partnership', value: 2 },
+              { label: 'Corporation', value: 3 },
+              { label: 'Registered Association, Cooperative & Organization', value: 4 },
+              { label: 'GOCC', value: 5 },
+              { label: 'Resident Foreign Corporation', value: 6 },
+              { label: 'Resident Foreign Partnership', value: 7 },
+              { label: 'Branch or Representative Office of Foreign Corporation/Company', value: 8 },
+              { label: 'Foreign Individual/Single Proprietorship', value: 9 },
+              { label: 'Others', value: 10 }
+            ]
           }
         },
         {
@@ -77,10 +74,88 @@ export class CustomerProfileService {
     }
   ];
 
+  mdcsFields: FormlyFieldConfig[] = [
+    {
+      fieldGroupClassName: 'display-flex',
+      fieldGroup: [
+        {
+          className: 'flex-1',
+          type: 'input',
+          key: 'businessName',
+          templateOptions: {
+            label: 'Business/Legal Name',
+            placeholder: 'Business Name',
+            disabled: true
+          },
+        },
+        {
+          className: 'flex-1',
+          type: 'select',
+          key: 'ownership',
+          templateOptions: {
+            label: 'Ownership',
+            options: [
+              { label: 'Single Proprietorship', value: 1 },
+              { label: 'Partnership', value: 2 },
+              { label: 'Corporation', value: 3 },
+              { label: 'Registered Association, Cooperative & Organization', value: 4 },
+              { label: 'GOCC', value: 5 },
+              { label: 'Resident Foreign Corporation', value: 6 },
+              { label: 'Resident Foreign Partnership', value: 7 },
+              { label: 'Branch or Representative Office of Foreign Corporation/Company', value: 8 },
+              { label: 'Foreign Individual/Single Proprietorship', value: 9 },
+              { label: 'Others', value: 10 }
+            ],
+            disabled: true
+          }
+        },
+        {
+          className: 'flex-1',
+          type: 'calendar',
+          key: 'dtiRegDate',
+          templateOptions: {
+            label: 'Sec/DTI Registration Date'
+          }
+        }
+      ],
+    },
+    {
+      fieldGroupClassName: 'display-flex',
+      fieldGroup: [
+        {
+          className: 'flex-1',
+          type: 'input',
+          key: 'registeredBusinessNumber',
+          templateOptions: {
+            label: 'Registered Business Number',
+            maxLength: 11
+          }
+        },
+        {
+          className: 'flex-1',
+          type: 'input',
+          key: 'customerNumber',
+          templateOptions: {
+            label: 'Customer Number',
+            maxLength: 12,
+            disabled: true
+          }
+        }
+      ]
+    }
+  ];
+
   constructor(private _http: HttpClient) { }
 
-  getCustomerProfileFields(): FormlyFieldConfig[] {
-    return this.fields;
+  getCustomerProfileFields(userGroup): FormlyFieldConfig[] {
+    let fields;
+    if (userGroup === 'ao') {
+      fields = this.aoFields;
+    } else if (userGroup === 'mdcs') {
+      fields = this.mdcsFields;
+    }
+
+    return fields;
   }
 
   create(customerProfile): Observable<any> {
