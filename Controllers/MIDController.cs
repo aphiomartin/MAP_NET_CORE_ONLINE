@@ -3,6 +3,8 @@ using MAP_Web.Services;
 using MAP_Web.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using AutoMapper;
+using MAP_Web.Models.ViewModels;
 
 namespace MAP_Web.Controllers
 {
@@ -10,9 +12,11 @@ namespace MAP_Web.Controllers
     public class MIDController : Controller
     {
         private readonly IMIDService midService;
+        private readonly IMapper mapper;
 
-        public MIDController(IMIDService midService)
+        public MIDController(IMIDService midService, IMapper mapper)
         {
+            this.mapper = mapper;
             this.midService = midService;
         }
 
@@ -40,7 +44,7 @@ namespace MAP_Web.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateMID([FromBody] MID mid, int id)
+        public async Task<IActionResult> UpdateMID([FromBody] MIDViewModel mid, int id)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
@@ -50,9 +54,8 @@ namespace MAP_Web.Controllers
             if (currentMid == null)
                 return NotFound();
 
-            // todo: MAP FIELDS FROM API RESOURCE TO DOMAIN RESOURCE
+            mapper.Map<MIDViewModel, MID>(mid, currentMid);
 
-            midService.Update(currentMid);
             await midService.SaveChangesAsync();
 
             return Ok(mid);

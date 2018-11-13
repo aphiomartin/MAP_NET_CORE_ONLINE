@@ -3,6 +3,8 @@ using MAP_Web.Services;
 using MAP_Web.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using AutoMapper;
+using MAP_Web.Models.ViewModels;
 
 namespace MAP_Web.Controllers
 {
@@ -10,9 +12,11 @@ namespace MAP_Web.Controllers
     public class DocumentChecklistController : Controller
     {
         private readonly IDocumentChecklistService documentChecklistService;
+        private readonly IMapper mapper;
 
-        public DocumentChecklistController(IDocumentChecklistService documentChecklistService)
+        public DocumentChecklistController(IDocumentChecklistService documentChecklistService, IMapper mapper)
         {
+            this.mapper = mapper;
             this.documentChecklistService = documentChecklistService;
         }
 
@@ -40,7 +44,7 @@ namespace MAP_Web.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateDocumentChecklist([FromBody] DocumentChecklist document, int id)
+        public async Task<IActionResult> UpdateDocumentChecklist([FromBody] DocumentChecklistViewModel document, int id)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
@@ -50,9 +54,8 @@ namespace MAP_Web.Controllers
             if (doc == null)
                 return NotFound();
 
-            // todo: MAP FIELDS FROM API RESOURCE TO DOMAIN RESOURCE
+            mapper.Map<DocumentChecklistViewModel, DocumentChecklist>(document, doc);
 
-            documentChecklistService.Update(document);
             await documentChecklistService.SaveChangesAsync();
 
             return Ok(document);

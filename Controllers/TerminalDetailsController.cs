@@ -3,6 +3,8 @@ using MAP_Web.Services;
 using MAP_Web.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using AutoMapper;
+using MAP_Web.Models.ViewModels;
 
 namespace MAP_Web.Controllers
 {
@@ -10,9 +12,11 @@ namespace MAP_Web.Controllers
     public class TerminalDetailsController : Controller
     {
         private readonly ITerminalDetailsService terminalDetailsService;
+        private readonly IMapper mapper;
 
-        public TerminalDetailsController(ITerminalDetailsService terminalDetailsService)
+        public TerminalDetailsController(ITerminalDetailsService terminalDetailsService, IMapper mapper)
         {
+            this.mapper = mapper;
             this.terminalDetailsService = terminalDetailsService;
         }
 
@@ -40,7 +44,7 @@ namespace MAP_Web.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateTerminalDetails([FromBody] TerminalDetails terminal, int id)
+        public async Task<IActionResult> UpdateTerminalDetails([FromBody] TerminalDetailsViewModel terminal, int id)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
@@ -50,9 +54,8 @@ namespace MAP_Web.Controllers
             if (currentTerminal == null)
                 return NotFound();
 
-            // todo: MAP FIELDS FROM API RESOURCE TO DOMAIN RESOURCE
+            mapper.Map<TerminalDetailsViewModel, TerminalDetails>(terminal, currentTerminal);
 
-            terminalDetailsService.Update(currentTerminal);
             await terminalDetailsService.SaveChangesAsync();
 
             return Ok(currentTerminal);

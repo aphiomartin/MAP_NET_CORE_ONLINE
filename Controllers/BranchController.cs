@@ -3,6 +3,8 @@ using MAP_Web.Services;
 using MAP_Web.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using MAP_Web.Models.ViewModels;
+using AutoMapper;
 
 namespace MAP_Web.Controllers
 {
@@ -10,9 +12,11 @@ namespace MAP_Web.Controllers
     public class BranchController : Controller
     {
         private readonly IBranchService branchService;
+        private readonly IMapper mapper;
 
-        public BranchController(IBranchService branchService)
+        public BranchController(IBranchService branchService, IMapper mapper)
         {
+            this.mapper = mapper;
             this.branchService = branchService;
         }
 
@@ -40,7 +44,7 @@ namespace MAP_Web.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateBranch([FromBody] Branch branch, int id)
+        public async Task<IActionResult> UpdateBranch([FromBody] BranchViewModel branch, int id)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
@@ -50,9 +54,8 @@ namespace MAP_Web.Controllers
             if (currentBranch == null)
                 return NotFound();
 
-            // todo: MAP FIELDS FROM API RESOURCE TO DOMAIN RESOURCE
+            mapper.Map<BranchViewModel, Branch>(branch, currentBranch);
 
-            branchService.Update(currentBranch);
             await branchService.SaveChangesAsync();
 
             return Ok(currentBranch);

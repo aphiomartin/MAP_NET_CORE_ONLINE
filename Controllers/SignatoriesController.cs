@@ -3,6 +3,8 @@ using MAP_Web.Services;
 using MAP_Web.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using AutoMapper;
+using MAP_Web.Models.ViewModels;
 
 namespace MAP_Web.Controllers
 {
@@ -10,8 +12,10 @@ namespace MAP_Web.Controllers
     public class SignatoriesController : Controller
     {
         private readonly ISignatoriesService signatoriesService;
-        public SignatoriesController(ISignatoriesService signatoriesService)
+        private readonly IMapper mapper;
+        public SignatoriesController(ISignatoriesService signatoriesService, IMapper mapper)
         {
+            this.mapper = mapper;
             this.signatoriesService = signatoriesService;
         }
 
@@ -39,7 +43,7 @@ namespace MAP_Web.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateSignatories([FromBody] Signatories signatories, int id)
+        public async Task<IActionResult> UpdateSignatories([FromBody] SignatoriesViewModel signatories, int id)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
@@ -49,10 +53,8 @@ namespace MAP_Web.Controllers
             if (currentSigna == null)
                 return NotFound();
 
-            currentSigna.name = signatories.name;
-            // todo: MAP FIELDS FROM API RESOURCE TO DOMAIN RESOURCE
+            mapper.Map<SignatoriesViewModel, Signatories>(signatories, currentSigna);
 
-            signatoriesService.Update(currentSigna);
             await signatoriesService.SaveChangesAsync();
 
 

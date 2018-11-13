@@ -3,6 +3,8 @@ using MAP_Web.Models;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using MAP_Web.Services;
+using AutoMapper;
+using MAP_Web.Models.ViewModels;
 
 namespace MAP_Web.Controllers
 {
@@ -10,8 +12,10 @@ namespace MAP_Web.Controllers
     public class POSController : Controller
     {
         private readonly IPOSService posService;
-        public POSController(IPOSService posService)
+        private readonly IMapper mapper;
+        public POSController(IPOSService posService, IMapper mapper)
         {
+            this.mapper = mapper;
             this.posService = posService;
         }
 
@@ -39,7 +43,7 @@ namespace MAP_Web.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdatePOS([FromBody] POS pos, int id)
+        public async Task<IActionResult> UpdatePOS([FromBody] POSViewModel pos, int id)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
@@ -49,7 +53,7 @@ namespace MAP_Web.Controllers
             if (currentPos == null)
                 return NotFound();
 
-            // todo: MAP FIELDS FROM API RESOURCE TO DOMAIN RESOURCE
+            mapper.Map<POSViewModel, POS>(pos, currentPos);
 
             posService.Update(currentPos);
             await posService.SaveChangesAsync();

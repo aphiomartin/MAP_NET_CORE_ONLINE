@@ -3,6 +3,8 @@ using MAP_Web.Services;
 using MAP_Web.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using AutoMapper;
+using MAP_Web.Models.ViewModels;
 
 namespace MAP_Web.Controllers
 {
@@ -10,8 +12,10 @@ namespace MAP_Web.Controllers
     public class OwnersController : Controller
     {
         private readonly IOwnersService ownersService;
-        public OwnersController(IOwnersService ownersService)
+        private readonly IMapper mapper;
+        public OwnersController(IOwnersService ownersService, IMapper mapper)
         {
+            this.mapper = mapper;
             this.ownersService = ownersService;
         }
 
@@ -50,7 +54,7 @@ namespace MAP_Web.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateOwner([FromBody] Owners owners, int id)
+        public async Task<IActionResult> UpdateOwner([FromBody] OwnersViewModel owners, int id)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
@@ -60,9 +64,8 @@ namespace MAP_Web.Controllers
             if (currentOwner == null)
                 return NotFound();
 
-            // todo: MAP FIELDS FROM API RESOURCE TO DOMAIN RESOURCE
+            mapper.Map<OwnersViewModel, Owners>(owners, currentOwner);
 
-            ownersService.Update(currentOwner);
             await ownersService.SaveChangesAsync();
 
             return Ok(owners);

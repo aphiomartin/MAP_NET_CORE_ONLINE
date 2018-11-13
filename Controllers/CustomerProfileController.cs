@@ -3,6 +3,8 @@ using MAP_Web.Services;
 using MAP_Web.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using AutoMapper;
+using MAP_Web.Models.ViewModels;
 
 namespace MAP_Web.Controllers
 {
@@ -10,8 +12,10 @@ namespace MAP_Web.Controllers
     public class CustomerProfileController : Controller
     {
         private readonly ICustomerProfileService customerProfileService;
-        public CustomerProfileController(ICustomerProfileService customerProfileService)
+        private readonly IMapper mapper;
+        public CustomerProfileController(ICustomerProfileService customerProfileService, IMapper mapper)
         {
+            this.mapper = mapper;
             this.customerProfileService = customerProfileService;
         }
 
@@ -39,7 +43,7 @@ namespace MAP_Web.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateCustomerProfile([FromBody] CustomerProfile customer, int id)
+        public async Task<IActionResult> UpdateCustomerProfile([FromBody] CustomerProfileViewModel customer, int id)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
@@ -49,13 +53,8 @@ namespace MAP_Web.Controllers
             if (cust == null)
                 return NotFound();
 
-            cust.customerNumber = customer.customerNumber;
-            cust.dtiRegDate = customer.dtiRegDate;
-            cust.legalName = customer.legalName;
-            cust.ownership = customer.ownership;
-            cust.registeredBusinessNumber = customer.registeredBusinessNumber;
+            mapper.Map<CustomerProfileViewModel, CustomerProfile>(customer, cust);
 
-            customerProfileService.Update(cust);
             await customerProfileService.SaveChangesAsync();
 
             return Ok(cust);
