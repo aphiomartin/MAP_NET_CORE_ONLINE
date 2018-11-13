@@ -57,6 +57,7 @@ export class MauOfficerDashboardComponent implements OnInit {
   mode: string;
   title: string;
   subTitle: string;
+  hasOwner: boolean;
 
   constructor(private _service: MauOfficerDashboardService,
     private _dialog: MatDialog,
@@ -69,28 +70,31 @@ export class MauOfficerDashboardComponent implements OnInit {
                              'BusinessName','DBAName', 'RequestedBy', 
                              'RequestStatus','TAT', 'Operation']
     this._service.Get().subscribe(x => {
+      
       this.dataSource = x;
     });
-
+    
     this.mode = '';
     this.title = '';
     this.subTitle = '';
   }
 
   editItem(id) {
+    id = 1;
     this._router.navigateByUrl('na/mauOfficer/' + id);
   }
 
-  openDialog(Id, ReferenceNo): void {
+  openDialog(Id, ReferenceNo, UserName): void {
+
     const dialogRef = this._dialog.open(AoListModalComponent, {
       width: '40%',
-      data: { Id: Id, ReferenceNo: ReferenceNo }
+      data: { Id: Id, ReferenceNo: ReferenceNo, UserName: UserName }
     });
 
     dialogRef.afterClosed().subscribe(data => {
       if (data) {
-        this._snackBar.open('Successfully Assigned To : ', data,
-          {
+        this._snackBar.open('Successfully Assigned To : ', data.firstName + ' ' + data.lastName,
+          { 
             duration: 2000
           });
       }
@@ -102,6 +106,11 @@ export class MauOfficerDashboardComponent implements OnInit {
       autoFocus: false,
       width: '40%'
     });
+  }
+
+  ownRequest(id) {
+    id = 1;
+    this._router.navigateByUrl('na/mauOfficer/' + id);
   }
 
 }

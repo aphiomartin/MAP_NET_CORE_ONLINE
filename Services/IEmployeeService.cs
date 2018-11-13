@@ -1,13 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
+using MAP_Web.Models;
 
 
-namespace MAP_Web.Services
+namespace MAP_NET_CORE_ONLINE.Services
 {
     public interface IEmployeeService
     {
-         void Create(Models.Employee employee);
-         IEnumerable<Models.Employee>Get();
-         Models.EmployeePaged GetPaged(int pageIndex,int pageSize,string sortedBy,string direction);
+         void Create(Employee employee);
+         IEnumerable<Employee>Get();
+         EmployeePaged GetPaged(int pageIndex,int pageSize,string sortedBy,string direction);
     }
 }

@@ -6,7 +6,9 @@
   </div> -->
 <div class="mat-headline" style="margin: 0px;" fxLayout="row" fxLayoutAlign="space-between">
   <mat-label fxLayoutAlign="start center">
-    <mat-icon>face</mat-icon>  &nbsp;Assign / Re-Assign Requests
+    <mat-icon>face</mat-icon>      
+    <span *ngIf="!isAssignedRequest"> Assign Request</span>
+    <span *ngIf="isAssignedRequest"> Re-Assign Request</span>
   </mat-label>
   <mat-icon class="close-button flex-1" (click)="closeDialog()">close</mat-icon>
 </div>
@@ -16,15 +18,17 @@
 <div class="mat-card-content">
   <div class="mat-expansion-panel-header">
     <p>Currently Assigned To :
-      <b> {{selectedValue}} </b>
+      <b> {{currentOwner}}</b>
     </p>
   </div>
   <div class="mat-expansion-panel-header" color="primary" style="padding-bottom: 10px;">
-    <p style="padding-right: 10px">Assign / Re-Assign Request To :
+    <p style="padding-right: 10px">     
+      <span *ngIf="!isAssignedRequest"> Assign Request to: </span>
+      <span *ngIf="isAssignedRequest"> Re-Assign Request to: </span>
       <mat-form-field>
         <mat-select placeholder="Select AO From List..." [formControl]="aoSelectFrmControl" #aoSelectList name="aoSelectList">
           <mat-option *ngFor="let item of dataSource" [value]="item">
-            {{item.firstName + ' ' + item.middleName + ' ' + item.lastName}}
+            {{item.firstName + ' ' + item.lastName}}
           </mat-option>
         </mat-select>
       </mat-form-field>
@@ -33,7 +37,7 @@
 </div>
 
 <div style="text-align: right">
-  <button style="margin-top:3px" mat-flat-button color="primary" (click)="Submit()">Save</button>
+  <button style="margin-top:3px" mat-flat-button color="primary" (click)="Save()">Save</button>
   &nbsp;
   <button style="margin-top:3px" mat-flat-button color="accent" (click)="Cancel()">Cancel</button>
 </div>

@@ -2,8 +2,9 @@ using System.Collections.Generic;
 using System.Linq;
 using MAP_Web.Models;
 using Microsoft.EntityFrameworkCore;
+using MAP_NET_CORE_ONLINE.Services;
 
-namespace MAP_Web.Services
+namespace MAP_NET_CORE_ONLINE.Services
 {
     public class EmployeeService : IEmployeeService
     {
@@ -13,7 +14,7 @@ namespace MAP_Web.Services
         }
         public void Create(Employee employee)
         {
-            var employeeRepo= _unitOfWork.GetRepository<Models.Employee>();
+            var employeeRepo= _unitOfWork.GetRepository<Employee>();
 
             employeeRepo.Insert(employee);
 
@@ -21,9 +22,9 @@ namespace MAP_Web.Services
 
         }
 
-        public IEnumerable<Models.Employee> Get()
+        public IEnumerable<Employee> Get()
         {
-            var employeeRepo= _unitOfWork.GetRepository<Models.Employee>();
+            var employeeRepo= _unitOfWork.GetRepository<Employee>();
             
             //  var items=employeeRepo.GetPagedList().Items.ToList();
             #pragma warning disable
@@ -32,13 +33,13 @@ namespace MAP_Web.Services
             return items;
         }
 
-        public Models.EmployeePaged GetPaged(int _pageIndex, int _pageSize,string sortedBy,string direction)
+        public EmployeePaged GetPaged(int _pageIndex, int _pageSize,string sortedBy,string direction)
         {
-            var employeeRepo= _unitOfWork.GetRepository<Models.Employee>();
+            var employeeRepo= _unitOfWork.GetRepository<Employee>();
             IPagedList<Employee> _pagedEmployeeList;
             // .GetPagedList(pageIndex: _pageIndex,pageSize:_pageSize,orderBy:x=>x.OrderBy(y=>y.Name));
             // .GetPagedList(pageIndex: _pageIndex,pageSize:_pageSize); 
-            Models.EmployeePaged pagedEmployees=new Models.EmployeePaged();
+            EmployeePaged pagedEmployees=new EmployeePaged();
 
             switch (sortedBy)
             { case "name":
