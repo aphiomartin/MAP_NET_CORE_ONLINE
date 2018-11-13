@@ -16,6 +16,7 @@ export class CustomerProfileComponent extends AppBaseComponent implements OnInit
   @Input() displayMode = false;
   @Input() userGroup: string;
 
+  isSaved = false;
   customerProfileId = 0;
   model: CutomerProfile;
   title = 'New Affiliation';
@@ -51,11 +52,13 @@ export class CustomerProfileComponent extends AppBaseComponent implements OnInit
       console.log('SUCCESS');
       this.model = data;
       this.customerProfileId = this.model['id'];
+      this.isSaved = true;
     });
   }
 
   update() {
     this._customerProfileService.update(this.model['id'], this.model).subscribe(data => {
+      this.model = data;
       console.log('UPDATE');
     });
   }

@@ -15,11 +15,15 @@ export class OwnersListComponent implements OnInit {
   @Input() displayMode: boolean;
   @Input() customerProfileId: number;
 
-  constructor(private _service: OwnersListService, private _dialog: MatDialog) { }
+  constructor(private _service: OwnersListService, private _dialog: MatDialog) {
+  }
 
   ngOnInit() {
     this.displayedColumns = this._service.getTableFields();
-    this.dataSource = this._service.get();
+    
+    this._service.get(this.customerProfileId).subscribe(data => {
+      
+    });
   }
 
   addOwner() {
