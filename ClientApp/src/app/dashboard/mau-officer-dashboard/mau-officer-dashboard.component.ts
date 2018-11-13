@@ -67,13 +67,12 @@ export class MauOfficerDashboardComponent implements OnInit {
 
   ngOnInit() {
     this.displayedColumns = ['ReferenceNo', 'RequestedDate', 'RequestType',
-                             'BusinessName','DBAName', 'RequestedBy', 
-                             'RequestStatus','TAT', 'Operation']
+      'BusinessName', 'DBAName', 'RequestedBy',
+      'RequestStatus', 'TAT', 'Operation']
     this._service.Get().subscribe(x => {
-      
       this.dataSource = x;
     });
-    
+
     this.mode = '';
     this.title = '';
     this.subTitle = '';
@@ -93,10 +92,14 @@ export class MauOfficerDashboardComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(data => {
       if (data) {
+
         this._snackBar.open('Successfully Assigned To : ', data.firstName + ' ' + data.lastName,
-          { 
+          {
             duration: 2000
           });
+        this._service.Get().subscribe(x => {
+          this.dataSource = x;
+        });
       }
     });
   }

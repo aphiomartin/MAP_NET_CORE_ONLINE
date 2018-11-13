@@ -12,10 +12,7 @@ namespace MAP_NET_CORE_ONLINE.Services
         Task<AOMaintenance> GetByUserName(string UserName);
         void OwnRequest(int Id, string userId);
         Task SaveChangesAsync();
-        Task InsertAsync(Request Request);
         Task<Request> FindAsync(int id);
         void Update(Request Request);
-        void Delete(Request Request);
-
     }
 }

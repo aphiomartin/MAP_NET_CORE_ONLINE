@@ -40,11 +40,6 @@ namespace MAP_NET_CORE_ONLINE.Services
             _requestRepo.Update(request);
         }
 
-        public async Task InsertAsync(Request Request)
-        {
-            await _requestRepo.InsertAsync(Request);
-        }
-
         public async Task<Request> FindAsync(int id)
         {
             return await _requestRepo.FindAsync(id);
@@ -59,11 +54,7 @@ namespace MAP_NET_CORE_ONLINE.Services
         {
             _requestRepo.Update(Request);
         }
-        
-        public void Delete(Request Request)
-        {
-            _requestRepo.Delete(Request);
-        }
+    
     }
 
 }
