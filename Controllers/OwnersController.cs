@@ -26,6 +26,17 @@ namespace MAP_Web.Controllers
             return Ok(owner);
         }
 
+        [HttpGet("customer/{id}")]
+        public async Task<IActionResult> GetOwnerPerCustomer(int id)
+        {
+            var owner = await ownersService.FindAsync(id);
+
+            if (owner == null)
+                return NotFound();
+
+            return Ok(owner);
+        }
+
         [HttpPost]
         public async Task<IActionResult> CreateOwner([FromBody] Owners owner)
         {

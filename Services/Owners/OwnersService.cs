@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using MAP_Web.Models;
 using Microsoft.EntityFrameworkCore;
@@ -22,6 +24,12 @@ namespace MAP_NET_CORE_ONLINE.Services
         public async Task<Owners> FindAsync(int id)
         {
             return await ownersRepo.FindAsync(id);
+        }
+
+        public async Task<IEnumerable<Owners>> FindByCustomerAsync(int id)
+        {
+            throw new NotImplementedException();
+            // return await ownersRepo.GetPagedListAsync(x => x.CustomerProfileId = id);
         }
 
         public async Task SaveChangesAsync()

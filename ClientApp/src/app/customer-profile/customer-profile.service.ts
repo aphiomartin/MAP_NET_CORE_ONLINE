@@ -13,7 +13,7 @@ export class CustomerProfileService {
         {
           className: 'flex-1',
           type: 'input',
-          key: 'businessName',
+          key: 'legalName',
           templateOptions: {
             label: 'Business/Legal Name',
             placeholder: 'Business Name'
@@ -81,7 +81,7 @@ export class CustomerProfileService {
         {
           className: 'flex-1',
           type: 'input',
-          key: 'businessName',
+          key: 'legalName',
           templateOptions: {
             label: 'Business/Legal Name',
             placeholder: 'Business Name',

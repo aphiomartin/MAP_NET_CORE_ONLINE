@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using MAP_Web.Models;
 
@@ -7,6 +8,7 @@ namespace MAP_NET_CORE_ONLINE.Services
     {
          Task InsertAsync(Owners owner);
          Task<Owners> FindAsync(int id);
+         Task<IEnumerable<Owners>> FindByCustomerAsync(int id);
          Task SaveChangesAsync();
          void Update(Owners owner);
          void Delete(Owners owner);
