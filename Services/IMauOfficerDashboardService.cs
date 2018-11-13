@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 
 namespace MAP_Web.Services
@@ -7,6 +8,6 @@ namespace MAP_Web.Services
     public interface IMauOfficerDashboardService
     {
         // IEnumerable<Models.Request> GetRequests();
-        IPagedList<Models.Branch> GetRequests();
+        Task<IEnumerable<Models.Branch>> GetRequests();
     }
 }

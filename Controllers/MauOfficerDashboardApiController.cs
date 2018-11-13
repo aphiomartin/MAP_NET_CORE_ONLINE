@@ -5,50 +5,59 @@ using System.Threading;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Microsoft.EntityFrameworkCore;
+using System.Threading.Tasks;
 
 namespace MAP_Web
 {
     [Route("api/[controller]")]
     public class MauOfficerDashboardController : Controller
     {
-        Services.IMauOfficerDashboardService _service;
-        ILogger<MauOfficerDashboardController> _logger;
+        private Services.IMauOfficerDashboardService _service;
+        private ILogger<MauOfficerDashboardController> _logger;
+        private Services.IAOListModalService _aoListModalService;
 
-        public MauOfficerDashboardController(ILogger<MauOfficerDashboardController> logger, Services.IMauOfficerDashboardService service)
+        public MauOfficerDashboardController(ILogger<MauOfficerDashboardController> logger, 
+                                             Services.IMauOfficerDashboardService service, 
+                                             Services.IAOListModalService aoListModalService)
         {
             _logger = logger;
             _service = service;
+            _aoListModalService = aoListModalService;
         }
 
         [HttpGet]
-        public ActionResult<IEnumerable<Models.ViewModels.MauOfficerDashboardViewModel>> Get()
+        public async Task<ActionResult> Get()
         {
             try
             {
-                IPagedList<Models.Branch> requests = _service.GetRequests();
+                var requests = await _service.GetRequests();
+                
                 List<Models.ViewModels.MauOfficerDashboardViewModel> finalResult = new List<Models.ViewModels.MauOfficerDashboardViewModel>();
-            
-                foreach (var item in requests.Items)
+
+                foreach (var item in requests)
                 {
                     var createdDate = item.Request.CreatedDate.ToString();
                     var parsedDate = DateTime.Parse(createdDate);
                     var daySpan = (DateTime.Now - parsedDate).TotalHours;
-
+                    var requestedBy = await _aoListModalService.GetByUserName(item.Request.CreatedBy);
+                    
                     finalResult.Add(new Models.ViewModels.MauOfficerDashboardViewModel
                     {
-                        RequestId = item.Id,
+                        RequestId = item.Request.Id,
                         ReferenceNo = item.Request.TrackingNo,
                         RequestedDate = item.Request.CreatedDate ?? System.DateTime.Now,
                         RequestType = item.Request.RequestDescription,
                         BusinessName = item.legalName,
                         DBAName =  item.DBAName,
-                        RequestedBy = item.Request.CreatedBy,
+                        RequestedBy = requestedBy.firstName + " " + requestedBy.lastName,
+                        UserName = item.Request.Owner,
                         Status = "For Evaluation", //For Testing Purposes Only
-                        TAT = (int)(daySpan + 0.5d)
+                        TAT = (int)(daySpan + 0.5d),
+                        isOwned = item.Request.CreatedBy == item.Request.Owner ? true : false
                     });
                 }
 
-                return finalResult;
+                return Ok(finalResult);
 
             }
             catch (Exception)

@@ -16,7 +16,10 @@ export class AoListModalComponent implements OnInit {
 
   dataSource: any;
   passedData: any;
-  selectedValue: string;
+  aoList: any;
+  currentOwner: any;
+  isAssignedRequest: boolean;
+  selectedItem: any;
   aoSelectFrmControl: FormControl;
   constructor(private _matDialogRef: MatDialogRef<AoListModalComponent>,
     private _service: AoListModalService,
@@ -27,7 +30,11 @@ export class AoListModalComponent implements OnInit {
       this.dataSource = x;
     });
     this.passedData = this._passedData;
-    this.selectedValue = 'Not yet assigned!';
+    this._service.getByUserName(this.passedData.UserName).subscribe(x => {
+        this.aoList = x;
+        this.currentOwner = this.aoList == undefined ? 'Not Yet Assigned' : this.aoList.firstName + ' ' + this.aoList.lastName;
+        this.isAssignedRequest = this.aoList == undefined ? false : true;
+    });
     this.aoSelectFrmControl = new FormControl();
   }
 
@@ -35,8 +42,18 @@ export class AoListModalComponent implements OnInit {
     this._matDialogRef.close();
   }
 
-  Submit() {
-    this._matDialogRef.close(this.aoSelectFrmControl.value);
+  Save() {
+    this.selectedItem = this.aoSelectFrmControl.value;
+    /* ******************************Insert Update Method HERE!!!!!!!!!!!!!!! 
+    
+    **********************************************/
+
+    // console.log(this.selectedItem);
+    // console.log(this.passedData.Id);
+
+    this._service.setOwnerofRequest(this.passedData.Id,this.selectedItem.userId).subscribe(x =>{},y => {});
+
+    this._matDialogRef.close(this.selectedItem);
   }
 
   closeDialog() {

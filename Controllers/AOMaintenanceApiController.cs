@@ -2,7 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 
 namespace MAP_Web
@@ -20,13 +22,12 @@ namespace MAP_Web
         }
 
         [HttpGet]
-        public ActionResult<IEnumerable<Models.AOMaintenance>> Get()
+        public async Task<ActionResult> Get()
         {
             try
             {
-                List<Models.AOMaintenance> result;
-                result = _aoMaintenanceService.Get().ToList();
-                return result;
+                var result = await _aoMaintenanceService.Get();
+                return Ok(result);
             }
             catch (Exception)
             {
@@ -34,5 +35,21 @@ namespace MAP_Web
                 return BadRequest();
             }
         }
+
+        [HttpPut("GetByUserName/{userName}" )]
+        public async Task<ActionResult> GetByUserName(string userName) 
+        {
+            try
+            {
+                var result = await _aoMaintenanceService.GetByUserName(userName);
+                return Ok(result);
+            }
+            catch (Exception)
+            {
+                _logger.LogError("Failed to execute GET");
+                return BadRequest();
+            }
+        }
+        
     }
 }
