@@ -53,7 +53,7 @@ namespace MAP_Web.Controllers
                         DBAName =  item.DBAName,
                         RequestedBy = requestedBy.firstName + " " + requestedBy.lastName,
                         UserName = item.Request.Owner,
-                        Status = "For Evaluation", //For Testing Purposes Only
+                        Status = item.Request.Owner == null ? "For Evaluation" : "For Re-Evaluation", //For Testing Purposes Only
                         TAT = (int)(daySpan + 0.5d),
                         isOwned = item.Request.CreatedBy == item.Request.Owner ? true : false
                     });
