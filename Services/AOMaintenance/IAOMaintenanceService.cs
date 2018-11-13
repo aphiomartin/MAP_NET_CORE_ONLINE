@@ -9,6 +9,6 @@ namespace MAP_NET_CORE_ONLINE.Services
     public interface IAOMaintenanceService
     {
         Task<IEnumerable<AOMaintenance>> Get();
-        Task<AOMaintenance> GetByUserName(string UserName) ;
+        Task<AOMaintenance> GetByUserName(string UserName);
     }
 }

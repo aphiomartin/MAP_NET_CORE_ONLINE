@@ -22,7 +22,6 @@ namespace MAP_NET_CORE_ONLINE.Services
         {
              var request = branchRepo.GetPagedList(null,null,x => x.Include(z => z.Request),0,20,true);
              return await request.Items.ToAsyncEnumerable().ToList();
-            // return await branchRepo.GetPagedListAsync(null,null, x => x.Include(y => y.Request), 1, 20, true);
         }
     }
 

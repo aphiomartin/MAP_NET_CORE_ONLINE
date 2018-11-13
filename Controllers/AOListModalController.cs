@@ -56,7 +56,10 @@ namespace MAP_Web.Controllers
         {
             try
             {
-                _aoListModalservice.OwnRequest(Id, userId);
+                var curRequests = await _aoListModalservice.FindAsync(Id);
+                curRequests.Owner = userId;
+                _aoListModalservice.Update(curRequests);
+                await _aoListModalservice.SaveChangesAsync();
                 return Ok();
             }
             catch (Exception)
