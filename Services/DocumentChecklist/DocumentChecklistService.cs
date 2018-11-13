@@ -2,7 +2,7 @@ using System.Threading.Tasks;
 using MAP_Web.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace MAP_NET_CORE_ONLINE.Services
+namespace MAP_Web.Services
 {
     public class DocumentChecklistService : IDocumentChecklistService
     {
@@ -36,6 +36,11 @@ namespace MAP_NET_CORE_ONLINE.Services
         public void Delete(DocumentChecklist documentChecklist)
         {
             documentRepo.Delete(documentChecklist);
+        }
+
+        public async Task<IPagedList<DocumentChecklist>> FindByRequestAsync(int id)
+        {
+            return await documentRepo.GetPagedListAsync(predicate: x => x.NewAffiliationId == id);
         }
     }
 }

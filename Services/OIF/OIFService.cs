@@ -2,7 +2,7 @@ using System.Threading.Tasks;
 using MAP_Web.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace MAP_NET_CORE_ONLINE.Services
+namespace MAP_Web.Services
 {
     public class OIFService : IOIFService
     {
@@ -36,6 +36,11 @@ namespace MAP_NET_CORE_ONLINE.Services
         public void Delete(OIF oif)
         {
             oifRepo.Delete(oif);
+        }
+
+        public async Task<OIF> FindByBranchAsync(int id)
+        {
+            return await oifRepo.GetFirstOrDefaultAsync(predicate: x => x.BranchId == id);
         }
     }
 }

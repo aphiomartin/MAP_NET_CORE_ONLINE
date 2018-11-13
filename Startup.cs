@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using AutoMapper;
-using MAP_NET_CORE_ONLINE.Services;
+using MAP_Web.Services;
 
 namespace MAP_Web
 {

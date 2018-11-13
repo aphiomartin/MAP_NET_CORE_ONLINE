@@ -10,5 +10,7 @@ namespace MAP_Web.Models
         public bool submitted { get; set; }
         public Nullable<DateTime> targetDateOfSubmission { get; set; }
         public byte[] fileUpload { get; set; }
+        public int NewAffiliationId { get; set; }
+        public NewAffiliation NewAffiliation { get; set; }
     }
 }

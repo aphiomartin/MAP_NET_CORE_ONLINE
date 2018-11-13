@@ -14,9 +14,9 @@ namespace MAP_Web.Models.ViewModels
         public string BusinessName { get; set; }
         public string DBAName { get; set; }
         public string RequestedBy { get; set; }
-        public string UserName { get; set;}
         public string Status {get; set;}
         public int TAT {get; set;}
         public bool isOwned {get; set;}
+        public string UserName { get; set;}
     }
 } 

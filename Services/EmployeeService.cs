@@ -2,9 +2,8 @@ using System.Collections.Generic;
 using System.Linq;
 using MAP_Web.Models;
 using Microsoft.EntityFrameworkCore;
-using MAP_NET_CORE_ONLINE.Services;
 
-namespace MAP_NET_CORE_ONLINE.Services
+namespace MAP_Web.Services
 {
     public class EmployeeService : IEmployeeService
     {

@@ -47,22 +47,21 @@ export class CustomerProfileComponent extends AppBaseComponent implements OnInit
     }
   }
 
-  create() {
-    this._customerProfileService.create(this.model).subscribe(data => {
-      console.log('SUCCESS');
-      this.model = data;
-      this.customerProfileId = this.model['id'];
-      this.isSaved = true;
-    });
+  submit() {
+    if (this.model['id']) {
+      this._customerProfileService.update(this.model['id'], this.model).subscribe(data => {
+        this.model = data;
+        console.log('UPDATE');
+      });
+    } else {
+      this._customerProfileService.create(this.model).subscribe(data => {
+        console.log('SUCCESS');
+        this.model = data;
+        this.customerProfileId = this.model['id'];
+        this.isSaved = true;
+      });
+    }
   }
-
-  update() {
-    this._customerProfileService.update(this.model['id'], this.model).subscribe(data => {
-      this.model = data;
-      console.log('UPDATE');
-    });
-  }
-
 }
 
 

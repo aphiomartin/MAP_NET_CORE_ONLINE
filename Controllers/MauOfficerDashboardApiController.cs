@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
-using MAP_NET_CORE_ONLINE.Services;
+using MAP_Web.Services;
 using MAP_Web.Models;
 
 namespace MAP_Web.Controllers

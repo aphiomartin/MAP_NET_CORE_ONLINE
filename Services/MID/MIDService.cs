@@ -2,7 +2,7 @@ using System.Threading.Tasks;
 using MAP_Web.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace MAP_NET_CORE_ONLINE.Services
+namespace MAP_Web.Services
 {
     public class MIDService : IMIDService
     {
@@ -36,6 +36,11 @@ namespace MAP_NET_CORE_ONLINE.Services
         public void Delete(MID mid)
         {
             midRepo.Delete(mid);
+        }
+
+        public async Task<IPagedList<MID>> FindByBranchAsync(int id)
+        {
+            return await midRepo.GetPagedListAsync(predicate: x => x.BranchId == id);
         }
     }
 }

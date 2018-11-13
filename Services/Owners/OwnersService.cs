@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using MAP_Web.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace MAP_NET_CORE_ONLINE.Services
+namespace MAP_Web.Services
 {
     public class OwnersService : IOwnersService
     {
@@ -26,10 +26,9 @@ namespace MAP_NET_CORE_ONLINE.Services
             return await ownersRepo.FindAsync(id);
         }
 
-        public async Task<IEnumerable<Owners>> FindByCustomerAsync(int id)
+        public async Task<IPagedList<Owners>> FindByCustomerAsync(int id)
         {
-            throw new NotImplementedException();
-            // return await ownersRepo.GetPagedListAsync(x => x.CustomerProfileId = id);
+            return await ownersRepo.GetPagedListAsync(predicate: x => x.CustomerProfileId == id);
         }
 
         public async Task SaveChangesAsync()

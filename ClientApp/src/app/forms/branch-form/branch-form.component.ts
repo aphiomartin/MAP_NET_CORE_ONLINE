@@ -17,7 +17,8 @@ export class BranchFormComponent extends AppBaseComponent implements OnInit {
   model: any = {};
   options: FormlyFormOptions = {};
   fields: FormlyFieldConfig[];
-  title: string = 'Branch Affiliation';
+  title = 'Branch Affiliation';
+  isSaved = false;
   subTitle: string;
   mode: string;
   backUrl: string;
@@ -31,39 +32,39 @@ export class BranchFormComponent extends AppBaseComponent implements OnInit {
   ngOnInit() {
     this.title = 'Branch';
     this.getFields();
-    // this.baseCreateFunction=this.create;
-    // this.baseUpdateFunction=this.update;
 
     this.route.parent.url.subscribe((urlPath) => {
       this.backUrl = urlPath.join().replace(',', '/');
-    })
+    });
 
-    this.initialize();
-    
-    // this.displayMode;
-    if (this.displayMode == true) {
+    if (this.displayMode === true) {
       this._formService.disabled(this.fields);
     } else {
       this._formService.enabled(this.fields);
     }
   }
 
-  public create() {
-    alert('Create branch');
+  submit() {
+    if (this.model['id']) {
+      this.branchService.update(this.model['id'], this.model).subscribe(data => {
+        console.log('UPDATE');
+        this.model = data;
+        this.isSaved = true;
+      });
+    } else {
+      this.branchService.create(this.model).subscribe(data => {
+        console.log('SUCCESS');
+        this.model = data;
+        this.isSaved = true;
+      });
+    }
   }
 
-  public update() {
-    alert('Update Branch');
-    alert(this.route.snapshot.paramMap.get('id'));
-  }
-
-  public cancel() {
+  cancel() {
     this.router.navigateByUrl(this.backUrl);
-
-
   }
 
-  public getFields() {
+  getFields() {
     this.fields = this._branchFormService.getBranchFields();
   }
 

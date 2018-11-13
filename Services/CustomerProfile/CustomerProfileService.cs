@@ -2,7 +2,7 @@ using System.Threading.Tasks;
 using MAP_Web.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace MAP_NET_CORE_ONLINE.Services
+namespace MAP_Web.Services
 {
     public class CustomerProfileService : ICustomerProfileService
     {
@@ -36,6 +36,11 @@ namespace MAP_NET_CORE_ONLINE.Services
         public void Delete(CustomerProfile customerProfile)
         {
             customerRepo.Delete(customerProfile);
+        }
+
+        public async Task<CustomerProfile> FindByRequestAsync(int id)
+        {
+            return await customerRepo.GetFirstOrDefaultAsync(predicate: x => x.RequestId == id);
         }
     }
 }

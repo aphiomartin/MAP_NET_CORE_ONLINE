@@ -16,20 +16,21 @@ export class DocumentCheckListComponent implements OnInit {
   constructor(private _route: ActivatedRoute, private _router: Router, private _service: DocumentCheckListService) { }
 
   ngOnInit() {
-    this.dataSource = this._service.Get();
-    this.displayedColumns = this._service.GetTableFields();
+    this.dataSource = this._service.get();
+    this.displayedColumns = this._service.getTableFields();
     this.mode = this._route.snapshot.params['mode'];
 
-    if (this._router.url.indexOf('mdmUser') > -1 || this._router.url.indexOf('aoEncoder') > -1 || this._router.url.indexOf('aoChecker') > -1) {
+    if (this._router.url.indexOf('mdmUser') > -1 || this._router.url.indexOf('aoEncoder') > -1 ||
+    this._router.url.indexOf('aoChecker') > -1) {
       this.showAdd = true;
     }
   }
 
-  GetItem(id) {
+  getItem(id) {
     this._router.navigateByUrl(`${this._router.url}/(documentCheckList:dcl/create/${id})`);
   }
 
-  AddDocument() {
+  addDocument() {
     this._router.navigateByUrl(`${this._router.url}/(documentCheckList:dcl/create/0)`);
   }
 }

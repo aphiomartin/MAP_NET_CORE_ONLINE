@@ -337,6 +337,7 @@ namespace MAP_Web.Models
         public bool isSingleProp { get; set; }
 
         public bool isPartnershipCorp { get; set; }
+        public int CustomerProfileId { get; set; }
 
         public Nullable<System.DateTime> mdfDateTimeCreated { get; set; }
 
@@ -346,6 +347,7 @@ namespace MAP_Web.Models
         public virtual OcularInspectionForm OcularInspectionForm { get; set; }
 
         public virtual Request Request {get; set;} 
+        public virtual CustomerProfile CustomerProfile { get; set; }
         
     }
 }

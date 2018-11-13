@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using MAP_Web.Models;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-using MAP_NET_CORE_ONLINE.Services;
+using MAP_Web.Services;
 
 namespace MAP_Web.Controllers
 {

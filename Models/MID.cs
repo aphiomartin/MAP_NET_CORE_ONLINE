@@ -25,6 +25,7 @@ namespace MAP_Web.Models
         public bool forMoto { get; set; }
         public string dccMarkupRate { get; set; }
         public string dccMerchantRebate { get; set; }
-
+        public int BranchId { get; set; }
+        public Branch Branch { get; set; }
     }
 }

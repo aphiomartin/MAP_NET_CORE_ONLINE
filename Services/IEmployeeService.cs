@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using MAP_Web.Models;
 
 
-namespace MAP_NET_CORE_ONLINE.Services
+namespace MAP_Web.Services
 {
     public interface IEmployeeService
     {

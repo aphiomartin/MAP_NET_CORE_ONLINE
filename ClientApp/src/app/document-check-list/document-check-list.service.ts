@@ -25,11 +25,11 @@ export class DocumentCheckListService {
 
   constructor() { }
 
-  Get() {
+  get() {
     return TEST_DATA;
   }
-  GetById() { }
-  GetTableFields() {
+  getById() { }
+  getTableFields() {
     return ['DocumentName', 'Submitted', 'Remarks', 'TargetDateOfSubmission', 'FileUpload', 'Action'];
   }
 }

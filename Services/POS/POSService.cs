@@ -2,7 +2,7 @@ using System.Threading.Tasks;
 using MAP_Web.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace MAP_NET_CORE_ONLINE.Services
+namespace MAP_Web.Services
 {
     public class POSService : IPOSService
     {
@@ -36,6 +36,11 @@ namespace MAP_NET_CORE_ONLINE.Services
         public void Delete(POS pos)
         {
             posRepo.Delete(pos);
+        }
+
+        public async Task<IPagedList<POS>> FindByBranchAsync(int id)
+        {
+            return await posRepo.GetPagedListAsync(predicate: x => x.BranchId == id);
         }
     }
 }

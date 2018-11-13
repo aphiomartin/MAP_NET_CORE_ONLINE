@@ -5444,7 +5444,7 @@ export class BranchFormService {
       ]
     },
 
-    { //numeric
+    { // numeric
       fieldGroupClassName: 'display-flex',
       fieldGroup: [{
         className: 'flex-1',
@@ -5498,7 +5498,7 @@ export class BranchFormService {
           templateOptions: {
             label: 'Third Party CASA',
             placeholder: 'Third Party CASA',
-            pattern: '^[^\d]$',
+            pattern: '^[^\\d]$',
             disabled: true
           }
         }

@@ -2,7 +2,7 @@ using System.Threading.Tasks;
 using MAP_Web.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace MAP_NET_CORE_ONLINE.Services
+namespace MAP_Web.Services
 {
     public class TerminalDetailsService : ITerminalDetailsService
     {
@@ -36,6 +36,11 @@ namespace MAP_NET_CORE_ONLINE.Services
         public void Delete(TerminalDetails terminalDetails)
         {
             terminalRepo.Delete(terminalDetails);
+        }
+
+        public async Task<IPagedList<TerminalDetails>> FindByBranchAsync(int id)
+        {
+            return await terminalRepo.GetPagedListAsync(predicate: x => x.BranchId == id);
         }
     }
 }
