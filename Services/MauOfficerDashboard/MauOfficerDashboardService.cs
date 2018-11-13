@@ -3,13 +3,14 @@ using System.Linq;
 using System.Threading.Tasks;
 using MAP_Web.Models;
 using Microsoft.EntityFrameworkCore;
+using MAP_NET_CORE_ONLINE.Services;
 
-namespace MAP_Web.Services
+namespace MAP_NET_CORE_ONLINE.Services
 {
     public class MauOfficerDashboardService : IMauOfficerDashboardService
     {
         private readonly IUnitOfWork _unitOfWork;
-        private readonly IRepository<Models.Branch> branchRepo;
+        private readonly IRepository<Branch> branchRepo;
 
         public MauOfficerDashboardService(IUnitOfWork unitOfWork)
         {
@@ -17,7 +18,7 @@ namespace MAP_Web.Services
             branchRepo = _unitOfWork.GetRepository<Branch>();
         }
 
-        public async Task<IEnumerable<Models.Branch>> GetRequests()
+        public async Task<IEnumerable<Branch>> GetRequests()
         {
              var request = branchRepo.GetPagedList(null,null,x => x.Include(z => z.Request),0,20,true);
              return await request.Items.ToAsyncEnumerable().ToList();

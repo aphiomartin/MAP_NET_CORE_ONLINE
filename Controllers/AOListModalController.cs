@@ -3,18 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using MAP_NET_CORE_ONLINE.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
-namespace MAP_Web
+namespace MAP_Web.Controllers
 {
     [Route("api/[controller]")]
     public class AOListModalController : Controller
     {
-        Services.IAOListModalService _aoListModalservice;
+        IAOListModalService _aoListModalservice;
         ILogger<AOListModalController> _logger;
 
-        public AOListModalController(ILogger<AOListModalController> logger, Services.IAOListModalService aoListModalservice)
+        public AOListModalController(ILogger<AOListModalController> logger, IAOListModalService aoListModalservice)
         {
             _logger = logger;
             _aoListModalservice = aoListModalservice;
@@ -35,8 +36,8 @@ namespace MAP_Web
             }
         }
 
-        [HttpGet("GetByUserName/{userName}" )]
-        public async Task<ActionResult> GetByUserName(string userName) 
+        [HttpGet("GetByUserName/{userName}")]
+        public async Task<ActionResult> GetByUserName(string userName)
         {
             try
             {
@@ -51,11 +52,11 @@ namespace MAP_Web
         }
 
         [HttpPut("OwnRequest/{Id}/{userId}")]
-        public async Task<ActionResult> OwnRequest(int Id,string userId) 
+        public async Task<ActionResult> OwnRequest(int Id, string userId)
         {
             try
             {
-                _aoListModalservice.OwnRequest(Id,userId);
+                _aoListModalservice.OwnRequest(Id, userId);
                 return Ok();
             }
             catch (Exception)

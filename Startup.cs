@@ -64,10 +64,10 @@ namespace MAP_Web
             .AddHttpClient()
             .AddUnitOfWork<DataAccess.MAP_Context>();
             services.AddAutoMapper();
-            services.AddScoped<Services.IEmployeeService,Services.EmployeeService>();
-            services.AddScoped<Services.IAOMaintenanceService,Services.AOMaintenanceService>();
-            services.AddScoped<Services.IMauOfficerDashboardService, Services.MauOfficerDashboardService>();
-            services.AddScoped<Services.IAOListModalService, Services.AOListModalService>();
+            services.AddScoped<IEmployeeService, EmployeeService>();
+            services.AddScoped<IAOMaintenanceService, AOMaintenanceService>();
+            services.AddScoped<IMauOfficerDashboardService, MauOfficerDashboardService>();
+            services.AddScoped<IAOListModalService, AOListModalService>();
 
 
             services.AddScoped<IBranchService, BranchService>();

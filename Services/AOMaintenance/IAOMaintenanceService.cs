@@ -2,12 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using MAP_Web.Models;
 
-namespace MAP_Web.Services
+namespace MAP_NET_CORE_ONLINE.Services
 {
     public interface IAOMaintenanceService
     {
-        Task<IEnumerable<Models.AOMaintenance>> Get();
-        Task<Models.AOMaintenance> GetByUserName(string UserName) ;
+        Task<IEnumerable<AOMaintenance>> Get();
+        Task<AOMaintenance> GetByUserName(string UserName) ;
     }
 }

@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using MAP_Web.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace MAP_Web.Services
+namespace MAP_NET_CORE_ONLINE.Services
 {
 
     public class AOMaintenanceService : IAOMaintenanceService
@@ -15,7 +15,7 @@ namespace MAP_Web.Services
         public AOMaintenanceService(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
-            _aoMaintenanceRepository = _unitOfWork.GetRepository<Models.AOMaintenance>();
+            _aoMaintenanceRepository = _unitOfWork.GetRepository<AOMaintenance>();
         }
 
         public async Task<IEnumerable<AOMaintenance>> Get()
@@ -24,7 +24,7 @@ namespace MAP_Web.Services
             return await result.Items.ToAsyncEnumerable().ToList();
         }
 
-        public async Task<Models.AOMaintenance> GetByUserName(string UserName)
+        public async Task<AOMaintenance> GetByUserName(string UserName)
         {
             var result = _aoMaintenanceRepository.FindAsync(UserName);
             return await result;

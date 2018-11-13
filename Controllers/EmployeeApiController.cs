@@ -5,28 +5,31 @@ using System.Threading;
 using Microsoft.AspNetCore.Mvc;
 // using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using MAP_NET_CORE_ONLINE.Services;
+using MAP_Web.Models;
 
-namespace MAP_Web
+
+namespace MAP_Web.Controllers
 {
 
    [Route("api/[controller]")]
   public class EmployeeController : Controller
   {
-    Services.IEmployeeService _employeeService;
+    IEmployeeService _employeeService;
     ILogger<EmployeeController> _logger;
 
-    public EmployeeController(ILogger<EmployeeController> logger,Services.IEmployeeService employeeService)
+    public EmployeeController(ILogger<EmployeeController> logger, IEmployeeService employeeService)
     {
       _logger = logger;
       _employeeService=employeeService;
     }
 
     [HttpGet]
-    public ActionResult<IEnumerable<Models.Employee>> Get(int? _pageIndex,int? _pageSize)
+    public ActionResult<IEnumerable<Employee>> Get(int? _pageIndex,int? _pageSize)
     {
       try
       {
-        List<Models.Employee> result;
+        List<Employee> result;
         // if (_pageIndex!=null && _pageSize!=null){
         //  result= _employeeService.GetPaged(_pageIndex.Value,_pageSize.Value).ToList();
         // }else{result=_employeeService.Get().ToList();}
@@ -42,7 +45,7 @@ namespace MAP_Web
       }
     }
      [HttpGet("GetPaged")]
-    public ActionResult<Models.EmployeePaged> GetPaged(int? _pageIndex,int? _pageSize, string sortedBy,string direction)
+    public ActionResult<EmployeePaged> GetPaged(int? _pageIndex,int? _pageSize, string sortedBy,string direction)
     {
       try
       {
@@ -58,7 +61,7 @@ namespace MAP_Web
     }
 
     [HttpPost]
-    public IActionResult Post([FromBody] Models.Employee model)
+    public IActionResult Post([FromBody] Employee model)
     {
       try
       {
@@ -75,7 +78,7 @@ namespace MAP_Web
     }
 
     [HttpPut]
-    public IActionResult Put([FromBody] Models.Employee model)
+    public IActionResult Put([FromBody] Employee model)
     {
       try
       {

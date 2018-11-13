@@ -6,16 +6,18 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using MAP_NET_CORE_ONLINE.Services;
+using MAP_Web.Models;
 
-namespace MAP_Web
+namespace MAP_Web.Controllers
 {
     [Route("api/[controller]")]
     public class AOMaintenanceController : Controller
     {
-        Services.IAOMaintenanceService _aoMaintenanceService;
+        IAOMaintenanceService _aoMaintenanceService;
         ILogger<AOMaintenanceController> _logger;
 
-        public AOMaintenanceController(ILogger<AOMaintenanceController> logger, Services.IAOMaintenanceService aoMaintenanceService)
+        public AOMaintenanceController(ILogger<AOMaintenanceController> logger, IAOMaintenanceService aoMaintenanceService)
         {
             _logger = logger;
             _aoMaintenanceService = aoMaintenanceService;

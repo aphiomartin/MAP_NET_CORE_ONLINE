@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using MAP_Web.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace MAP_Web.Services
+namespace MAP_NET_CORE_ONLINE.Services
 {
 
     public class AOListModalService : IAOListModalService
@@ -16,19 +16,19 @@ namespace MAP_Web.Services
         public AOListModalService(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
-            _aoMaintenanceRepo = _unitOfWork.GetRepository<Models.AOMaintenance>();
-            _requestRepo = _unitOfWork.GetRepository<Models.Request>();
+            _aoMaintenanceRepo = _unitOfWork.GetRepository<AOMaintenance>();
+            _requestRepo = _unitOfWork.GetRepository<Request>();
         }
 
-        public async Task<IEnumerable<Models.AOMaintenance>> Get()
+        public async Task<IEnumerable<AOMaintenance>> Get()
         {
             var result = _aoMaintenanceRepo.GetPagedList();
             return await result.Items.ToAsyncEnumerable().ToList();
         }
 
-        public async Task<Models.AOMaintenance> GetByUserName(string UserName)
+        public async Task<AOMaintenance> GetByUserName(string UserName)
         {
-            var result = _aoMaintenanceRepo.GetFirstOrDefaultAsync(x => x.userId.Equals(UserName),null,null,true).ToAsyncEnumerable();
+            var result = _aoMaintenanceRepo.GetFirstOrDefaultAsync(x => x.userId.Equals(UserName), null, null, true).ToAsyncEnumerable();
             return await result.FirstOrDefault();
         }
 
@@ -38,6 +38,11 @@ namespace MAP_Web.Services
             request.Id = Id;
             request.Owner = userId;
             _requestRepo.Update(request);
+        }
+
+        public async Task SaveChangesAsync()
+        {
+            await _unitOfWork.SaveChangesAsync();
         }
     }
 

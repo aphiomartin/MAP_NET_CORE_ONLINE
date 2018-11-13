@@ -24,7 +24,7 @@ export class AoListModalService {
   }
 
   setOwnerofRequest(Id,userId) {
-    return this.http.put('https://localhost:5001/api/AOListModal/OwnRequest/' + Id + '/' + userId,null);
+    return this.http.put('https://localhost:5001/api/AOListModal/OwnRequest/' + Id + '/' + userId,{});
   }
 
   updateAssignRequest(data) {

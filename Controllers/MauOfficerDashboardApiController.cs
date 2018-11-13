@@ -6,19 +6,21 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
+using MAP_NET_CORE_ONLINE.Services;
+using MAP_Web.Models;
 
-namespace MAP_Web
+namespace MAP_Web.Controllers
 {
     [Route("api/[controller]")]
     public class MauOfficerDashboardController : Controller
     {
-        private Services.IMauOfficerDashboardService _service;
+        private IMauOfficerDashboardService _service;
         private ILogger<MauOfficerDashboardController> _logger;
-        private Services.IAOListModalService _aoListModalService;
+        private IAOListModalService _aoListModalService;
 
         public MauOfficerDashboardController(ILogger<MauOfficerDashboardController> logger, 
-                                             Services.IMauOfficerDashboardService service, 
-                                             Services.IAOListModalService aoListModalService)
+                                             IMauOfficerDashboardService service, 
+                                             IAOListModalService aoListModalService)
         {
             _logger = logger;
             _service = service;
