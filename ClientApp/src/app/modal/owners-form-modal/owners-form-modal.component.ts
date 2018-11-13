@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject, AfterViewInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { MatDialogRef } from '@angular/material';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { FormlyFieldConfig } from '@ngx-formly/core';
 
 import { OwnersFormModalService } from './owners-form-modal.service';
@@ -15,17 +15,25 @@ export class OwnersFormModalComponent implements OnInit {
   form: FormGroup;
   fields: FormlyFieldConfig[];
   model: Object;
+  options: Object;
 
-  constructor(private _modalRef: MatDialogRef<OwnersFormModalComponent>, private _service: OwnersFormModalService) { }
+  constructor(private _modalRef: MatDialogRef<OwnersFormModalComponent>, private _service: OwnersFormModalService,
+    @Inject(MAT_DIALOG_DATA) public data: any) { }
 
   ngOnInit() {
     this.form = new FormGroup({});
+    this.model = {
+      customerProfileId: this.data['customerProfileId']
+    };
     this.fields = this._service.getFormlyFields();
-    this.model = {};
   }
 
   submit() {
-    this._modalRef.close();
+    console.log(this.model);
+    this._service.create(this.model).subscribe(data => {
+      console.log('SUCCESS');
+      this._modalRef.close();
+    });
   }
 
   cancel() {

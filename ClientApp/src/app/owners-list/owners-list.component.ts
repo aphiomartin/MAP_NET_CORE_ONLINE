@@ -13,6 +13,7 @@ export class OwnersListComponent implements OnInit {
   displayedColumns: string[];
   dataSource: Object[];
   @Input() displayMode: boolean;
+  @Input() customerProfileId: number;
 
   constructor(private _service: OwnersListService, private _dialog: MatDialog) { }
 
@@ -22,8 +23,13 @@ export class OwnersListComponent implements OnInit {
   }
 
   addOwner() {
-    this._dialog.open(OwnersFormModalComponent, {
-      width: '60%'
+    setTimeout(() => {
+      this._dialog.open(OwnersFormModalComponent, {
+        width: '60%',
+        data: {
+          customerProfileId: this.customerProfileId
+        }
+      });
     });
   }
 }

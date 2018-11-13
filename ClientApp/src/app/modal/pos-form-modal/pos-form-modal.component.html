@@ -1,36 +1,26 @@
-<!-- <div class="mat-headline">
-  POS Form
-</div>
-<div style="overflow: auto;">
-  <form [formGroup]="form" (ngSubmit)="submit()">
-    <formly-form [model]="model" [fields]="fields" [options]="options" [form]="form">
-      <div fxLayout="row wrap" fxLayoutAlign="end center" fxLayoutGap="3px">
-        <button type="submit" color="primary" mat-raised-button>Create </button>
-        <button type="button" (click)="cancel();" color="accent" mat-raised-button>Cancel</button>
-      </div>
-    </formly-form>
-  </form>
-</div> -->
 <div fxLayout="row" fxLayoutAlign="space-between">
-    <h2 mat-dialog-title class="mat-headline">POS Form</h2>
-    <mat-checkbox>Waive POS</mat-checkbox>
+  <h2 mat-dialog-title class="mat-headline">POS Form</h2>
+  <div>
+      <mat-checkbox style="margin-right: 10px;">Waive POS</mat-checkbox>
+      <mat-checkbox>Shared</mat-checkbox>
+  </div>
 </div>
 
-<mat-dialog-content style="overflow: auto;">
+<mat-dialog-content style="overflow-y: auto; overflow-x: hidden;">
   <form [formGroup]="form" (ngSubmit)="submit()">
     <formly-form [model]="model" [fields]="fields" [options]="options" [form]="form">
     </formly-form>
   </form>
-  <div fxLayoutAlign="end center">
-    <button type="submit" color="primary" mat-raised-button>Update </button>
+  <div fxLayoutAlign="end center" *ngIf="showAction">
+    <button type="submit" color="primary" mat-raised-button>Create </button>
     <button type="button" (click)="cancel();" color="accent" mat-raised-button>Cancel</button>
   </div>
 
   <div style="margin: 20px 0px">
-    <app-pos-terminal-brand-list [showAdd]="true"></app-pos-terminal-brand-list>
+    <app-pos-terminal-brand-list [showAdd]="showAction"></app-pos-terminal-brand-list>
   </div>
 
   <div style="margin-top: 20px;">
-      <app-mid [action]="false"></app-mid>
+    <app-mid [action]="false"></app-mid>
   </div>
 </mat-dialog-content>

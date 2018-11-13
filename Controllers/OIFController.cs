@@ -1,23 +1,24 @@
 using System.Threading.Tasks;
+using MAP_NET_CORE_ONLINE.Services;
 using MAP_Web.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace MAP_Web.Controllers
 {
     [Route("/api/oif")]
     public class OIFController : Controller
     {
-        public OIFController()
+        private readonly IOIFService oifService;
+        public OIFController(IOIFService oifService)
         {
-
+            this.oifService = oifService;
         }
 
-        [HttpGet]
+        [HttpGet("{id}")]
         public async Task<IActionResult> GetOIF(int id)
         {
-            // var oifRepo = unitOfWork.GetRepository<OIF>();
-
-            var oif = ""; //await oifRepo.GetVehicle(id);
+            var oif = await oifService.FindAsync(id);
 
             if (oif == null)
                 return NotFound();
@@ -28,34 +29,32 @@ namespace MAP_Web.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateOIF([FromBody] OIF oif)
         {
-            // var oifRepo = unitOfWork.GetRepository<OIF>();
-
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            // await oifRepo.InsertAsync(oif);
-            // await unitOfWork.SaveChangesAsync();
+            await oifService.InsertAsync(oif);
+            await oifService.SaveChangesAsync();
 
-            return Ok();
+            return Ok(oif);
         }
 
-        [HttpPost]
+        [HttpPut("{id}")]
         public async Task<IActionResult> UpdateOIF([FromBody] OIF oif, int id)
         {
-            // var oifRepo = unitOfWork.GetRepository<MID>();
-
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            var currentOif = ""; //await oifRepo.GetVehicle(id);
+            var currentOif = await oifService.FindAsync(id);
 
             if (currentOif == null)
                 return NotFound();
-            
-            // oifRepo.Update(oif);
-            // await unitOfWork.SaveChangesAsync();
-                
-            return Ok(oif);
+
+            // todo: MAP FIELDS FROM API RESOURCE TO DOMAIN RESOURCE
+
+            oifService.Update(currentOif);
+            await oifService.SaveChangesAsync();
+
+            return Ok(currentOif);
         }
     }
 }

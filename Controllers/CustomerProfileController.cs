@@ -1,4 +1,5 @@
 using System.Threading.Tasks;
+using MAP_NET_CORE_ONLINE.Services;
 using MAP_Web.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -8,18 +9,16 @@ namespace MAP_Web.Controllers
     [Route("/api/customerProfile")]
     public class CustomerProfileController : Controller
     {
-        private readonly IUnitOfWork unitOfWork;
-        public CustomerProfileController(IUnitOfWork unitOfWork)
+        private readonly ICustomerProfileService customerProfileService;
+        public CustomerProfileController(ICustomerProfileService customerProfileService)
         {
-            this.unitOfWork = unitOfWork;
+            this.customerProfileService = customerProfileService;
         }
 
-        [HttpGet]
+        [HttpGet("{id}")]
         public async Task<IActionResult> GetCustomerProfile(int id)
         {
-            // var customerRepo = unitOfWork.GetRepository<CustomerProfile>();
-
-            var customer = ""; //await repository.GetVehicle(id);
+            var customer = await customerProfileService.FindAsync(id);
 
             if (customer == null)
                 return NotFound();
@@ -30,32 +29,34 @@ namespace MAP_Web.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateCustomerProfile([FromBody] CustomerProfile customer)
         {
-            // var customerRepo = unitOfWork.GetRepository<CustomerProfile>();
-
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            // await customerRepo.InsertAsync(customer);
-            // await unitOfWork.SaveChangesAsync();
+            await customerProfileService.InsertAsync(customer);
+            await customerProfileService.SaveChangesAsync();
 
             return Ok(customer);
         }
 
-        [HttpPost]
+        [HttpPut("{id}")]
         public async Task<IActionResult> UpdateCustomerProfile([FromBody] CustomerProfile customer, int id)
         {
-            // var customerRepo = unitOfWork.GetRepository<CustomerProfile>();
-
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            var cust = ""; //await repository.GetVehicle(id);
+            var cust = await customerProfileService.FindAsync(id);
 
             if (cust == null)
                 return NotFound();
 
-            // customerRepo.Update(customer);
-            // await unitOfWork.SaveChangesAsync();
+            cust.customerNumber = customer.customerNumber;
+            cust.dtiRegDate = customer.dtiRegDate;
+            cust.legalName = customer.legalName;
+            cust.ownership = customer.ownership;
+            cust.registeredBusinessNumber = customer.registeredBusinessNumber;
+
+            customerProfileService.Update(cust);
+            await customerProfileService.SaveChangesAsync();
 
             return Ok(cust);
         }

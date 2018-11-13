@@ -9,6 +9,8 @@ using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using AutoMapper;
+using MAP_NET_CORE_ONLINE.Services;
 
 namespace MAP_Web
 {
@@ -61,10 +63,22 @@ namespace MAP_Web
             services.AddDbContext<DataAccess.MAP_Context>(options=> options.UseSqlServer(Configuration.GetConnectionString("MAP_DB")))
             .AddHttpClient()
             .AddUnitOfWork<DataAccess.MAP_Context>();
+            services.AddAutoMapper();
             services.AddScoped<Services.IEmployeeService,Services.EmployeeService>();
             services.AddScoped<Services.IAOMaintenanceService,Services.AOMaintenanceService>();
             services.AddScoped<Services.IMauOfficerDashboardService, Services.MauOfficerDashboardService>();
             services.AddScoped<Services.IAOListModalService, Services.AOListModalService>();
+
+
+            services.AddScoped<IBranchService, BranchService>();
+            services.AddScoped<ICustomerProfileService, CustomerProfileService>();
+            services.AddScoped<IDocumentChecklistService, DocumentChecklistService>();
+            services.AddScoped<IMIDService, MIDService>();
+            services.AddScoped<IOwnersService, OwnersService>();
+            services.AddScoped<ISignatoriesService, SignatoriesService>();
+            services.AddScoped<IPOSService, POSService>();
+            services.AddScoped<ITerminalDetailsService, TerminalDetailsService>();
+            services.AddScoped<IOIFService, OIFService>();
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
             {
@@ -122,9 +136,9 @@ namespace MAP_Web
                         if (env.IsDevelopment())
                         {
                             // spa.UseAngularCliServer(npmScript: "build");
-                            spa.UseAngularCliServer(npmScript: "start");
+                            // spa.UseAngularCliServer(npmScript: "start");
                             // spa.UseAngularCliServer( "ng serve");
-                            // spa.UseProxyToSpaDevelopmentServer("http://localhost:4200");
+                            spa.UseProxyToSpaDevelopmentServer("http://localhost:4200");
 
 
                             

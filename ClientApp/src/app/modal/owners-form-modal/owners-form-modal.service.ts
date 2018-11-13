@@ -1,11 +1,13 @@
 import { Injectable } from '@angular/core';
 import { FormlyFieldConfig } from '@ngx-formly/core';
-import { MaxLengthValidator } from '../../../../node_modules/@angular/forms';
+import { Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { ApiConstants } from 'src/app/api-constants';
 
 @Injectable()
 export class OwnersFormModalService {
 
-  constructor() { }
+  constructor(private _http: HttpClient) { }
 
   getFormlyFields(): FormlyFieldConfig[] {
     return [
@@ -54,7 +56,7 @@ export class OwnersFormModalService {
             key: 'remarks',
             expressionProperties: {
               'templateOptions.required': (model: any, formState: any) => {
-                return model['typeOfRelatedParty'] != undefined;
+                return model['typeOfRelatedParty'] !== undefined;
               }
             },
             templateOptions: {
@@ -65,5 +67,17 @@ export class OwnersFormModalService {
         ]
       }
     ];
+  }
+
+  create(owners): Observable<any> {
+    return this._http.post(ApiConstants.ownersApi, owners);
+  }
+
+  update(id, owners): Observable<any> {
+    return this._http.put(ApiConstants.ownersApi + '/' + id, owners);
+  }
+
+  delete(id): Observable<any> {
+    return this._http.delete(ApiConstants.ownersApi + '/' + id);
   }
 }
