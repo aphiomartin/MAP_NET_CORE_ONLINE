@@ -86,13 +86,12 @@ export class MauOfficerDashboardComponent implements OnInit {
   openDialog(Id, ReferenceNo, UserName): void {
 
     const dialogRef = this._dialog.open(AoListModalComponent, {
-      width: '40%',
+      width: '30%',
       data: { Id: Id, ReferenceNo: ReferenceNo, UserName: UserName }
     });
 
     dialogRef.afterClosed().subscribe(data => {
       if (data) {
-
         this._snackBar.open('Successfully Assigned To : ', data.firstName + ' ' + data.lastName,
           {
             duration: 2000

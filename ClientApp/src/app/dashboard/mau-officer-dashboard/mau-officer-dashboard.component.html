@@ -43,10 +43,10 @@
             <th mat-header-cell *matHeaderCellDef></th>
             <td mat-cell *matCellDef="let element">
                 
-                <button *ngIf="!element.userName" style="margin-top:3px" mat-flat-button color="primary" matTooltip="Assign Request" (click)="openDialog(element.requestId,element.referenceNo,element.userName)">Assign</button>
-                <button *ngIf="element.userName"  style="margin-top:3px" mat-flat-button color="primary" matTooltip="Re-Assign Request" (click)="openDialog(element.requestId,element.referenceNo,element.userName)">Re-Assign</button>
+                <button *ngIf="!element.userName" style="margin-top:3px;width: 110px" mat-flat-button color="primary" matTooltip="Assign Request" (click)="openDialog(element.requestId,element.referenceNo,element.userName)">Assign</button>
+                <button *ngIf="element.userName"  style="margin-top:3px;width: 110px" mat-flat-button color="primary" matTooltip="Re-Assign Request" (click)="openDialog(element.requestId,element.referenceNo,element.userName)">Re-Assign</button>
                 &nbsp;
-                <button *ngIf="!element.isOwned" style="margin-top:3px" mat-flat-button color="accent"  matTooltip="Own Request" (click)="ownRequest(element.requestId)">Own</button>
+                <button *ngIf="!element.isOwned" style="margin-top:3px;width: 110px" mat-flat-button color="accent"  matTooltip="Own Request" (click)="ownRequest(element.requestId)">Own</button>
             </td>
         </ng-container>
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

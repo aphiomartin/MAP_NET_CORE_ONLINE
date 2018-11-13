@@ -44,16 +44,9 @@ export class AoListModalComponent implements OnInit {
 
   Save() {
     this.selectedItem = this.aoSelectFrmControl.value;
-    /* ******************************Insert Update Method HERE!!!!!!!!!!!!!!! 
-    
-    **********************************************/
-
-    // console.log(this.selectedItem);
-    // console.log(this.passedData.Id);
-
-    this._service.setOwnerofRequest(this.passedData.Id,this.selectedItem.userId).subscribe(x =>{},y => {});
-
-    this._matDialogRef.close(this.selectedItem);
+    this._service.setOwnerofRequest(this.passedData.Id,this.selectedItem.userId).subscribe(x => {
+      this._matDialogRef.close(this.selectedItem);
+    });
   }
 
   closeDialog() {
