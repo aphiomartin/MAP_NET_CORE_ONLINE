@@ -1,49 +1,52 @@
 <!-- <app-bdo-form-header [text]="title" [sub_text]="subTitle" [mode]="mode"></app-bdo-form-header> -->
-
-<div class="flex-branch-list-header">
-    <!-- <span class="mat-headline">Merchant Affiliation and Maintenance - Officer</span> -->
+<div fxLayout="row" fxLayoutAlign="space-between">
     <span class="mat-headline">Requests for Distribution – MAM Manager</span>
+    <a (click)="openSearchDialog()" color="primary" mat-mini-fab matTooltip="Search">
+        <mat-icon>search</mat-icon>
+    </a>
 </div>
 <div fxLayout="row">
     <table mat-table [dataSource]="dataSource">
-        <ng-container matColumnDef="TrackingNo">
-            <th mat-header-cell *matHeaderCellDef> Tracking No </th>
-            <td mat-cell *matCellDef="let element" (click)="editItem(element.Id)"  matTooltip="View Request" class="item-edit"> {{element.TrackingNo}} </td>
+        <ng-container matColumnDef="ReferenceNo">
+            <th mat-header-cell *matHeaderCellDef> Reference No. </th>
+            <td mat-cell *matCellDef="let element" (click)="editItem(element.requestId)"  matTooltip="View Request" class="item-edit"> {{element.referenceNo}} </td>
+        </ng-container>
+        <ng-container matColumnDef="RequestedDate">
+            <th mat-header-cell *matHeaderCellDef> Requested Date</th>
+            <td mat-cell *matCellDef="let element"> {{element.requestedDate | date: 'MM/dd/yyyy'}} </td>
         </ng-container>
         <ng-container matColumnDef="RequestType">
             <th mat-header-cell *matHeaderCellDef> Request Type </th>
-            <td mat-cell *matCellDef="let element"> {{element.RequestType}} </td>
+            <td mat-cell *matCellDef="let element"> {{element.requestType}} </td>
         </ng-container>
         <ng-container matColumnDef="BusinessName">
             <th mat-header-cell *matHeaderCellDef> Business Name </th>
-            <td mat-cell *matCellDef="let element"> {{element.BusinessName}} </td>
+            <td mat-cell *matCellDef="let element"> {{element.businessName}} </td>
         </ng-container>
-        <ng-container matColumnDef="RequestDate">
-            <th mat-header-cell *matHeaderCellDef> Date Requested </th>
-            <td mat-cell *matCellDef="let element"> {{element.RequestDate}} </td>
+        <ng-container matColumnDef="DBAName">
+            <th mat-header-cell *matHeaderCellDef> DBA Name </th>
+            <td mat-cell *matCellDef="let element"> {{element.dbaName}} </td>
         </ng-container>
-        <ng-container matColumnDef="BranchName">
-            <th mat-header-cell *matHeaderCellDef> Branch Name </th>
-            <td mat-cell *matCellDef="let element"> {{element.BranchName}} </td>
-        </ng-container>
-        <ng-container matColumnDef="Location">
-            <th mat-header-cell *matHeaderCellDef> Location </th>
-            <td mat-cell *matCellDef="let element"> {{element.Location}} </td>
+        <ng-container matColumnDef="RequestedBy">
+            <th mat-header-cell *matHeaderCellDef> Requested By </th>
+            <td mat-cell *matCellDef="let element"> {{element.requestedBy}} </td>
         </ng-container>
         <ng-container matColumnDef="RequestStatus">
             <th mat-header-cell *matHeaderCellDef> Status </th>
-            <td mat-cell *matCellDef="let element"> {{element.RequestStatus}} </td>
+            <td mat-cell *matCellDef="let element"> {{element.status}} </td>
         </ng-container>
         <ng-container matColumnDef="TAT">
             <th mat-header-cell *matHeaderCellDef> TAT </th>
-            <td mat-cell *matCellDef="let element"> {{element.TAT}} </td>
+            <td mat-cell *matCellDef="let element"> {{element.tat}} hour(s)  </td>
         </ng-container>
         <ng-container matColumnDef="Operation">
             <th mat-header-cell *matHeaderCellDef></th>
             <td mat-cell *matCellDef="let element">
-                <button style="margin-top:3px" mat-flat-button color="primary" matTooltip="Assign Request" (click)="openDialog(element.id,element.TrackingNo)">Assign</button>
+                
+                <button *ngIf="!element.userName" style="margin-top:3px;width: 110px" mat-flat-button color="primary" matTooltip="Assign Request" (click)="openDialog(element.requestId,element.referenceNo,element.userName)">Assign</button>
+                <button *ngIf="element.userName"  style="margin-top:3px;width: 110px" mat-flat-button color="primary" matTooltip="Re-Assign Request" (click)="openDialog(element.requestId,element.referenceNo,element.userName)">Re-Assign</button>
                 &nbsp;
-                <button style="margin-top:3px" mat-flat-button color="accent"  matTooltip="Own Request" (click)="GetItem(element.Id)">Own</button>
+                <button *ngIf="!element.isOwned" style="margin-top:3px;width: 110px" mat-flat-button color="accent"  matTooltip="Own Request" (click)="ownRequest(element.requestId)">Own</button>
             </td>
         </ng-container>
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

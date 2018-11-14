@@ -1,16 +1,18 @@
 <div class="m-lr-20px">
-    <form [formGroup]="form" style="margin-top: 10px;" *ngIf="!readOnly">
+    <form [formGroup]="form" style="margin-top: 10px;" (ngSubmit)="submit()" *ngIf="!readOnly">
         <formly-form [model]="model" [fields]="fields" [options]="options" [form]="form">
             <div *ngIf="!displayMode" fxLayout="row wrap" fxLayoutAlign="end center" fxLayoutGap="3px">
-                <button type="button" color="primary" (click)="submit()" mat-raised-button>Save</button>
+                <button *ngIf="!isSaved" type="button" color="primary" (click)="submit()" mat-raised-button>Save</button>
+                <button *ngIf="isSaved" type="button" color="primary" (click)="submit()" mat-raised-button>Update</button>
                 <button type="submit" color="accent" mat-raised-button>Cancel</button>
             </div>
         </formly-form>
     </form>
 </div>
+
 <div style="margin: 20px 0px">
-    <app-owners-list [displayMode]="false" [userGroup]="userGroup"></app-owners-list>
+    <app-owners-list [displayMode]="false" [customerProfileId]="customerProfileId"></app-owners-list>
 </div>
 <div style="margin: 20px 0px">
-    <app-signatories-list [displayMode]="false" [userGroup]="userGroup"></app-signatories-list>
+    <app-signatories-list [displayMode]="false" [customerProfileId]="customerProfileId"></app-signatories-list>
 </div>

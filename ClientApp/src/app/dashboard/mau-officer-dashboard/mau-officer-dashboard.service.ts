@@ -1,21 +1,23 @@
-import { Injectable } from '@angular/core';
+import { Injectable,Inject  } from '@angular/core';
+import { HttpClientModule,HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 import { DashboardData } from '../../temp/dashboardData/dashboard-data';
 import { AoListData } from "../../temp/aoListData/ao-list-data";
 
 @Injectable()
 export class MauOfficerDashboardService {
-  private _dashboard: DashboardData;
+  //private _dashboard: DashboardData;
 
-  constructor() {
-    this._dashboard = new DashboardData();
+  constructor(private http: HttpClient) {
+    //this._dashboard = new DashboardData();
   }
 
   Get() {
-    return this._dashboard.ElementData;
+    return this.http.get('https://localhost:5001/api/MauOfficerDashboard');
   }
 
   GetTableFields() {
-    return this._dashboard.Fields;
+    //return this._dashboard.Fields;
   }
 
 }

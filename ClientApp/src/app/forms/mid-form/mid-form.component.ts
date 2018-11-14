@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { MidFormService } from './mid-form.service';
 import { FormlyFieldConfig } from '@ngx-formly/core';
-import { AppBaseComponent } from '../../app-base/app-base.component';
+import { AppBaseComponent } from '../../../app/app-base/app-base.component';
 
 @Component({
   selector: 'app-mid-form',

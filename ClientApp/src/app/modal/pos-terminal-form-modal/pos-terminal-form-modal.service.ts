@@ -30,7 +30,7 @@ export class PosTerminalFormModalService {
             type: 'select',
             key: 'terminalType',
             templateOptions: {
-              label: "Terminal Type"
+              label: 'Terminal Type'
             }
           },
           {
@@ -38,7 +38,7 @@ export class PosTerminalFormModalService {
             type: 'select',
             key: 'terminalModelRequested',
             templateOptions: {
-              label: "Terminal Model Requested"
+              label: 'Terminal Model Requested'
             }
           }
         ]
@@ -51,7 +51,7 @@ export class PosTerminalFormModalService {
             type: 'input',
             key: 'numberOfTerminalsRequested',
             templateOptions: {
-              label: "Number of Terminal/s Requested"
+              label: 'Number of Terminal/s Requested'
             }
           },
           {
@@ -59,7 +59,7 @@ export class PosTerminalFormModalService {
             type: 'input',
             key: 'telcoProvider',
             templateOptions: {
-              label: "Telco Provider (for Dial-up)"
+              label: 'Telco Provider (for Dial-up)'
             }
           },
           {
@@ -67,7 +67,7 @@ export class PosTerminalFormModalService {
             type: 'input',
             key: 'simType',
             templateOptions: {
-              label: "Sim Type (for GPRS)"
+              label: 'Sim Type (for GPRS)'
             }
           }
         ]
@@ -82,8 +82,8 @@ export class PosTerminalFormModalService {
             templateOptions: {
               label: 'TIP ADJUST',
               options: [
-                { value: 'true', label: 'Yes' },
-                { value: 'false', label: 'No' }
+                { value: true, label: 'Yes' },
+                { value: false, label: 'No' }
               ]
             }
           },
@@ -94,8 +94,8 @@ export class PosTerminalFormModalService {
             templateOptions: {
               label: 'HOTEL SET-UP FACILITY (PRE-AUTH, OFF-LINE)?',
               options: [
-                { value: 'true', label: 'Yes' },
-                { value: 'false', label: 'No' }
+                { value: true, label: 'Yes' },
+                { value: false, label: 'No' }
               ]
             }
           },
@@ -106,8 +106,8 @@ export class PosTerminalFormModalService {
             templateOptions: {
               label: 'MANUAL KEY-IN FACILITY?',
               options: [
-                { value: 'true', label: 'Yes' },
-                { value: 'false', label: 'No' }
+                { value: true, label: 'Yes' },
+                { value: false, label: 'No' }
               ]
             }
           }

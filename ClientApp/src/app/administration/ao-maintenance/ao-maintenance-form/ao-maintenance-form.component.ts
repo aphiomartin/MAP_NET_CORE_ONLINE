@@ -1,8 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { AoMaintenanceFormService } from './ao-maintenance-form.service';
-import { FormGroup } from '@angular/forms';
-import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
-import { MatDialogRef } from '@angular/material';
+import { AoMaintenanceFormService } from '../../ao-maintenance/ao-maintenance-form/ao-maintenance-form.service';
+import { FormGroup } from '../../../../../node_modules/@angular/forms';
+import { FormlyFormOptions, FormlyFieldConfig } from '../../../../../node_modules/@ngx-formly/core';
+import { MatDialogRef } from '../../../../../node_modules/@angular/material';
 
 @Component({
   selector: 'app-ao-maintenance-form',

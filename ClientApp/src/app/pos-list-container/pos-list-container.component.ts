@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
-import { FormlyFieldConfig } from '@ngx-formly/core';
+import { FormGroup } from '../../../node_modules/@angular/forms';
+import { FormlyFieldConfig } from '../../../node_modules/@ngx-formly/core';
 import { PosListContainerService } from './pos-list-container.service';
-import { Router } from '@angular/router';
+import { Router } from '../../../node_modules/@angular/router';
 
 @Component({
   selector: 'app-pos-list-container',

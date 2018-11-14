@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
 import { Observable, of } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { ApiConstants } from '../api-constants';
 
 @Injectable()
 export class CustomerProfileService {
@@ -11,7 +13,7 @@ export class CustomerProfileService {
         {
           className: 'flex-1',
           type: 'input',
-          key: 'businessName',
+          key: 'legalName',
           templateOptions: {
             label: 'Business/Legal Name',
             placeholder: 'Business Name'
@@ -79,7 +81,7 @@ export class CustomerProfileService {
         {
           className: 'flex-1',
           type: 'input',
-          key: 'businessName',
+          key: 'legalName',
           templateOptions: {
             label: 'Business/Legal Name',
             placeholder: 'Business Name',
@@ -143,17 +145,29 @@ export class CustomerProfileService {
     }
   ];
 
-  constructor() { }
+  constructor(private _http: HttpClient) { }
 
   getCustomerProfileFields(userGroup): FormlyFieldConfig[] {
-    var fields;
-    if (userGroup == 'ao') {
-      fields = this.aoFields
-    } else if (userGroup == 'mdcs') {
+    let fields;
+    if (userGroup === 'ao') {
+      fields = this.aoFields;
+    } else if (userGroup === 'mdcs') {
       fields = this.mdcsFields;
     }
 
     return fields;
+  }
+
+  create(customerProfile): Observable<any> {
+    return this._http.post(ApiConstants.customerProfileApi, customerProfile);
+  }
+
+  update(id, customerProfile): Observable<any> {
+    return this._http.put(ApiConstants.customerProfileApi + '/' + id, customerProfile);
+  }
+
+  delete(id): Observable<any> {
+    return this._http.delete(ApiConstants.customerProfileApi + '/' + id);
   }
 }
 

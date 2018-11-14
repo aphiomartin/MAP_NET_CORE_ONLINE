@@ -1,16 +1,16 @@
 using Microsoft.EntityFrameworkCore;
 namespace MAP_Web.DataAccess
 {
-    public class MAP_Context:DbContext
+    public class MAP_Context : DbContext
     {
         public MAP_Context(DbContextOptions<MAP_Context> options)
-        :base(options)
+        : base(options)
         {
 
         }
 
-        public DbSet<Models.Employee> Employee{get;set;}
-        public DbSet<Models.CustomerProfile> CustomerProfile{get;set;}
+        public DbSet<Models.Employee> Employee { get; set; }
+        public DbSet<Models.CustomerProfile> CustomerProfile { get; set; }
         public virtual DbSet<Models.Request> Request { get; set; }
         public virtual DbSet<Models.POSRequest> POSRequest { get; set; }
         public virtual DbSet<Models.MAEF> MAEF { get; set; }
@@ -23,9 +23,17 @@ namespace MAP_Web.DataAccess
         public virtual DbSet<Models.BranchAffiliation> BranchAffiliation { get; set; }
         public virtual DbSet<Models.DocumentList> DocumentList { get; set; }
         public virtual DbSet<Models.OcularInspectionForm> OcularInspectionForm { get; set; }
-         public virtual DbSet<Models.MaintenanceMaster> MaintenanceMaster { get; set; }
+        public virtual DbSet<Models.MaintenanceMaster> MaintenanceMaster { get; set; }
         public virtual DbSet<Models.MaintenanceDetails> MaintenanceDetails { get; set; }
         public virtual DbSet<Models.AuditLog> AuditLog { get; set; }
-        
+        public virtual DbSet<Models.AOMaintenance> AOMaintenance { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Models.Request>()
+            .HasOne(r => r.CustomerProfile)
+            .WithOne(c => c.Request)
+            .HasForeignKey<Models.Request>(r => r.CustomerProfileId);
+        }
     }
 }

@@ -10,15 +10,18 @@
             </mat-panel-description>
         </mat-expansion-panel-header>
 <app-branch-form></app-branch-form>
- 
-<mat-card>
 <mat-tab-group>
+<<<<<<< HEAD
    <mat-tab label="OIF" > <app-ocular-inspection-form [displayMode]="false"></app-ocular-inspection-form> </mat-tab>
    <mat-tab label="POS" ><app-pos-list [showAdd]="true"></app-pos-list></mat-tab>
    <mat-tab label="MID" ><app-mid></app-mid></mat-tab>
+=======
+   <mat-tab label="OIF" *ngIf="showOif"> <app-ocular-inspection-form [displayMode]="true"></app-ocular-inspection-form> </mat-tab>
+   <mat-tab label="POS" *ngIf="showPos"><app-pos-form [displayMode]="true"></app-pos-form></mat-tab>
+   <mat-tab label="MID" *ngIf="showMid"><app-mid></app-mid></mat-tab>
+>>>>>>> c0d8e969640ab999cad76dd06e5e357947a4c785
 </mat-tab-group>
-</mat-card>
- 
+
     </mat-expansion-panel>
 
     <mat-expansion-panel>
@@ -29,13 +32,13 @@
                 <mat-panel-description>
                     DBA Name Cubao
                 </mat-panel-description>
-            </mat-expansion-panel-header><!--
+            </mat-expansion-panel-header>
 <app-branch-form></app-branch-form>    
 <mat-tab-group>
    <mat-tab *ngIf="showOif" label="OIF"> <app-ocular-inspection-form [displayMode]="true"></app-ocular-inspection-form> </mat-tab>
    <mat-tab *ngIf="showPos" label="POS"><app-pos-form [displayMode]="true"></app-pos-form></mat-tab>
    <mat-tab *ngIf="showMid" label="MID"><app-mid-form [displayMode]="true"></app-mid-form></mat-tab>
-</mat-tab-group> -->
+</mat-tab-group> 
     
         </mat-expansion-panel>
 

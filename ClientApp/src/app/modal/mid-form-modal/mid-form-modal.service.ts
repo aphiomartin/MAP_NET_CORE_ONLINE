@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { ApiConstants } from 'src/app/api-constants';
+import { Observable } from 'rxjs';
 
 const apiUrl = '';
 @Injectable()
@@ -198,7 +200,7 @@ export class MidFormModalService {
             type: 'input',
             expressionProperties: {
               'templateOptions.required': (model: any, formState: any) => {
-                return model['merchantGroupCode'] == undefined && model['serviceFeeStraight'] == undefined;
+                return model['merchantGroupCode'] === undefined && model['serviceFeeStraight'] === undefined;
               }
             },
             templateOptions: {
@@ -213,7 +215,7 @@ export class MidFormModalService {
         fieldGroup: [
           {
             className: 'flex-1',
-            key: 'amexMna',
+            key: 'merchantMpPromotionGroup',
             type: 'checkbox',
             defaultValue: 1,
             templateOptions: {
@@ -222,15 +224,15 @@ export class MidFormModalService {
           },
           {
             className: 'flex-1',
-            key: 'intesCode',
-            type: 'input',
+            key: 'defaultMpPromotion',
+            type: 'checkbox',
             templateOptions: {
-              label: 'INTES Code',
+              label: 'Diners ISE',
             }
           },
           {
             className: 'flex-1',
-            key: 'payDelayDays',
+            key: 'defaultMpPromotion',
             type: 'input',
             defaultValue: 1,
             templateOptions: {
@@ -246,7 +248,7 @@ export class MidFormModalService {
         fieldGroup: [
           {
             className: 'flex-1',
-            key: 'merchantPromotionsGroup',
+            key: 'merchantMpPromotionGroup',
             type: 'select',
             defaultValue: 1,
             templateOptions: {
@@ -317,11 +319,11 @@ export class MidFormModalService {
     return this._http.get(apiUrl);
   }
 
-  create(): void {
-    this._http.post(apiUrl, {});
+  create(mid): Observable<any> {
+    return this._http.post(ApiConstants.midApi, mid);
   }
 
-  update(): void {
-    this._http.put(apiUrl, {});
+  update(id, mid): Observable<any> {
+    return this._http.put(ApiConstants.midApi + '/' + id, mid);
   }
 }

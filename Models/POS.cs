@@ -86,5 +86,7 @@ namespace MAP_Web.Models
         public string dateAndTimeTidIssued { get; set; }
         public bool isWaved { get; set; }
         public bool isShared { get; set; }
+        public int BranchId { get; set; }
+        public Branch Branch { get; set; }
     }
 }

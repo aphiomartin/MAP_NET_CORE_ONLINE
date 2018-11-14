@@ -11,14 +11,11 @@ export class MdcsCheckerComponent implements OnInit {
   title: string;
   subTitle: string;
   mode: string;
-  userGroup: string;
-
   constructor() { }
 
   ngOnInit() {
     this.title = 'New Affiliation';
     this.subTitle = 'FOR ENCODER CHECKER REVIEW';
     this.mode = 'forPreScreening';
-    this.userGroup = 'mdcs';
   }
 }

@@ -17,21 +17,25 @@ export class MidFormModalComponent implements OnInit {
   form: FormGroup;
   fields: FormlyFieldConfig[];
 
-  constructor(private _route: ActivatedRoute, private _router: Router, private _service: MidFormModalService,
+  constructor(private _route: ActivatedRoute, private _router: Router, private midService: MidFormModalService,
   private _modalRef: MatDialogRef<MidFormModalComponent>) {
 
   }
 
   ngOnInit() {
     this.form = new FormGroup({});
-    this.fields = this._service.getFormlyFields();
+    this.fields = this.midService.getFormlyFields();
     this.model = {};
   }
 
-  Submit() {
-    console.log(this.model);
+  submit() {
+    this.midService.create(this.model).subscribe(data => {
+      this.model = data;
+      console.log('SUCCESS');
+    });
   }
-  Cancel() {
+
+  cancel() {
     this._modalRef.close();
   }
 }

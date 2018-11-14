@@ -62,5 +62,7 @@ namespace MAP_Web.Models
         public string reviewedBy { get; set; }
         public Nullable<DateTime> dateReviewed { get; set; }
         public bool isWaved { get; set; }
+        public int BranchId { get; set; }
+        public Branch Branch { get; set; }
     }
 }

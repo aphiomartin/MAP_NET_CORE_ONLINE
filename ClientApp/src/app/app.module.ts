@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, OnInit } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormlyModule } from '@ngx-formly/core';
@@ -143,13 +143,7 @@ import { OwnersListComponent } from './owners-list/owners-list.component';
 import { PosListContainerComponent } from './pos-list-container/pos-list-container.component';
 import { PosListComponent } from './pos-list/pos-list.component';
 import { PosFormModalComponent } from './modal/pos-form-modal/pos-form-modal.component';
-import { BranchListPosComponent } from './branch-list-pos/branch-list-pos.component';
-import { DetailsForMdcsComponent } from './details-for-mdcs/details-for-mdcs.component';
-import { VerificationScreenComponent } from './new-affiliation/verification-screen/verification-screen.component';
-import { ApproveWithReqReasonListComponent } from './approve-with-req-reason-list/approve-with-req-reason-list.component';
-import { ApproveWithReqReasonFormModalComponent } from './modal/approve-with-req-reason-form-modal/approve-with-req-reason-form-modal.component';
-import { ApproveWithExceptReasonDetailsModalComponent } from './modal/approve-with-except-reason-details-modal/approve-with-except-reason-details-modal.component';
-import { ApproveWithExceptReasonDetailsListComponent } from './approve-with-except-reason-details-list/approve-with-except-reason-details-list.component';
+import { HttpClient } from 'selenium-webdriver/http';
 
 
 
@@ -266,14 +260,7 @@ import { ApproveWithExceptReasonDetailsListComponent } from './approve-with-exce
     OwnersListComponent,
     PosListContainerComponent,
     PosListComponent,
-    PosFormModalComponent,
-    BranchListPosComponent,
-    DetailsForMdcsComponent,
-    VerificationScreenComponent,
-    ApproveWithReqReasonListComponent,
-    ApproveWithReqReasonFormModalComponent,
-    ApproveWithExceptReasonDetailsModalComponent,
-    ApproveWithExceptReasonDetailsListComponent
+    PosFormModalComponent
   ],
   imports: [
     BrowserModule,
@@ -301,15 +288,7 @@ import { ApproveWithExceptReasonDetailsListComponent } from './approve-with-exce
         {
           name: 'printAdmrc',
           component: PrintAdmrcSectionTypeComponent
-        },
-        {
-        name: 'approveWithReq',
-        component: ApproveWithReqReasonListComponent
-        },
-        {
-          name: 'approveWithExcept',
-          component: ApproveWithExceptReasonDetailsListComponent
-        }       
+        }
         ////////////////////////////////////////////////////////
       ]
       }
@@ -347,7 +326,7 @@ import { ApproveWithExceptReasonDetailsListComponent } from './approve-with-exce
     MatRadioModule,
     MatPaginatorModule,
     MatSortModule,
-    MatCheckboxModule,
+    MatCheckboxModule
   ],
   entryComponents: [RemarksModalComponent, HistoryModalComponent,
     AoListModalComponent, MidFormModalComponent,
@@ -356,8 +335,13 @@ import { ApproveWithExceptReasonDetailsListComponent } from './approve-with-exce
     ParameterMaintenanceDetailsComponent, AoMaintenanceFormComponent, BuMaintenanceFormComponent, 
     DefaultMidMaintenanceFormComponent, MidFormComponent, MidModalComponent, DeleteModalComponent, 
     SearchModalComponent, PosTerminalFormModalComponent, OwnersFormModalComponent, SignatoriesFormModalComponent,
-    PosFormModalComponent, ApproveWithReqReasonFormModalComponent, ApproveWithExceptReasonDetailsModalComponent],
+    PosFormModalComponent],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule { 
+  constructor() {
+    // console.log('asd');
+  }
+
+}

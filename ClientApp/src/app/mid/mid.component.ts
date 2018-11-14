@@ -4,7 +4,7 @@ import { MidService } from './mid.service';
 import { MatDialog } from '@angular/material';
 import { MidFormModalComponent } from '../modal/mid-form-modal/mid-form-modal.component';
 import { MidModalComponent } from '../modal/mid-modal/mid-modal.component';
-import { FormControl } from '@angular/forms';
+import { FormControl } from '../../../node_modules/@angular/forms';
 
 @Component({
   selector: 'app-mid',

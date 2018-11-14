@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
 import { Observable, of } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { ApiConstants } from 'src/app/api-constants';
 
 @Injectable({
     providedIn: 'root'
@@ -18,7 +20,7 @@ export class OcularInspectionFormService {
             }
         },
         {
-            template: "<span class='mat-subheading-1'> DBA (Branch / Outlet Address) </span>"
+            template: '<span class="mat-subheading-1"> DBA (Branch / Outlet Address) </span>'
         },
         {
             fieldGroupClassName: 'display-flex',
@@ -108,7 +110,7 @@ export class OcularInspectionFormService {
                     className: 'flex-1',
                     templateOptions: {
                         required: true,
-                        label: 'Admin Contact Person'
+                        label: 'Admin Contact person'
                     }
                 },
                 {
@@ -223,7 +225,7 @@ export class OcularInspectionFormService {
             fieldGroupClassName: 'display-flex',
             fieldGroup: [
                 {
-                    className: "flex-1",
+                    className: 'flex-1',
                     key: 'premiseStatus',
                     type: 'radio',
                     templateOptions: {
@@ -289,7 +291,7 @@ export class OcularInspectionFormService {
                         valueProp: 'TypeOfPremise_Id',
                         options: [{ Description: 'Please provide', TypeOfPremise_Id: 0 }]
                     },
-                    defaultValue: 0 
+                    defaultValue: 0
                 }
             ]
         },
@@ -717,9 +719,25 @@ export class OcularInspectionFormService {
         }
     ];
 
-    constructor() { }
+    constructor(private _http: HttpClient) { }
 
     getOIFFields(): FormlyFieldConfig[] {
         return this.fields;
+    }
+
+    get(id): Observable<any> {
+        if (id) {
+            return this._http.get(ApiConstants.oifApi + '/' + id);
+        } else {
+            return this._http.get(ApiConstants.oifApi);
+        }
+    }
+
+    create(oif): Observable<any> {
+        return this._http.post(ApiConstants.oifApi, oif);
+    }
+
+    update(id, oif): Observable<any> {
+        return this._http.put(ApiConstants.oifApi + '/' + id, oif);
     }
 }

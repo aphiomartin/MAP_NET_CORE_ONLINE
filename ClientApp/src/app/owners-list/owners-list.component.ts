@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { OwnersListService } from './owners-list.service';
-import { MatDialog } from '@angular/material';
+import { MatDialog } from '../../../node_modules/@angular/material';
 import { OwnersFormModalComponent } from '../modal/owners-form-modal/owners-form-modal.component';
 
 @Component({
@@ -13,21 +13,27 @@ export class OwnersListComponent implements OnInit {
   displayedColumns: string[];
   dataSource: Object[];
   @Input() displayMode: boolean;
-  @Input() userGroup: string;
+  @Input() customerProfileId: number;
 
-  constructor(private _service: OwnersListService, private _dialog: MatDialog) { }
+  constructor(private _service: OwnersListService, private _dialog: MatDialog) {
+  }
 
   ngOnInit() {
     this.displayedColumns = this._service.getTableFields();
-    this.dataSource = this._service.get();
+    
+    this._service.get(this.customerProfileId).subscribe(data => {
+      
+    });
   }
 
   addOwner() {
-    this._dialog.open(OwnersFormModalComponent, {
-      width: '60%',
-      data: {
-        userGroup: this.userGroup
-      }
+    setTimeout(() => {
+      this._dialog.open(OwnersFormModalComponent, {
+        width: '60%',
+        data: {
+          customerProfileId: this.customerProfileId
+        }
+      });
     });
   }
 }

@@ -71,9 +71,6 @@ import { MamVerificationScreenFormComponent } from './forms/mam-verification-scr
 import { PosTerminalBrandListComponent } from './pos-terminal-brand-list/pos-terminal-brand-list.component';
 import { PosListContainerComponent } from './pos-list-container/pos-list-container.component';
 import { PosListComponent } from './pos-list/pos-list.component';
-import { BranchListPosComponent } from './branch-list-pos/branch-list-pos.component';
-import { DetailsForMdcsComponent } from './details-for-mdcs/details-for-mdcs.component';
-import { ApproveWithReqReasonListComponent } from './approve-with-req-reason-list/approve-with-req-reason-list.component';
 
 
 const routes: Routes = [
@@ -282,14 +279,8 @@ const routes: Routes = [
       { path: 'docForm', component: DocumentCheckListFormRequestLevelComponent, outlet: 'docForm' }
     ]
   },
-  { path: 'na/mdcsEncoder/:mode', component: MdcsEncoderComponent, children: [
-    { path: '', component: BranchListPosComponent, outlet: 'mdcsDetails' },
-    { path: ':id', component: DetailsForMdcsComponent, outlet: 'mdcsDetails' }
-  ] },
-  { path: 'na/mdcsChecker/:mode', component: MdcsCheckerComponent , children: [
-    { path: '', component: BranchListPosComponent, outlet: 'mdcsDetails' },
-    { path: ':id', component: DetailsForMdcsComponent, outlet: 'mdcsDetails' }
-  ] },
+  { path: 'na/mdcsEncoder/:mode', component: MdcsEncoderComponent },
+  { path: 'na/mdcsChecker/:mode', component: MdcsCheckerComponent },
   // { path: 'na/mdcsUser', component: MdcsUserComponent },
   { path: 'na/psServicing', component: PsServicingComponent },
   { path: 'aoChecking', component: AoCheckingComponent },
@@ -336,9 +327,7 @@ const routes: Routes = [
   { path: 'defaultMIDMaintenance', component: DefaultMidMaintenanceComponent },
   { path: 'debitTid', component: DebitTidComponent },
   { path: 'custProfile', component: CustomerProfileComponent },
-  { path: 'mam', component: MamVerificationScreenFormComponent },
-
-  { path: 'ApprovedWithReqReasonList', component: ApproveWithReqReasonListComponent }
+  { path: 'mam', component: MamVerificationScreenFormComponent }
 ];
 
 @NgModule({

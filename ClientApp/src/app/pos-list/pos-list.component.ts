@@ -26,7 +26,7 @@ export class PosListComponent implements OnInit {
 
     this._route.data.subscribe(data => {
       console.log(this.showAdd);
-      if (this.showAdd == undefined) {
+      if (this.showAdd === undefined) {
         console.log(data['showAdd']);
         if (data['showAdd']) {
           this.showAdd = true;
