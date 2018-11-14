@@ -1628,11 +1628,38 @@ export class PosFormService {
     }
   ]
 
+  veriScreenFields: FormlyFieldConfig[] = [
+    {
+      fieldGroupClassName: 'display-flex',
+      fieldGroup: [
+        {
+          className: 'flex-1',
+          type: 'calendar',
+          key: 'requestPullOutDateForTempPOSTerminals',
+          templateOptions: {
+            label: "Request Pull Out Date For Temporary POS Terminals",
+            disabled: true
+          }
+        },
+        {
+          className: 'flex-1',
+          type: 'input',
+          key: 'remarksSpecialInstructions',
+          templateOptions: {
+            label: "Remarks / Special Instructions (Dispatch-Related Only)",
+            disabled: true
+          }
+        },
+
+      ]
+    }
+  ]
+
   constructor() { }
 
   getPosFields(userGroup): FormlyFieldConfig[] {
     var retFields: FormlyFieldConfig[];
-    userGroup = 'ao';
+    userGroup = 'veriScreenFields';
     switch (userGroup) {
       case 'ao':
         retFields = this.aoFields
@@ -1645,6 +1672,9 @@ export class PosFormService {
         break;
       case 'psServicing':
         retFields = this.psServicingFields
+        break;
+      case 'veriScreenFields':
+        retFields = this.veriScreenFields
         break;
       default:
         retFields = this.fields

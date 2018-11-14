@@ -1564,9 +1564,34 @@ export class PosFormModalService {
   //   }
   // ]
 
+  veriScreenFields: FormlyFieldConfig[] = [
+    {
+      fieldGroupClassName: 'display-flex',
+      fieldGroup: [
+        {
+          className: 'flex-1',
+          type: 'calendar',
+          key: 'requestPullOutDateForTempPOSTerminals',
+          templateOptions: {
+            label: "Request Pull Out Date For Temporary POS Terminals"
+          }
+        },
+        {
+          className: 'flex-1',
+          type: 'input',
+          key: 'remarksSpecialInstructions',
+          templateOptions: {
+            label: "Remarks / Special Instructions (Dispatch-Related Only)"
+          }
+        },
+
+      ]
+    }
+  ]
+
   constructor() { }
 
   getPosFields(userGroup): FormlyFieldConfig[] {
-    return this.fields;
+    return this.veriScreenFields;
   }
 }

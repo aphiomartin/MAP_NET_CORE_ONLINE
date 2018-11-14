@@ -26,6 +26,19 @@ export class ApproveWithExceptReasonDetailsModalService {
         }
       ]
     },
+    {
+      fieldGroupClassName: 'display-flex',
+      fieldGroup: [
+        {
+          className: 'flex-1',
+          type: 'input',
+          key: 'awerdRemarks',
+          templateOptions: {
+            label: 'Remarks'
+          }
+        }
+      ]
+    },
   
   ];
   constructor() { }

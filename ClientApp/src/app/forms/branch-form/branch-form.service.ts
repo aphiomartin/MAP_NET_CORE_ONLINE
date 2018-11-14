@@ -4256,8 +4256,7 @@ export class BranchFormService {
           key: 'dbaName',
           templateOptions: {
             label: 'DBA Name(DBA/Trade Name)',
-            placeholder: 'DBA Name(DBA/Trade Name)',
-            disabled: true
+            placeholder: 'DBA Name(DBA/Trade Name)'
           }
         }
       ]
@@ -4270,8 +4269,7 @@ export class BranchFormService {
         key: 'dbaAddress1',
         templateOptions: {
           label: 'DBA(Branch/Outlet Address )',
-          placeholder: 'DBA(Branch/Outlet Address )',
-          disabled: true
+          placeholder: 'DBA(Branch/Outlet Address )'
         },
       }]
     },
@@ -4282,7 +4280,7 @@ export class BranchFormService {
         type: 'input',
         key: 'dbaAddress2',
         templateOptions: {
-          disabled: true
+
         },
       }]
     },
@@ -4293,7 +4291,7 @@ export class BranchFormService {
         type: 'input',
         key: 'dbaAddress3',
         templateOptions: {
-          disabled: true
+
         }
       }]
     },
@@ -4304,7 +4302,7 @@ export class BranchFormService {
         type: 'input',
         key: 'dbaAddress4',
         templateOptions: {
-          disabled: true
+
         }
       }]
     },
@@ -4316,7 +4314,6 @@ export class BranchFormService {
         key: 'dbaCity',
         templateOptions: {
           label: 'DBA City',
-          disabled: true,
           options: [
             { label: 'PASIG', value: '1' },
             { label: 'MAKATI CITY', value: '2' },
@@ -4360,8 +4357,7 @@ export class BranchFormService {
             { label: 'AREA MALL CODE 1', value: '1' },
             { label: 'AREA MALL CODE 2', value: '2' },
             { label: 'AREA MALL CODE 3', value: '3' }
-          ],
-          disabled: true
+          ]
         }
       }
       ]
@@ -4374,8 +4370,7 @@ export class BranchFormService {
         key: 'branchPhoneNumber',
         templateOptions: {
           label: 'Branch/Outlet Phone Number',
-          placeholder: 'Branch/Outlet Phone Number',
-          disabled: true
+          placeholder: 'Branch/Outlet Phone Number'
         }
       },
       {
@@ -4384,8 +4379,7 @@ export class BranchFormService {
         key: 'branchMobileNumber',
         templateOptions: {
           label: 'Mobile Number',
-          placeholder: 'Mobile Number',
-          disabled: true
+          placeholder: 'Mobile Number'
         }
       }]
     },
@@ -4457,8 +4451,7 @@ export class BranchFormService {
           key: 'taxExemptValidityTo',
           templateOptions: {
             label: 'Date To',
-            placeholder: 'Date To',
-            disabled: true
+            placeholder: 'Date To'
           }
         }
       ]
@@ -4660,7 +4653,7 @@ export class BranchFormService {
         type: 'input',
         key: 'merchantNumber',
         templateOptions: {
-          label: 'Store ID',
+          label: 'Merchant Number',
           placeholder: 'Merchant Number'
         }
       }
@@ -4901,8 +4894,7 @@ export class BranchFormService {
               { label: '5423-Gaming', value: '3' },
               { label: '5424-Software Industry', value: '4' },
               { label: '5425-Apparel Industry', value: '5' }
-            ],
-            disabled: true
+            ]
           }
         },
         {
@@ -4915,8 +4907,7 @@ export class BranchFormService {
           templateOptions: {
             type: 'number',
             label: 'INTES Code for Diners',
-            placeholder: 'INTES Code for Diners',
-            disabled: true
+            placeholder: 'INTES Code for Diners'
           }
         }
       ]
@@ -4933,8 +4924,7 @@ export class BranchFormService {
           },
           templateOptions: {
             label: 'Fee Account(TPP Only)',
-            placeholder: '(TPP Only)',
-            disabled: true
+            placeholder: '(TPP Only)'
           }
         },
         {
@@ -4948,8 +4938,7 @@ export class BranchFormService {
             label: 'Strategic Merchant',
             options: [
               { label: '1', value: '1' }
-            ],
-            disabled: true
+            ]
           },
         }
       ]
@@ -4966,8 +4955,7 @@ export class BranchFormService {
           },
           templateOptions: {
             label: 'MC Assigned Id',
-            placeholder: 'MC Assigned Id',
-            disabled: true
+            placeholder: 'MC Assigned Id'
           }
         },
         {
@@ -4979,8 +4967,7 @@ export class BranchFormService {
           },
           templateOptions: {
             label: 'Amex Risk Indicator',
-            placeholder: 'Amex Risk Indicator',
-            disabled: true
+            placeholder: 'Amex Risk Indicator'
           }
         }
       ]
@@ -4998,8 +4985,7 @@ export class BranchFormService {
         },
         templateOptions: {
           label: 'Imprinter Number(Sales Slip Handling)',
-          placeholder: 'Imprinter Number(Sales Slip Handling)',
-          disabled: true
+          placeholder: 'Imprinter Number(Sales Slip Handling)'
         }
       },
       {
@@ -5011,8 +4997,7 @@ export class BranchFormService {
         },
         templateOptions: {
           label: 'Imprinter AMEX (MID Capping)',
-          placeholder: 'Imprinter AMEX (MID Capping)',
-          disabled: true
+          placeholder: 'Imprinter AMEX (MID Capping)'
         }
       }
       ]
@@ -5030,8 +5015,7 @@ export class BranchFormService {
         },
         templateOptions: {
           label: 'Imprinter DC (Top Corporation/Ecom)',
-          placeholder: 'Imprinter DC (Top Corporation/Ecom)',
-          disabled: true
+          placeholder: 'Imprinter DC (Top Corporation/Ecom)'
         }
       },
       {
@@ -5043,8 +5027,7 @@ export class BranchFormService {
         },
         templateOptions: {
           label: 'Imprinter Others(Class Code)',
-          placeholder: 'Imprinter Others(Class Code)',
-          disabled: true
+          placeholder: 'Imprinter Others(Class Code)'
         }
       },
       ]
@@ -5062,8 +5045,7 @@ export class BranchFormService {
         },
         templateOptions: {
           label: 'Hold-out Account Number',
-          placeholder: 'Hold-out Account Number',
-          disabled: true
+          placeholder: 'Hold-out Account Number'
         }
       },
       { //numeric
@@ -5075,8 +5057,7 @@ export class BranchFormService {
         },
         templateOptions: {
           label: 'Hold-out Amount',
-          placeholder: 'Hold-out Amount',
-          disabled: true
+          placeholder: 'Hold-out Amount'
         }
       }
       ]
@@ -5094,8 +5075,7 @@ export class BranchFormService {
         },
         templateOptions: {
           label: 'Remarks',
-          placeholder: 'Remarks',
-          disabled: true
+          placeholder: 'Remarks'
         }
       }
       ]
@@ -5111,8 +5091,7 @@ export class BranchFormService {
           key: 'fraudToolProvider',
           templateOptions: {
             label: 'Fraud Tool Provider',
-            placeholder: 'Fraud Tool Provider',
-            disabled: true
+            placeholder: 'Fraud Tool Provider'
           }
         },
         {
@@ -5121,8 +5100,7 @@ export class BranchFormService {
           key: 'directPaymentLink',
           templateOptions: {
             label: 'Direct Payment Link',
-            placeholder: 'Direct Payment Link',
-            disabled: true
+            placeholder: 'Direct Payment Link'
           }
         },
         {
@@ -5131,8 +5109,7 @@ export class BranchFormService {
           key: 'gatewayIntegrationType',
           templateOptions: {
             label: 'Gateway Integration Type',
-            placeholder: 'Gateway Integration Type',
-            disabled: true
+            placeholder: 'Gateway Integration Type'
           }
         }
       ]

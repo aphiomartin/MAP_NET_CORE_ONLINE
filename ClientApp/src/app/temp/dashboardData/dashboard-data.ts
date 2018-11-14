@@ -24,14 +24,46 @@ export class DashboardData {
           RequestDate: '23Oct18', RequestType: 'New Affiliation', 
           BusinessName: 'Bench', DBAName: 'DBA Name Test',
           RequestedBy: 'Juan dela Cruz',
-          Status: 'FOR ENCODING', TAT: '20 hour(s)'
+          Status: 'FOR EVALUATION', TAT: '20 hour(s)'
         },
         {
           Id: 2, ReferenceNo: '000000110232018',
           RequestDate: '23Oct18', RequestType: 'New Affiliation', 
           BusinessName: 'Bench', DBAName: 'DBA Name Test',
           RequestedBy: 'Juan dela Cruz',
-          Status: 'FOR ENCODER CHECKER REVIEW', TAT: '10 hour(s)'
+          Status: 'FOR RE-EVALUATION', TAT: '10 hour(s)'
+        },
+        {
+          Id: 2, ReferenceNo: '000000110232018',
+          RequestDate: '23Oct18', RequestType: 'New Affiliation', 
+          BusinessName: 'FH', DBAName: 'DBA Name Test',
+          RequestedBy: 'Juan dela Cruz',
+          Status: 'RETURNED BY MAM APPROVER', TAT: '15 hour(s)'
+        }
+
+      ];
+
+      MauEncoderData = [
+        {
+          Id: 1, ReferenceNo: '000000110232018',
+          RequestDate: '23Oct18', RequestType: 'New Affiliation', 
+          BusinessName: 'Bench', DBAName: 'DBA Name Test',
+          RequestedBy: 'Juan dela Cruz',
+          Status: 'FOR EVALUATION', TAT: '20 hour(s)'
+        },
+        {
+          Id: 2, ReferenceNo: '000000110232018',
+          RequestDate: '23Oct18', RequestType: 'New Affiliation', 
+          BusinessName: 'Bench', DBAName: 'DBA Name Test',
+          RequestedBy: 'Juan dela Cruz',
+          Status: 'FOR RE-EVALUATION', TAT: '10 hour(s)'
+        },
+        {
+          Id: 2, ReferenceNo: '000000110232018',
+          RequestDate: '23Oct18', RequestType: 'New Affiliation', 
+          BusinessName: 'FH', DBAName: 'DBA Name Test',
+          RequestedBy: 'Juan dela Cruz',
+          Status: 'RETURNED BY MAM APPROVER', TAT: '15 hour(s)'
         }
       ];
 

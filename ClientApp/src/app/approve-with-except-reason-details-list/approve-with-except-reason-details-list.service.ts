@@ -6,12 +6,12 @@ export class ApproveWithExceptReasonDetailsListService {
   constructor() { }
 
   getTableFields() {
-    return ["Date", "Requirements", "Action"];   
+    return ["Date", "Requirements", "Remarks", "Action"];   
   }
 
   get() {
     return [
-      { Date: 'date', Requirements: 'MDR' }
+      { Date: '11/30/2018', Requirements: 'MDR-Related', Remarks: 'Remarks' }
     ];
   }
 }
