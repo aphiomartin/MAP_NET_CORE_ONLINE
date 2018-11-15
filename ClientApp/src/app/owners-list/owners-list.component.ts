@@ -20,10 +20,10 @@ export class OwnersListComponent implements OnInit {
 
   ngOnInit() {
     this.displayedColumns = this._service.getTableFields();
-    
-    this._service.get(this.customerProfileId).subscribe(data => {
+    this.dataSource = this._service.get();
+   /* this._service.get(this.customerProfileId).subscribe(data => {
       
-    });
+    });*/
   }
 
   addOwner() {

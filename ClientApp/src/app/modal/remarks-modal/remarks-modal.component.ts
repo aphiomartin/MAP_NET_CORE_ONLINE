@@ -29,4 +29,7 @@ export class RemarksModalComponent implements OnInit {
   submit() {
     this._modalRef.close(this.form.value);
   }
+  save() {
+
+  }
 }

@@ -11,9 +11,17 @@ export class OwnersListService {
   getTableFields() {
     return ['Name', 'PercentOfOwnership', 'TypeOfRelatedParty', 'Remarks', 'Action'];
   }
-
+/*
   get(customerProfileId): Observable<any> {
     return this._http.get(ApiConstants.ownersApi + '/' + customerProfileId);
+  } */
+
+  get() {
+    return [
+      { Name: 'Juan dela Cruz', PercentOfOwnership: '50', TypeOfRelatedParty: 'Subsidiary', Remarks: 'Remarks' }
+    ];
   }
+
+
 
 }
