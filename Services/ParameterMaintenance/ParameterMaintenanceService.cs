@@ -8,6 +8,6 @@ namespace MAP_NET_CORE_ONLINE.Services
 {
     public class ParameterMaintenanceService : IParameterMaintenanceService
     {
-        
+        private readonly IUnitOfWork _unitOfWork;
     }
 }
