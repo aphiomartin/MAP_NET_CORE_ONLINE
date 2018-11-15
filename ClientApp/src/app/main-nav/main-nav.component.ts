@@ -17,7 +17,8 @@ export class MainNavComponent implements OnInit {
     );
 
   constructor(private breakpointObserver: BreakpointObserver) { }
-
+  isHidden: boolean;
   ngOnInit() {
+    this.isHidden = true;
   }
 }
