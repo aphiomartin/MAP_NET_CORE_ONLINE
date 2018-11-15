@@ -10,14 +10,15 @@ import { formatDate } from '@angular/common';
   styleUrls: ['./main-nav.component.css'],
 })
 export class MainNavComponent implements OnInit {
-
+  isHidden: boolean;
+  
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
       map(result => result.matches)
     );
 
   constructor(private breakpointObserver: BreakpointObserver) { }
-  isHidden: boolean;
+  
   ngOnInit() {
     this.isHidden = true;
   }
