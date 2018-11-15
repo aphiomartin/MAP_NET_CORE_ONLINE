@@ -68,57 +68,7 @@ export class MaefFormService {
       ]
     },
 
-    {
-      fieldGroupClassName: 'display-flex',
-      fieldGroup: [
-
-        {
-          className: 'flex-1',
-          key: 'withSimulInstall',
-          type: 'radio',
-          templateOptions: {
-            label: 'With Simul Installment?',
-            required: true,
-            options: [
-              { value: true, label: 'Yes' },
-              { value: false, label: 'No' }
-            ],
-          },
-
-        },
-
-        {
-          className: 'flex-1',
-          key: 'withSimulDebit',
-          type: 'radio',
-          templateOptions: {
-            label: 'With Simul Debit?',
-            required: true,
-            options: [
-              { value: true, label: 'Yes' },
-              { value: false, label: 'No' }
-            ],
-          },
-
-        },
-
-        {
-          className: 'flex-1',
-          key: 'currency',
-          type: 'radio',
-          templateOptions: {
-            label: 'Currency?',
-            required: true,
-            options: [
-              { value: '1', label: 'Peso' },
-              { value: '2', label: 'Dollar' },
-              { value: '3', label: 'Peso & Dollar' },
-            ],
-          },
-        }
-
-      ]
-    },
+    
     {
       template: '<span class="mat-headline">Credit Checking</span>',
     },
@@ -619,222 +569,9 @@ export class MaefFormService {
 
       ]
     },
-
-    {
-      template: '<span class="mat-headline">Other Checking</span>',
-    },
-
-
     {
       fieldGroupClassName: 'display-flex',
       fieldGroup: [
-        {
-          className: 'flex-1',
-          key: 'mdrYes',
-          type: 'radio',
-          templateOptions: {
-            label: 'MDR?',
-            required: true,
-            options: [
-              { value: true, label: 'Yes' },
-              { value: false, label: 'No' },
-            ],
-          },
-
-        },
-        {
-          className: 'flex-1',
-          key: 'dccMarkUpRebateYes',
-          type: 'radio',
-          templateOptions: {
-            label: 'DCC Mark-Up & Rebate?',
-            required: true,
-            options: [
-              { value: true, label: 'Yes' },
-              { value: false, label: 'No' },
-            ],
-          },
-
-        },
-        {
-          className: 'flex-1',
-          key: 'mccCorrectYes',
-          type: 'radio',
-          templateOptions: {
-            label: 'MCC?',
-            required: true,
-            options: [
-              { value: true, label: 'Yes' },
-              { value: false, label: 'No' },
-            ],
-          },
-
-        },
-
-      ]
-    },
-
-    {
-      fieldGroupClassName: 'display-flex',
-      fieldGroup: [
-
-        {
-          className: 'flex-1',
-          key: 'intesCodeYes',
-          type: 'radio',
-          templateOptions: {
-            label: 'Intes Code?',
-            required: true,
-            options: [
-              { value: true, label: 'Yes' },
-              { value: false, label: 'No' },
-            ],
-          },
-        },
-        {
-          className: 'flex-1',
-          key: 'bdoSettlemendCASACreditFacYes',
-          type: 'radio',
-          templateOptions: {
-            label: 'BDO Settlement CA/SA For Credit Facility?',
-            required: true,
-            options: [
-              { value: true, label: 'Yes' },
-              { value: false, label: 'No' },
-              { value: '', label: 'N.A.' }
-            ],
-          },
-        },
-        {
-          className: 'flex-1',
-          key: 'bdoSettlemendCASADebitFacYes',
-          type: 'radio',
-          templateOptions: {
-            label: 'BDO Settlement CA/SA For Debit Facility?',
-            required: true,
-            options: [
-              { value: true, label: 'Yes' },
-              { value: false, label: 'No' },
-              { value: '', label: 'N.A.' }
-            ],
-          },
-        },
-      ]
-    },
-    {
-      fieldGroupClassName: 'display-flex',
-      fieldGroup: [
-
-        {
-          className: 'flex-1',
-          key: 'feeAccTppYes',
-          type: 'radio',
-          templateOptions: {
-            label: 'Fee Account(For TPP Only)?',
-            required: true,
-            options: [
-              { value: true, label: 'Yes' },
-              { value: false, label: 'No' },
-              { value: '', label: 'N.A.' },
-            ],
-          },
-
-        },
-        {
-          className: 'flex-1',
-          key: 'holdAccNoYes',
-          type: 'radio',
-          templateOptions: {
-            label: 'Holdout Account Number?',
-            required: true,
-            options: [
-              { value: true, label: 'Yes' },
-              { value: false, label: 'No' },
-              { value: '', label: 'N.A.' },
-            ],
-          },
-
-        },
-        {
-          className: 'flex-1',
-          key: 'tinYes',
-          type: 'radio',
-          templateOptions: {
-            label: 'TIN?',
-            required: true,
-            options: [
-              { value: true, label: 'Yes' },
-              { value: false, label: 'No' },
-              { value: '', label: 'N.A.' },
-            ],
-          },
-        },
-      ]
-    },
-
-    {
-      fieldGroupClassName: 'display-flex',
-      fieldGroup: [
-
-        {
-          className: 'flex-1',
-          key: 'secDtiRegDateYes',
-          type: 'radio',
-          templateOptions: {
-            label: 'SEC/DTI Registration Date?',
-            required: true,
-            options: [
-              { value: true, label: 'Yes' },
-              { value: false, label: 'No' }
-            ],
-          },
-        },
-        {
-          className: 'flex-1',
-          key: 'mobileNumberYes',
-          type: 'radio',
-          templateOptions: {
-            label: 'Mobile Number?',
-            required: true,
-            options: [
-              { value: true, label: 'Yes' },
-              { value: false, label: 'No' }
-            ],
-          },
-        },
-        {
-          className: 'flex-1',
-          key: 'emailAddYes',
-          type: 'radio',
-          templateOptions: {
-            label: 'Email Address?',
-            required: true,
-            options: [
-              { value: true, label: 'Yes' },
-              { value: false, label: 'No' },
-            ],
-          },
-
-        },
-      ]
-    },
-    {
-      fieldGroupClassName: 'display-flex',
-      fieldGroup: [
-        {
-          className: 'flex-1',
-          key: 'websiteYes',
-          type: 'radio',
-          templateOptions: {
-            label: 'Website?',
-            required: true,
-            options: [
-              { value: true, label: 'Yes' },
-              { value: false, label: 'No' },
-              { value: '', label: 'N.A.' },
-            ],
-          },
-        },
         {
           className: 'flex-2',
           key: 'signVerifYes',
@@ -857,30 +594,92 @@ export class MaefFormService {
       fieldGroupClassName: 'display-flex',
       fieldGroup: [
 
-  /*      {
+       {
           className: 'flex-1',
           type: 'checkbox',
           key: 'chkApprove',
+          expressionProperties: {
+            'templateOptions.disabled': (model: any, formState: any) => {
+              return model['chkDecline'];
+          },
+          },
           templateOptions: {
             label: 'Approve'
           },
-        }, */
+        }, 
+        {
+          className: 'flex-1',
+          type: 'checkbox',
+          key: 'chkApprovePendingCust',
+          expressionProperties: {
+            'templateOptions.disabled': (model: any, formState: any) => {
+              return model['chkApprove'];
+          },  
+        },
+          templateOptions: {
+            label: 'Approve With Pending Customer Number'            
+            },
+        }, 
         {
           className: 'flex-1',
           type: 'checkbox',
           key: 'chkWithReq',
+          expressionProperties: {
+            'templateOptions.disabled': (model: any, formState: any) => {
+              return model['chkApprove'];
+          },
+        },
           templateOptions: {
-            label: 'With Requirement'
+            label: 'Approve With Requirement Reason'
+          },
+        },
+      ]
+    },
+
+            // *Approve with Requirement Reason
+    {
+      type: 'approveWithReq',
+      hideExpression: "model['chkWithReq'] == undefined || model['chkWithReq'] == false "
+    },  
+            // approve-with-req-reason
+        {
+          fieldGroupClassName: 'display-flex',
+          fieldGroup: [
+        {
+          className: 'flex-1',
+          type: 'checkbox',
+          key: 'chkWithException',
+          expressionProperties: {
+            'templateOptions.disabled': (model: any, formState: any) => {
+              return model['chkApprove'];
+          },
+        },
+          templateOptions: {
+            label: 'Approve With Exception Reason'
           },
         },
         {
           className: 'flex-1',
           type: 'checkbox',
-          key: 'chkWithException',
-          templateOptions: {
-            label: 'With Exception'
+          key: 'chkDecline',
+          expressionProperties: {
+            'templateOptions.disabled': (model: any, formState: any) => {
+              return model['chkApprove'];
           },
         },
+          templateOptions: {
+            label: 'Decline'
+          },
+        },
+      ]
+    },
+        // *Approve with Exception Details
+    {
+       type: 'approveWithExcept',
+       hideExpression: "model['chkWithException'] == undefined || model['chkWithException'] == false "
+    },
+        //
+
  /*       {
           className: 'flex-1 mat-form-field-infix',
           type: 'checkDialog',
@@ -889,12 +688,10 @@ export class MaefFormService {
             label: 'Decline'
           },
         },*/
-
-      ]
-    },
     {
       fieldGroupClassName: 'display-flex',
-      fieldGroup: [{
+      fieldGroup: [
+        {
         className: 'flex-1',
         type: 'input',
         key: 'assignMidCap',
@@ -907,6 +704,11 @@ export class MaefFormService {
           maxLength: 13
         },
       },
+    ]
+  },
+  {
+    fieldGroupClassName: 'display-flex',
+    fieldGroup: [
       {
         className: 'flex-1',
         type: 'input',
@@ -963,18 +765,6 @@ export class MaefFormService {
           placeholder: 'Processed By'
         }
       },
-      {
-        className: 'flex-1',
-        type: 'calendar',
-        key: 'dateProcessed',
-        expressionProperties: {
-
-        },
-        templateOptions: {
-          label: 'Date Processed',
-          placeholder: 'Date Processed'
-        }
-      },
       ]
     },
 
@@ -992,20 +782,6 @@ export class MaefFormService {
           disabled: true
         },
       },
-
-      {
-        className: 'flex-1',
-        type: 'input',
-        key: 'decision1',
-        expressionProperties: {
-
-        },
-        templateOptions: {
-          label: 'Approver 1 Decision',
-          disabled: true
-        }
-      },
-
       {
         className: 'flex-1',
         type: 'calendar',
@@ -1034,20 +810,6 @@ export class MaefFormService {
           disabled: true
         },
       },
-
-      {
-        className: 'flex-1',
-        type: 'input',
-        key: 'decision2',
-        expressionProperties: {
-
-        },
-        templateOptions: {
-          label: 'Approver 2 Decision',
-          disabled: true
-        }
-      },
-
       {
         className: 'flex-1',
         type: 'calendar',
@@ -1076,20 +838,6 @@ export class MaefFormService {
           disabled: true
         },
       },
-
-      {
-        className: 'flex-1',
-        type: 'input',
-        key: 'decision3',
-        expressionProperties: {
-
-        },
-        templateOptions: {
-          label: 'Approver 3 Decision',
-          disabled: true
-        }
-      },
-
       {
         className: 'flex-1',
         type: 'calendar',
@@ -1113,4 +861,6 @@ export class MaefFormService {
   getMaefFields(): FormlyFieldConfig[] {
     return this.fields;
   }
+
+
 }

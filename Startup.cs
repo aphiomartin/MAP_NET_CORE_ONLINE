@@ -136,13 +136,9 @@ namespace MAP_Web
                         if (env.IsDevelopment())
                         {
                             // spa.UseAngularCliServer(npmScript: "build");
-                            // spa.UseAngularCliServer(npmScript: "start");
+                             spa.UseAngularCliServer(npmScript: "start");
                             // spa.UseAngularCliServer( "ng serve");
-<<<<<<< HEAD
                            // spa.UseProxyToSpaDevelopmentServer("http://localhost:4200");
-=======
-                            spa.UseProxyToSpaDevelopmentServer("http://localhost:4200");
->>>>>>> c0d8e969640ab999cad76dd06e5e357947a4c785
 
 
                             

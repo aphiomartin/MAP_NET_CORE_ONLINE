@@ -1,3 +1,5 @@
+import { ApproveWithExceptReasonDetailsListComponent } from './approve-with-except-reason-details-list/approve-with-except-reason-details-list.component';
+import { VerificationScreenComponent } from './new-affiliation/verification-screen/verification-screen.component';
 import { NgModule, OnInit } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -144,6 +146,12 @@ import { PosListContainerComponent } from './pos-list-container/pos-list-contain
 import { PosListComponent } from './pos-list/pos-list.component';
 import { PosFormModalComponent } from './modal/pos-form-modal/pos-form-modal.component';
 import { HttpClient } from 'selenium-webdriver/http';
+import { ApproveWithReqReasonListComponent } from './approve-with-req-reason-list/approve-with-req-reason-list.component';
+import { ApproveWithReqReasonFormModalComponent } from './modal/approve-with-req-reason-form-modal/approve-with-req-reason-form-modal.component';
+import { ApproveWithExceptReasonDetailsModalComponent } from './modal/approve-with-except-reason-details-modal/approve-with-except-reason-details-modal.component';
+
+
+
 
 
 
@@ -260,7 +268,12 @@ import { HttpClient } from 'selenium-webdriver/http';
     OwnersListComponent,
     PosListContainerComponent,
     PosListComponent,
-    PosFormModalComponent
+    PosFormModalComponent,
+    VerificationScreenComponent,
+    ApproveWithReqReasonListComponent,
+    ApproveWithReqReasonFormModalComponent,
+    ApproveWithExceptReasonDetailsModalComponent,
+    ApproveWithExceptReasonDetailsListComponent
   ],
   imports: [
     BrowserModule,
@@ -288,7 +301,15 @@ import { HttpClient } from 'selenium-webdriver/http';
         {
           name: 'printAdmrc',
           component: PrintAdmrcSectionTypeComponent
-        }
+        },
+        {
+          name: 'approveWithReq',
+          component: ApproveWithReqReasonListComponent
+          },
+          {
+            name: 'approveWithExcept',
+            component: ApproveWithExceptReasonDetailsListComponent
+          }  
         ////////////////////////////////////////////////////////
       ]
       }
