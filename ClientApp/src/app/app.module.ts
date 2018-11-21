@@ -2,7 +2,7 @@ import { NgModule, OnInit } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormlyModule } from '@ngx-formly/core';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { FormlyMaterialModule } from '@ngx-formly/material';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -144,6 +144,14 @@ import { PosListContainerComponent } from './pos-list-container/pos-list-contain
 import { PosListComponent } from './pos-list/pos-list.component';
 import { PosFormModalComponent } from './modal/pos-form-modal/pos-form-modal.component';
 import { HttpClient } from 'selenium-webdriver/http';
+import { BranchFormModalComponent } from './modal/branch-form-modal/branch-form-modal.component';
+import { MidListModalComponent } from './modal/mid-list-modal/mid-list-modal.component';
+import { OifFormModalComponent } from './modal/oif-form-modal/oif-form-modal.component';
+import { PosTerminalBrandListModalComponent } from './modal/pos-terminal-brand-list-modal/pos-terminal-brand-list-modal.component';
+import { DocumentChecklistFormModalComponent } from './modal/document-checklist-form-modal/document-checklist-form-modal.component';
+import { FileSelectDirective } from 'ng2-file-upload';
+import { MatFileUploadModule, FileUploadInputFor } from 'angular-material-fileupload';
+import { DocumentPerRequestFormModalComponent } from './modal/document-per-request-form-modal/document-per-request-form-modal.component';
 
 
 
@@ -260,12 +268,20 @@ import { HttpClient } from 'selenium-webdriver/http';
     OwnersListComponent,
     PosListContainerComponent,
     PosListComponent,
-    PosFormModalComponent
+    PosFormModalComponent,
+    BranchFormModalComponent,
+    MidListModalComponent,
+    OifFormModalComponent,
+    PosTerminalBrandListModalComponent,
+    DocumentChecklistFormModalComponent,
+    FileSelectDirective,
+    DocumentPerRequestFormModalComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
+    FormsModule,
     FormlyModule.forRoot(
       {
         types: [{
@@ -289,8 +305,8 @@ import { HttpClient } from 'selenium-webdriver/http';
           name: 'printAdmrc',
           component: PrintAdmrcSectionTypeComponent
         }
-        ////////////////////////////////////////////////////////
-      ]
+          ////////////////////////////////////////////////////////
+        ]
       }
     ),
     BrowserAnimationsModule,
@@ -326,20 +342,28 @@ import { HttpClient } from 'selenium-webdriver/http';
     MatRadioModule,
     MatPaginatorModule,
     MatSortModule,
-    MatCheckboxModule
+    MatFileUploadModule,
+    MatCheckboxModule,
+    MatSnackBarModule
   ],
   entryComponents: [RemarksModalComponent, HistoryModalComponent,
     AoListModalComponent, MidFormModalComponent,
     DocumentChecklistMaintenanceFormComponent, ServiceFeeContractFormComponent,
     DocumentChecklistConfigurationFormComponent, ParameterMaintenanceFormComponent,
-    ParameterMaintenanceDetailsComponent, AoMaintenanceFormComponent, BuMaintenanceFormComponent, 
-    DefaultMidMaintenanceFormComponent, MidFormComponent, MidModalComponent, DeleteModalComponent, 
+    ParameterMaintenanceDetailsComponent, AoMaintenanceFormComponent, BuMaintenanceFormComponent,
+    DefaultMidMaintenanceFormComponent, MidFormComponent, MidModalComponent, DeleteModalComponent,
     SearchModalComponent, PosTerminalFormModalComponent, OwnersFormModalComponent, SignatoriesFormModalComponent,
-    PosFormModalComponent],
+    PosFormModalComponent,
+    BranchFormModalComponent,
+    MidListModalComponent,
+    OifFormModalComponent,
+    PosTerminalBrandListModalComponent,
+    DocumentChecklistFormModalComponent,
+    DocumentPerRequestFormModalComponent],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { 
+export class AppModule {
   constructor() {
     // console.log('asd');
   }

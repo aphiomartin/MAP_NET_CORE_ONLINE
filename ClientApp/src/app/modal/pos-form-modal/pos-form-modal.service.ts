@@ -1,5 +1,8 @@
 import { Injectable } from '@angular/core';
 import { FormlyFieldConfig } from '@ngx-formly/core';
+import { ApiConstants } from 'src/app/api-constants';
+import { Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable()
 export class PosFormModalService {
@@ -25,6 +28,7 @@ export class PosFormModalService {
           className: 'flex-1',
           type: 'select',
           key: 'reprogrammingType',
+          defaultValue: 0,
           expressionProperties: {
             'templateOptions.disabled': (model: any, formState: any) => {
               return model['natureOfRequest'] !== 2;
@@ -32,19 +36,26 @@ export class PosFormModalService {
           },
           templateOptions: {
             label: 'Reprogramming Type',
+            options: [
+              { value: 0, label: 'Select Reprogramming Type' }
+            ]
           }
         },
         {
           className: 'flex-1',
           type: 'select',
           key: 'tidIssuanceType',
+          defaultValue: 0,
           expressionProperties: {
             'templateOptions.disabled': (model: any, formState: any) => {
               return model['natureOfRequest'] !== 3;
             }
           },
           templateOptions: {
-            label: 'TID Issuance Type'
+            label: 'TID Issuance Type',
+            options: [
+              { value: 0, label: 'Select TID Issuance Type' }
+            ]
           }
         }
       ]
@@ -85,26 +96,34 @@ export class PosFormModalService {
           className: 'flex-1',
           type: 'select',
           key: 'area',
+          defaultValue: 0,
           expressionProperties: {
             'templateOptions.disabled': (model: any, formState: any) => {
               return model['natureOfRequest'] !== 1;
             }
           },
           templateOptions: {
-            label: 'Business Unit / Area (where POS will be charged)'
+            label: 'Business Unit / Area (where POS will be charged)',
+            options: [
+              { value: 0, label: 'Select Account Officer Handler'}
+            ]
           }
         },
         {
           className: 'flex-1',
           type: 'select',
           key: 'accountOfficerHandler',
+          defaultValue: 0,
           expressionProperties: {
             'templateOptions.disabled': (model: any, formState: any) => {
               return model['natureOfRequest'] !== 1;
             }
           },
           templateOptions: {
-            label: 'Account Officer / Handler'
+            label: 'Account Officer / Handler',
+            options: [
+              { value: 0, label: 'Select Account Officer Handler'}
+            ]
           }
         },
         {
@@ -244,6 +263,7 @@ export class PosFormModalService {
           className: 'flex-1',
           key: 'isContactlessMerchant',
           type: 'radio',
+          defaultValue: false,
           expressionProperties: {
             'templateOptions.disabled': (model: any, formState: any) => {
               return model['natureOfRequest'] !== 1 && model['natureOfRequest'] !== 2;
@@ -372,8 +392,8 @@ export class PosFormModalService {
           templateOptions: {
             label: 'Installation Term',
             options: [
-              { value: 'Permanent', label: 'Permanent' },
-              { value: 'Temporary', label: 'Temporary' },
+              { value: true, label: 'Permanent' },
+              { value: false, label: 'Temporary' },
             ]
           }
         },
@@ -425,13 +445,17 @@ export class PosFormModalService {
           className: 'flex-1',
           type: 'select',
           key: 'mustSettle',
+          defaultValue: 0,
           expressionProperties: {
             'templateOptions.disabled': (model: any, formState: any) => {
               return model['natureOfRequest'] !== 1 && model['natureOfRequest'] !== 2;
             }
           },
           templateOptions: {
-            label: 'Must Settle (No. of Days Required)'
+            label: 'Must Settle (No. of Days Required)',
+            options: [
+              { value: 0, label: 'Select No. of Days Required'}
+            ]
           }
         }
       ]
@@ -798,9 +822,21 @@ export class PosFormModalService {
     },
   ];
 
-  constructor() { }
+  constructor(private _http: HttpClient) { }
 
   getPosFields(userGroup): FormlyFieldConfig[] {
     return this.fields;
+  }
+
+  get(id): Observable<any> {
+    return this._http.get(ApiConstants.posApi + '/' + id);
+  }
+
+  create(pos): Observable<any> {
+    return this._http.post(ApiConstants.posApi, pos);
+  }
+
+  update(id, pos) {
+    return this._http.put(ApiConstants.posApi + '/' + id, pos);
   }
 }
