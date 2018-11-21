@@ -17,7 +17,7 @@ export class PosListComponent implements OnInit {
   @Input() branchId: number;
   displayedColumns: string[];
   dataSource: Object[];
-  // @Input() showAdd: boolean;
+  @Input() showAdd: boolean;
 
   constructor(private _posService: PosListService, private _route: ActivatedRoute, private _dialog: MatDialog,
     private _overlay: Overlay,

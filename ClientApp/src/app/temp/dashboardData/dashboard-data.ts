@@ -20,7 +20,6 @@ export class DashboardData {
 
       MdcsData = [
         {
-<<<<<<< HEAD
           Id: 1, referenceNo: '000000110232018',
           requestDate: '23Oct18', requestType: 'New Affiliation', 
           businessName: 'Bench', dbaName: 'DBA Name Test',
@@ -33,52 +32,6 @@ export class DashboardData {
           businessName: 'Bench', dbaName: 'DBA Name Test',
           requestedBy: 'Juan dela Cruz',
           status: 'FOR ENCODER CHECKER REVIEW', tat: '10 hour(s)'
-=======
-          Id: 1, ReferenceNo: '000000110232018',
-          RequestDate: '23Oct18', RequestType: 'New Affiliation', 
-          BusinessName: 'Bench', DBAName: 'DBA Name Test',
-          RequestedBy: 'Juan dela Cruz',
-          Status: 'FOR EVALUATION', TAT: '20 hour(s)'
-        },
-        {
-          Id: 2, ReferenceNo: '000000110232018',
-          RequestDate: '23Oct18', RequestType: 'New Affiliation', 
-          BusinessName: 'Bench', DBAName: 'DBA Name Test',
-          RequestedBy: 'Juan dela Cruz',
-          Status: 'FOR RE-EVALUATION', TAT: '10 hour(s)'
-        },
-        {
-          Id: 2, ReferenceNo: '000000110232018',
-          RequestDate: '23Oct18', RequestType: 'New Affiliation', 
-          BusinessName: 'FH', DBAName: 'DBA Name Test',
-          RequestedBy: 'Juan dela Cruz',
-          Status: 'RETURNED BY MAM APPROVER', TAT: '15 hour(s)'
-        }
-
-      ];
-
-      MauEncoderData = [
-        {
-          Id: 1, ReferenceNo: '000000110232018',
-          RequestDate: '23Oct18', RequestType: 'New Affiliation', 
-          BusinessName: 'Bench', DBAName: 'DBA Name Test',
-          RequestedBy: 'Juan dela Cruz',
-          Status: 'FOR EVALUATION', TAT: '20 hour(s)'
-        },
-        {
-          Id: 2, ReferenceNo: '000000110232018',
-          RequestDate: '23Oct18', RequestType: 'New Affiliation', 
-          BusinessName: 'Bench', DBAName: 'DBA Name Test',
-          RequestedBy: 'Juan dela Cruz',
-          Status: 'FOR RE-EVALUATION', TAT: '10 hour(s)'
-        },
-        {
-          Id: 2, ReferenceNo: '000000110232018',
-          RequestDate: '23Oct18', RequestType: 'New Affiliation', 
-          BusinessName: 'FH', DBAName: 'DBA Name Test',
-          RequestedBy: 'Juan dela Cruz',
-          Status: 'RETURNED BY MAM APPROVER', TAT: '15 hour(s)'
->>>>>>> 1ad93e63fba4bb02d7237e027c50122e225e97b6
         }
       ];
 

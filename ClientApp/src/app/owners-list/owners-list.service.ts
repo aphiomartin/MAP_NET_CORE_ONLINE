@@ -22,7 +22,6 @@ export class OwnersListService {
     ];
   }
 
-<<<<<<< HEAD
   getByCustomerId(id): Observable<any> {
     return this._http.get(ApiConstants.ownersApi + '/customer/' + id);
   }
@@ -39,8 +38,4 @@ export class OwnersListService {
       { label: 'Other Related Party', value: 4 }
     ];
   }
-=======
-
-
->>>>>>> 1ad93e63fba4bb02d7237e027c50122e225e97b6
 }
