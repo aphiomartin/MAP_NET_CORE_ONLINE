@@ -29,6 +29,7 @@ export class OwnersListComponent implements OnInit {
   }
 
   ngOnInit() {
+<<<<<<< HEAD
     this.displayedColumns = this._ownerService.getTableFields();
 
     // if (this.customerProfileId === 0) {
@@ -51,6 +52,13 @@ export class OwnersListComponent implements OnInit {
     dialog.afterClosed().subscribe(data => {
       this.refresh();
     });
+=======
+    this.displayedColumns = this._service.getTableFields();
+    this.dataSource = this._service.get();
+   /* this._service.get(this.customerProfileId).subscribe(data => {
+      
+    });*/
+>>>>>>> 1ad93e63fba4bb02d7237e027c50122e225e97b6
   }
 
   delete(id) {

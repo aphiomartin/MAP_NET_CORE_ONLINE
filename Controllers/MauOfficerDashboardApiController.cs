@@ -42,6 +42,7 @@ namespace MAP_Web.Controllers
                     var parsedDate = DateTime.Parse(createdDate);
                     var daySpan = (DateTime.Now - parsedDate).TotalHours;
                     var requestedBy = await _aoListModalService.GetByUserName(item.Request.CreatedBy);
+                    var testUser = "a025005860"; // For Testing Purposes Only
                     
                     finalResult.Add(new Models.ViewModels.MauOfficerDashboardViewModel
                     {
@@ -55,7 +56,7 @@ namespace MAP_Web.Controllers
                         UserName = item.Request.Owner,
                         Status = item.Request.Owner == null ? "For Evaluation" : "For Re-Evaluation", //For Testing Purposes Only
                         TAT = (int)(daySpan + 0.5d),
-                        isOwned = item.Request.CreatedBy == item.Request.Owner ? true : false
+                        isOwned = testUser == item.Request.Owner ? true : false
                     });
                 }
 

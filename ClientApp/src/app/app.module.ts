@@ -1,3 +1,5 @@
+import { ApproveWithExceptReasonDetailsListComponent } from './approve-with-except-reason-details-list/approve-with-except-reason-details-list.component';
+import { VerificationScreenComponent } from './new-affiliation/verification-screen/verification-screen.component';
 import { NgModule, OnInit } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -106,7 +108,7 @@ import { DocumentChecklistConfigurationListComponent } from './administration/do
 import { BranchListAttachmentPOSRequestComponent } from './branch-list-attachment-posrequest/branch-list-attachment-posrequest.component';
 import { CheckDialogTypeComponent } from './check-dialog-type/check-dialog-type.component';
 
-import { AoMaintenanceModalComponent } from './modal/ao-maintenance-modal/ao-maintenance-modal.component';
+//import { AoMaintenanceModalComponent } from './modal/ao-maintenance-modal/ao-maintenance-modal.component';
 import { BdoDefaultHeaderComponent } from './bdo-default-header/bdo-default-header.component';
 import { PsServicingComponent } from './new-affiliation/ps-servicing/ps-servicing.component';
 import { ParameterMaintenanceDetailsComponent } from './administration/parameter-maintenance/parameter-maintenance-details/parameter-maintenance-details.component';
@@ -152,6 +154,9 @@ import { DocumentChecklistFormModalComponent } from './modal/document-checklist-
 import { FileSelectDirective } from 'ng2-file-upload';
 import { MatFileUploadModule, FileUploadInputFor } from 'angular-material-fileupload';
 import { DocumentPerRequestFormModalComponent } from './modal/document-per-request-form-modal/document-per-request-form-modal.component';
+import { ApproveWithReqReasonListComponent } from './approve-with-req-reason-list/approve-with-req-reason-list.component';
+import { ApproveWithReqReasonFormModalComponent } from './modal/approve-with-req-reason-form-modal/approve-with-req-reason-form-modal.component';
+import { ApproveWithExceptReasonDetailsModalComponent } from './modal/approve-with-except-reason-details-modal/approve-with-except-reason-details-modal.component';
 
 
 
@@ -224,7 +229,7 @@ import { DocumentPerRequestFormModalComponent } from './modal/document-per-reque
     ServiceFeeContractComponent,
     ServiceFeeContractFormComponent,
     ServiceFeeContractListComponent,
-    AoMaintenanceModalComponent,
+    //AoMaintenanceModalComponent,
     CheckDialogTypeComponent,
     BdoDefaultHeaderComponent,
     PsServicingComponent,
@@ -275,7 +280,12 @@ import { DocumentPerRequestFormModalComponent } from './modal/document-per-reque
     PosTerminalBrandListModalComponent,
     DocumentChecklistFormModalComponent,
     FileSelectDirective,
-    DocumentPerRequestFormModalComponent
+    DocumentPerRequestFormModalComponent,
+    VerificationScreenComponent,
+    ApproveWithReqReasonListComponent,
+    ApproveWithReqReasonFormModalComponent,
+    ApproveWithExceptReasonDetailsModalComponent,
+    ApproveWithExceptReasonDetailsListComponent
   ],
   imports: [
     BrowserModule,
@@ -304,9 +314,17 @@ import { DocumentPerRequestFormModalComponent } from './modal/document-per-reque
         {
           name: 'printAdmrc',
           component: PrintAdmrcSectionTypeComponent
-        }
-          ////////////////////////////////////////////////////////
-        ]
+        },
+        {
+          name: 'approveWithReq',
+          component: ApproveWithReqReasonListComponent
+          },
+          {
+            name: 'approveWithExcept',
+            component: ApproveWithExceptReasonDetailsListComponent
+          }
+        ////////////////////////////////////////////////////////
+      ]
       }
     ),
     BrowserAnimationsModule,

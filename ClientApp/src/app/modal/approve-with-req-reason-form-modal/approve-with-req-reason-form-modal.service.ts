@@ -9,12 +9,24 @@ export class ApproveWithReqReasonFormModalService {
     fieldGroup: [
       {
         className: 'flex-1',
-        type: 'input',
+        type: 'select',
         key: 'awrsName',
+        expressionProperties: {
+
+        },
         templateOptions: {
           label: 'Name',
-          maxLength: 50
-        }
+          required: true,
+          options: [
+            { label: 'CA/SA-Related', value: '1' },
+            { label: 'MDR-Related', value: '2' },
+            { label: 'POS Rental-Related', value: '3' },
+            { label: 'BDO Pay-Related', value: '4' },
+            { label: 'Incomplete Document', value: '5' },
+            { label: 'Signature Matching', value: '6' },
+            { label: 'Others', value: '7' }
+          ],
+        },
       },
       {
         className: 'flex-1',
@@ -30,16 +42,14 @@ export class ApproveWithReqReasonFormModalService {
     fieldGroupClassName: 'display-flex',
     fieldGroup: [
       {
-        key: 'reqStatus',
-        type: 'radio',
+        className: 'flex-1',
+        type: 'checkbox',
+        key: 'chkAwrsStatus',
+        expressionProperties: {
+      },
         templateOptions: {
-          label: 'Requirement Status?',
-          options: [
-            { value: '1', label: 'Complied' },
-            { value: '2', label: 'Pending' }
-          ],
+          label: 'Complied'
         },
-
       },
 
     ]

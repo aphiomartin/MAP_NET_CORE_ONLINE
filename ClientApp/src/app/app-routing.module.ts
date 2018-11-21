@@ -1,3 +1,4 @@
+import { VerificationScreenComponent } from './new-affiliation/verification-screen/verification-screen.component';
 import { RequestComponent } from './new-affiliation/request/request.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -71,6 +72,7 @@ import { MamVerificationScreenFormComponent } from './forms/mam-verification-scr
 import { PosTerminalBrandListComponent } from './pos-terminal-brand-list/pos-terminal-brand-list.component';
 import { PosListContainerComponent } from './pos-list-container/pos-list-container.component';
 import { PosListComponent } from './pos-list/pos-list.component';
+
 
 
 const routes: Routes = [
